@@ -6,7 +6,7 @@
         <ion-icon name="menu"></ion-icon>
       </button>
       <ion-title>
-        Charts
+        Charts!
       </ion-title>
       <ion-buttons end>
         <button ion-button icon-only >
@@ -31,22 +31,22 @@
       </ion-segment>
     </ion-toolbar>
   </ion-header>
-  
-  
-  
+
+
+
   <ion-content>
-  
+
       <div *ngIf="isDataAvailable">
       <!--*********** Bar chart  ***********-->
         <div *ngIf="chartView==='Bar'">
-  
+
           <!--*********** Vertical ***********-->
             <ion-card>
               <ion-card-header>
                 Bar chart(vertical)
               </ion-card-header>
               <ion-card-content>
-                <canvas  baseChart                 
+                <canvas  baseChart
                           [data]="chartData"
                           [labels]="chartLabels"
                           [legend]="chartLegend"
@@ -56,14 +56,14 @@
                   </canvas>
               </ion-card-content>
             </ion-card>
-        
+
           <!--*********** Horizontal  ***********-->
           <ion-card>
               <ion-card-header>
                 Bar chart(horizontal)
               </ion-card-header>
               <ion-card-content>
-                <canvas  baseChart                 
+                <canvas  baseChart
                           [data]="chartData"
                           [labels]="chartLabels"
                           [legend]="chartLegend"
@@ -74,9 +74,9 @@
               </ion-card-content>
             </ion-card>
         </div>
-        
+
       <!--*********** Pie chart  ***********-->
-  
+
         <div *ngIf="chartView==='Pie'">
           <ion-card>
               <ion-card-header>
@@ -91,11 +91,11 @@
                         chartType="pie">
                 </canvas>
               </ion-card-content>
-              
+
             </ion-card>
         </div>
-  
-  
+
+
       <!--*********** Line chart  ***********-->
           <div *ngIf="chartView==='Line'">
           <ion-card>
@@ -108,17 +108,17 @@
                             [labels]="chartLabels"
                             [legend]="chartLegend"
                             [colors]="chartColorForLine"
-                            [options]="lineChartOptions"                
+                            [options]="lineChartOptions"
                             chartType="line">
                       </canvas>
               </ion-card-content>
             </ion-card>
         </div>
-  
+
       <!--*********** More chart  ***********-->
         <div *ngIf="chartView==='More'">
-          
-        <!--*********** Doughnut chart  ***********-->    
+
+        <!--*********** Doughnut chart  ***********-->
               <ion-card>
                   <ion-card-header>
                     Doughnut chart
@@ -147,7 +147,7 @@
                       </canvas>
                   </ion-card-content>
               </ion-card>
-        <!--*********** Radar chart  ***********-->   
+        <!--*********** Radar chart  ***********-->
               <ion-card>
                   <ion-card-header>
                     Radar chart
@@ -163,8 +163,8 @@
                       </canvas>
                   </ion-card-content>
               </ion-card>
-          
-        <!--*********** PolarArea chart  ***********-->   
+
+        <!--*********** PolarArea chart  ***********-->
               <ion-card>
                   <ion-card-header>
                     PolarArea chart
@@ -179,7 +179,7 @@
                       </canvas>
                   </ion-card-content>
               </ion-card>
-  
+
         </div>
       </div>
   </ion-content>
