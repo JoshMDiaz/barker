@@ -1,0 +1,28 @@
+page-table {
+    ion-grid{
+        padding: 0px !important;
+    }
+    ion-row{
+        padding:10px;
+    }
+    ion-row.tableHeader {
+    
+    background-color:#ddd;
+    }
+
+    // ion-col:first-child {
+    //   border-left: solid 1px grey;
+    // }
+
+    ion-row {
+    border-bottom: solid 1px #ccc;
+    }
+    ion-col.actionCol{
+        text-align: right;
+        padding-right: 10px;
+    }
+
+// ion-row:last-child {
+//   border-bottom: solid 1px grey;
+// }
+}

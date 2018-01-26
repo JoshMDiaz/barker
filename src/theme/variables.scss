@@ -1,0 +1,404 @@
+// Ionic Variables and Theming. For more info, please see:
+// http://ionicframework.com/docs/v2/theming/
+$font-path: "../assets/fonts";
+
+@import "ionic.globals";
+
+
+// Shared Variables
+// --------------------------------------------------
+// To customize the look and feel of this app, you can override
+// the Sass variables found in Ionic's source scss files.
+// To view all the possible Ionic variables, see:
+// http://ionicframework.com/docs/v2/theming/overriding-ionic-variables/
+
+
+
+
+// Named Color Variables
+// --------------------------------------------------
+// Named colors makes it easy to reuse colors on various components.
+// It's highly recommended to change the default colors
+// to match your app's branding. Ionic uses a Sass map of
+// colors so you can add, rename and remove colors as needed.
+// The "primary" color is the only required color in the map.
+
+$colors: (
+  primary:    #488aff,
+  secondary:  #32db64,
+  danger:     #f53d3d,
+  light:      #f4f4f4,
+  dark:       #222,
+darkGray:   #333333,
+
+ 
+
+  special-blue:(
+    base: #0059B2,
+    contrast: #ffffff
+  ),
+  twitter:(
+    base: #55acee,
+    contrast: #ffffff
+  ),
+  white:(
+    base: #ffffff,
+    contrast: #222
+  ),
+  ios:(
+    base: #ffffff,
+    contrast: #84BF41
+  ),
+  red:(
+    base: #f44336,
+    contrast: #ffffff
+  ),
+  pink:(
+    base: #EA1E63,
+    contrast: #ffffff
+  ),
+
+//####### material design color #########//
+
+  purple:(
+    base: #9c27b0,
+    contrast: #ffffff
+  ),
+    deeppurple:(
+    base: #673ab7,
+    contrast: #ffffff
+  ),
+    indigo:(
+    base: #3f51b5,
+    contrast: #ffffff
+  ),
+    blue :(
+    base: #2196f3,
+    contrast: #ffffff
+  ),
+    blue2:(
+      base: #0034a7,
+      contrast: #ffffff
+    ),
+    lightblue:(
+    base: #03a9f4,
+    contrast: #ffffff
+  ),
+    cyan:(
+    base: #00bcd4,
+    contrast: #ffffff
+  ),
+    teal:(
+    base: #009688,
+    contrast: #ffffff
+  ),
+    green:(
+    base: #4caf50,
+    contrast: #ffffff
+  ),
+    lightgreen:(
+    base: #8dc34b,
+    contrast: #ffffff
+  ),
+      lime:(
+    base: #cddc39,
+    contrast: #333
+  ),
+      yellow:(
+    base: #ffeb3b,
+    contrast: #333
+  ),
+      amber:(
+    base: #ffc107,
+    contrast: #fff
+  ),
+      orange:(
+    base: #ff9800,
+    contrast: #ffffff
+  ),
+      deeporange:(
+    base: #ff5722,
+    contrast: #ffffff
+  ),
+      brown:(
+    base: #795548,
+    contrast: #ffffff
+  ),
+      gray:(
+    base: #9e9e9e,
+    contrast: #ffffff
+  ),
+      bluegray:(
+    base: #607d8b,
+    contrast: #ffffff
+  ),
+      black:(
+    base: #000000,
+    contrast: #ffffff
+  ),
+
+
+//####### ios color #########//
+
+      ios-gray:(
+    base: #8e8e93,
+    contrast: #ffffff
+  ),
+      ios-lightblue:(
+    base: #5ac8fa,
+    contrast: #ffffff
+  ),
+      ios-blue :(
+    base: #007aff,
+    contrast: #ffffff
+  ),
+      ios-yellow:(
+    base: #ffcc00,
+    contrast: #ffffff
+  ),
+      ios-orange:(
+    base: #ff9500,
+    contrast: #ffffff
+  ),
+      ios-pink:(
+    base: #ff2d55,
+    contrast: #ffffff
+  ),
+      ios-green:(
+    base: #4cd964,
+    contrast: #ffffff
+  ),
+      ios-red:(
+    base: #ff3b30,
+    contrast: #ffffff
+  ),
+
+//####### flat color #########//
+
+  flat-turquoise:(
+    base: #1abc9c,
+    contrast: #ffffff
+  ),
+  flat-emerald:(
+    base: #2ecc71,
+    contrast: #ffffff
+  ),
+  flat-peter-river:(
+    base: #3498db,
+    contrast: #ffffff
+  ),
+  flat-amethyst:(
+    base: #9b59b6,
+    contrast: #ffffff
+  ),
+  flat-wet-asphalt:(
+    base: #34495e,
+    contrast: #ffffff
+  ),
+  flat-green-sea:(
+    base: #16a085,
+    contrast: #ffffff
+  ),
+  flat-belize-hole:(
+    base: #2980b9,
+    contrast: #ffffff
+  ),
+  flat-wisteria:(
+    base: #8e44ad,
+    contrast: #ffffff
+  ),
+  flat-midnight-blue:(
+    base: #2c3e50,
+    contrast: #ffffff
+  ),
+  flat-sun-flower:(
+    base: #f1c40f,
+    contrast: #ffffff
+  ),
+  flat-carrot:(
+    base: #e67e22,
+    contrast: #ffffff
+  ),
+  flat-alizarin:(
+    base: #e74c3c,
+    contrast: #ffffff
+  ),
+  flat-clouds:(
+    base: #ecf0f1,
+    contrast: #ffffff
+  ),
+  flat-concrete:(
+    base: #95a5a6,
+    contrast: #ffffff
+  ),
+  flat-orange:(
+    base: #f39c12,
+    contrast: #ffffff
+  ),
+  flat-pumpkin:(
+    base: #d35400,
+    contrast: #ffffff
+  ),
+  flat-pomegrenade:(
+    base: #c0392b,
+    contrast: #ffffff
+  ),
+  flat-silver:(
+    base: #bdc3c7,
+    contrast: #ffffff
+  ),
+  flat-asbesthos:(
+    base: #7f8c8d,
+    contrast: #ffffff
+  ),
+
+//####### solarized color #########//
+
+  solar-base03:(
+    base: #002b36,
+    contrast: #ffffff
+  ),
+  solar-base02:(
+    base: #073642,
+    contrast: #ffffff
+  ),
+  solar-base01:(
+    base: #586e75,
+    contrast: #ffffff
+  ),
+  solar-base00:(
+    base: #657b83,
+    contrast: #ffffff
+  ),
+
+  solar-base0:(
+    base: #839496,
+    contrast: #ffffff
+  ),
+  solar-base1:(
+    base: #93a1a1,
+    contrast: #ffffff
+  ),
+  solar-base2:(
+    base: #eee8d5,
+    contrast: #ffffff
+  ),
+  solar-base3:(
+    base: #fdf6e3,
+    contrast: #ffffff
+  ),
+
+  solar-yellow:(
+    base: #b58900,
+    contrast: #ffffff
+  ),
+  solar-orange:(
+    base: #cb4b16,
+    contrast: #ffffff
+  ),
+  solar-red:(
+    base: #dc322f,
+    contrast: #ffffff
+  ),
+  solar-magenta:(
+    base: #d33682,
+    contrast: #ffffff
+  ),
+  solar-violet:(
+    base: #6c71c4,
+    contrast: #ffffff
+  ),
+  solar-blue:(
+    base: #268bd2,
+    contrast: #ffffff
+  ),
+
+//####### tango color #########//
+
+  tango-aluminium:(
+    base: #d3d7cf,
+    contrast: #ffffff
+  ),
+  tango-butter:(
+    base: #edd400,
+    contrast: #ffffff
+  ),
+
+  tango-chameleon:(
+    base: #73d216,
+    contrast: #ffffff
+  ),
+  tango-orange:(
+    base: #f57900,
+    contrast: #ffffff
+  ),
+  tango-chocolate:(
+    base: #c17d11,
+    contrast: #ffffff
+  ),
+  tango-sky-blue:(
+    base: #3465a4,
+    contrast: #ffffff
+  ),
+  tango-plum:(
+    base: #75507b,
+    contrast: #ffffff
+  ),
+  tango-slate:(
+    base: #555753,
+    contrast: #ffffff
+  ),
+  tango-scarlet-red:(
+    base: #cc0000,
+    contrast: #ffffff
+  )
+
+
+);
+$text-input-md-show-focus-highlight: false;
+
+
+// App iOS Variables
+// --------------------------------------------------
+// iOS only Sass variables can go here
+
+
+
+
+// App Material Design Variables
+// --------------------------------------------------
+// Material Design only Sass variables can go here
+
+
+
+
+// App Windows Variables
+// --------------------------------------------------
+// Windows only Sass variables can go here
+
+
+
+
+// App Theme
+// --------------------------------------------------
+// Ionic apps can have different themes applied, which can
+// then be future customized. This import comes last
+// so that the above variables are used and Ionic's
+// default are overridden.
+
+@import "ionic.theme.default";
+//@import "theme/dark.scss";
+
+// Ionicons
+// --------------------------------------------------
+// The premium icon font for Ionic. For more info, please see:
+// http://ionicframework.com/docs/v2/ionicons/
+
+@import "ionic.ionicons";
+
+
+// Fonts
+// --------------------------------------------------
+
+@import "roboto";
+@import "noto-sans";

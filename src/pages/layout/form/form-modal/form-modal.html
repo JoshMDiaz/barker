@@ -1,0 +1,21 @@
+
+<ion-header no-border>
+  <ion-navbar color="light" class="white-text">
+        <ion-title >Contact list</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-list no-border>
+    <ion-item tappable *ngFor="let contact of contacts | async" (click)="selectContact(contact.name,contact.$key,contact.imgProfile)" >
+      <ion-avatar item-left>
+        <img src="{{contact.imgProfile}}"/>
+      </ion-avatar>
+      <h2>{{contact.name}}</h2>
+      <p>Company: {{contact.company}}</p>
+      <!--<p>{{contact.company}}contact.$key={{contact.$key}}</p>-->
+    </ion-item>
+  </ion-list>
+  
+</ion-content>

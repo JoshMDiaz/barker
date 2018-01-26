@@ -1,0 +1,26 @@
+
+<ion-header>
+    <ion-navbar color="ios-pink">
+        <button ion-button menuToggle >
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>
+            Radio
+        </ion-title>    
+    </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+  <!--*********** List  ***********-->
+    <ion-list class="wave">
+        <ion-item tappable  *ngFor="let radio of radioList | async" (click)="openPlayer(radio.$key)">
+            <ion-thumbnail item-left>
+                <img [src]="radio.image">
+            </ion-thumbnail>
+            <h2>{{radio.title}}</h2>
+            <p>{{radio.description}}</p> 
+        </ion-item>
+    </ion-list>
+
+</ion-content>

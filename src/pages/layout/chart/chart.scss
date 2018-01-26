@@ -1,0 +1,18 @@
+page-chart {
+  .scroll-content {
+      background-color: map-get($colors, light);
+  }
+  ion-card-header {
+      font-weight: bold;
+  }
+
+  ion-card-content{
+    height:100%;
+    min-height: 400px;
+  }
+  ion-segement {
+    width: 95%;
+  }
+
+
+}

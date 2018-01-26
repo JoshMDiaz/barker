@@ -1,0 +1,27 @@
+<ion-header no-border>
+  <ion-navbar transparent>
+    <button ion-button menuToggle>
+      <ion-icon name="menu" color="light"></ion-icon>
+    </button>
+  </ion-navbar>
+</ion-header>
+
+<ion-content [ngStyle]="{'background-image': 'url(' + backgroundImage +')'}">
+  <div class="login-container">
+    <div margin-bottom >
+      <img class="logo"  src="./assets/ionic.png" />
+    </div>
+    <div margin-top >
+        <button ion-button mode="ios"  block margin-top margin-bottom   (click)="facebookLogin()" color="blue2"   icon-left > <ion-icon name="logo-facebook"></ion-icon>facebook login2</button>  
+        <button ion-button mode="ios" block margin-top  margin-bottom   (click)="googleLogin()" color="red"   icon-left> <ion-icon name="logo-google"></ion-icon>google login</button>  
+      <!-- <button ion-button mode="ios"  block margin-top margin-bottom   color="blue2"   icon-left > <ion-icon name="logo-facebook"></ion-icon>facebook login</button>  
+      <button ion-button mode="ios" block margin-top  margin-bottom   color="red"   icon-left> <ion-icon name="logo-google"></ion-icon>google login</button>   -->
+   
+      <button ion-button mode="ios" block margin-top  margin-top margin-bottom   (click)="loginWithEmail()" color="gray"  icon-left> <ion-icon name="ios-mail"></ion-icon>e-mail login</button>  
+    </div>
+  </div>
+
+</ion-content>
+<ion-footer>
+  <button class="bottom" ion-button  type="button"  clear full color="light" (click)="createAccount()">Create new account</button>
+</ion-footer>

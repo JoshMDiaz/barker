@@ -1,0 +1,26 @@
+page-after-login {
+
+  .scroll-content{
+    margin-top:0px !important;
+    padding-top: 0px !important;
+  }
+  .profile-box{
+    height: 250px;
+    padding-top: 50px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color: #dddddd;
+    background-image: url("https://unsplash.it/800/600?blur&image=206");
+  }
+  .edit-avatar {
+    border-radius: 100%;
+    width: 25%;
+    border: 2px solid #ffffff;
+  }
+
+  .name-text {
+    font-size: 22px;
+    color: #ffffff;
+  }
+  
+}

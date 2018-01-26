@@ -1,0 +1,98 @@
+
+<ion-header>
+  <ion-navbar color="white" class="white-text">
+     <button ion-button menuToggle class="TopLMenu">
+      <ion-icon name="menu"></ion-icon>
+    </button>
+        <ion-title >Profile</ion-title>
+    <ion-buttons  right>
+        <button color="light" ion-button icon-only>
+            <ion-icon name="more"></ion-icon>
+        </button>
+    </ion-buttons> 
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+
+  <div id="profile1-info" class="test-class" padding>
+
+    <img id="profile1-image" class="pop-in" src="{{(profile | async)?.imgProfile}}"/>
+    <h3 id="profile1-name">{{(profile | async)?.name}}</h3>
+    <!--<p>{{(profile2 | async)?.company}} &bull; {{(profile2 | async)?.position}}</p> -->
+    <p class="profile1-description">{{(profile | async)?.position}} of {{(profile | async)?.company}}</p>
+    <button ion-button *ngIf="!following"  block color="green" (click)="follow()">Follow</button>
+    <button ion-button icon-left *ngIf="following"  block color="gray" (click)="follow()">
+      <ion-icon name="checkmark"></ion-icon>
+      Following
+    </button>
+
+    <ion-grid >
+      <ion-row class="profile1-numbers">
+
+        <ion-col width-33>
+          <span>{{(profile | async)?.follower}}</span>
+          <p>Followers</p>
+        </ion-col>
+
+        <ion-col width-33>      
+          <span>{{(profile | async)?.following}}</span>
+          <p>Following</p>
+        </ion-col>
+
+        <ion-col width-33>   
+          <span>{{(profile | async)?.following}}</span>
+          <p>Following</p>
+        </ion-col>
+
+      </ion-row>
+    </ion-grid>
+
+  </div>
+
+
+<!--***********  About  ***********-->
+
+  <ion-list no-lines text-wrap>
+      <ion-list-header>
+        <h2> About</h2>
+      </ion-list-header>
+      <ion-item>
+        <p >{{(profile | async)?.aboutMe}}</p>
+      </ion-item>
+  </ion-list>
+
+<!--***********  Contact  ***********-->
+  <ion-list no-lines>
+    <ion-list-header>
+      <h2>Contact</h2>
+    </ion-list-header>
+    <ion-item>
+        <ion-icon name="ios-mail" item-left></ion-icon>
+        <h2>ceo@cemo.com</h2>
+        <p>work email</p>
+    </ion-item>
+    <ion-item>
+      <ion-icon name="ios-call" item-left></ion-icon>
+      <h2>009923124322</h2>
+      <p>mobile phone</p>
+    </ion-item>
+    <ion-item>
+        <ion-icon name="logo-linkedin" item-left></ion-icon>
+        <h2>linkedin.com/cemo</h2>
+        <p>linked in </p>
+    </ion-item>
+     <ion-item>
+      <ion-icon name="logo-facebook" item-left></ion-icon>
+      <h2>facebook.com/cemo</h2>
+      <p>facebook</p>
+    </ion-item>
+    <ion-item>
+        <ion-icon name="logo-skype" item-left></ion-icon>
+        <h2>cemo@outlook.com</h2>
+        <p>skype</p>
+    </ion-item>
+  </ion-list>
+
+</ion-content>

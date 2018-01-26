@@ -1,0 +1,65 @@
+
+<ion-header>
+    <ion-navbar color="green">
+        <button ion-button menuToggle color="light">
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title color="light">Restaurant</ion-title>
+        <ion-buttons start hideWhen="ios">
+            <button ion-button icon-only color="light">
+                <ion-icon name="notifications"></ion-icon>
+            </button>
+        </ion-buttons>
+        <ion-buttons right>
+            <button ion-button icon-only>
+                <ion-icon name="md-more"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+
+  <!--*********** Toolbar with segment ***********-->
+  <ion-toolbar no-border-top color="green">
+       <ion-segment  [(ngModel)]="viewType" color="yellow">
+      <ion-segment-button value="Menu">
+        Menu
+      </ion-segment-button>
+      <ion-segment-button value="Promotion">
+        Promotions
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content no-padding>
+
+  <!--*********** Menu View  ***********-->
+<div *ngIf="viewType==='Menu'">
+  <ion-card tappable  class="card-list wave" *ngFor="let category of category" (click)="openList(category.$key)">
+        <div class="card-list-bg" [ngStyle]="{'background-image': 'url(' + category.imgBg+ ')'}">
+          <h2 class="card-list-title"> {{category.name}}</h2> 
+          <p class="card-list-description"> {{category.description}}</p>               
+        </div>
+  </ion-card>
+</div>
+
+  <!--*********** Promotion View  ***********-->
+  <div *ngIf="viewType==='Promotion'">
+      <ion-grid >
+          <ion-row wrap>
+            <ion-col col-6  tappable  *ngFor="let item of items" (click)="goToDetail(item.$key)" color="gray">
+              
+              <ion-card class="card-grid wobble" >
+                
+                <div class="card-grid-bg" [ngStyle]="{'background-image': 'url(' + item.imgSmall+ ')'}">
+                  <div class="bookmarkRibbon"></div>
+                    <h2 class="card-grid-title"> {{item.name}}</h2>                                
+                </div>
+                
+              </ion-card>
+            </ion-col>
+          </ion-row>
+      </ion-grid>
+  </div>
+
+</ion-content>

@@ -1,0 +1,604 @@
+<html>
+<style>
+    body {
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-size: 14px;
+        line-height: 1.42857143;
+        color: #333;
+        background-color: #fff;
+        margin: 25px;
+    }
+    img{
+        padding-left: 20px;
+      
+    }
+    .step{
+        padding-left: 5px;
+        border-left: 3px solid #0059B2;
+    }
+    .chapter-border {
+        padding: 30px;
+        border: 1px solid #999;
+        background-color: #607d8b;
+        margin: 10px 0px;
+        width: 350px;
+        color: white;
+    }
+    .chapter-border a:link{
+        color:#FFFFFF;
+        text-decoration: none;
+    }
+    .chapter-border a:visited{
+        color:#FFFFFF;
+        text-decoration: none;
+    }
+    .chapter-border a:hover {
+        color:#FFFFFF;
+        text-decoration: none;
+    }
+    .code-border {
+
+        padding: 30px;
+        border: 1px solid #999999;
+        border-left: 3px solid #0059B2;
+        background-color: #dddddd;
+        margin: 10px 0px;
+        width: 600px;
+    }
+    .wrapper{
+        margin-left: 20px;
+    }
+</style>
+
+<body>
+    <h1>ionic 3 fullapp template with firebase backend ver 2.0.2</h1>
+
+    <div class="chapter-border">
+        <p>
+            <a href="#installation">
+                <h2>Getting started</h2>
+            </a>
+        </p>
+        <p>
+            <a href="#installation">
+                <h3>1.Installation</h3>
+            </a>
+        </p>
+        <p>
+            <a href="#configuration">
+                <h3>2.Configuration</h3>
+            </a>
+        </p>
+        <p>
+            <a href="#run">
+                <h3>3.Run</h3>
+            </a>
+        </p>
+        <p>
+            <a href="#facebook">
+                <h3>3.Facebook sign-in setting</h3>
+            </a>
+        </p>
+
+        <p>
+            <a href="#google">
+                <h3>3.Google sign-in setting</h3>
+            </a>
+        </p>
+
+        <p>
+            <a href="#usage">
+                <h2>Usage</h2>
+            </a>
+        </p>
+            <p>
+                <a href="#facebook">
+                    <h3>&nbsp;&nbsp;&nbsp;- Facebook authentication</h3>
+                </a>
+            </p>
+            <p>
+                    <a href="#google">
+                        <h3>&nbsp;&nbsp;&nbsp;- Google authentication</h3>
+                    </a>
+                </p>
+                <p>
+                    <a href="#theme">
+                        <h3>&nbsp;&nbsp;&nbsp;- Theme</h3>
+                    </a>
+                </p>
+                <p>
+                    <a href="#map">
+                        <h3>&nbsp;&nbsp;&nbsp;- Map</h3>
+                    </a>
+                </p>
+                <p>
+                    <a href="#gallery">
+                        <h3>&nbsp;&nbsp;&nbsp;- Image Gallery</h3>
+                    </a>
+                </p>
+                <p>
+                    <a href="#chart">
+                        <h3>&nbsp;&nbsp;&nbsp;- Chart</h3>
+                    </a>
+                </p>
+
+                <p>
+                    <a href="#rating">
+                        <h3>&nbsp;&nbsp;&nbsp;- Rating</h3>
+                    </a>
+                </p>
+                <p>
+                    <a href="#animation">
+                        <h3>&nbsp;&nbsp;&nbsp;- Animation</h3>
+                    </a>
+                </p>
+
+    
+        <p>
+            <a href="#version">
+                <h2>Changelog</h2>
+            </a>
+        </p>
+
+        <p>
+            <a href="#contact">
+                <h2>Contact us</h2>
+            </a>
+        </p>
+                      
+
+    </div>
+
+
+
+    <h1>Getting started</h1>
+
+
+     <h3 id="installation">1.Installation</h3>
+     <div class="wrapper">
+         <p>cd into the directory and then run npm install command.</p>
+        <div class="code-border">
+             $ npm install <br>
+        </div>
+     </div>
+
+
+
+
+    <h3 id="configuration">2.Configuration</h3>
+    <div class="wrapper">
+            <p>Before run ionic serve</p>
+            <p>1.Create a new firebase project</p>
+            <p>2.Open the Database section. Click <strong>DATA</strong> tab > Import JSON > <strong>firebase_DATA.json</strong> </p>
+            <p>3.Enable Email/Password sign-in</p>
+            <p>  &nbsp;&nbsp;&nbsp; -Open the Authentication section.</p>
+             <p>  &nbsp;&nbsp;&nbsp; -On the <strong>SIGN-IN METHOD</strong> tab, enable the Email/password sign-in method and click Save.</p>
+           
+            <p>4.Open the Database section. Click <strong>RULES</strong> tab  </p>
+            <div class="code-border">
+                <b>******* insert this code *******</b> <br><br> {
+                <br> &nbsp; "rules": {<br> &nbsp;&nbsp;&nbsp; ".read": "true",<br> &nbsp;&nbsp;&nbsp;".write": "auth != null"<br>        &nbsp; }<br> }
+                <br>
+            </div>
+            <p>5.Update Firebase configuration in <strong>/src/app/app.module.ts</strong></p>
+            <div class="code-border">
+                <b>********** firebase configuration  ***********</b> <br><br> export const config = { <br> &nbsp;&nbsp;&nbsp;apiKey:
+                <b>your-key</b>,<br> &nbsp;&nbsp;&nbsp;authDomain: <b>your-project-authdomain</b>, <br> &nbsp;&nbsp;&nbsp;databaseURL:
+                <b>your-database-URL</b>, <br> &nbsp;&nbsp;&nbsp;projectId: <b>your-project-id</b>, <br> &nbsp;&nbsp;&nbsp;storageBucket:
+                <b>your-storage-bucket</b>, <br> &nbsp;&nbsp;&nbsp;messagingSenderId: <b>your-messaging-sender-id</b> <br> };
+            </div>
+    </div>
+    
+
+
+
+
+     <h3 id="run">3.Run</h3>
+     <div class="wrapper">
+            <p>Testing your app in a browser is as simple as running the serve command in your project’s root folder. </p>
+            <div class="code-border">
+                $ ionic serve <br>
+            </div>
+     </div>
+
+     
+     <!-- <div class="wrapper">
+        <p><span style="color:red;">NOTE: If you got any error from firebase. </span><br>Example: <strong>Typescript Error : Namespace 'firebase' has no exported member  'Promise'. </strong><br> Run this command.</p>
+       <div class="code-border">
+            $ npm install --save firebase@3.9.* <br>
+       </div>
+    </div> -->
+
+
+    <!--############## Facebook Sign-in ##############-->
+    <br><br> 
+    <h1 id="facebook">Facebook sign-in setting</h1>
+    <!-- <h3 id="facebook">Facebook authentication</h3> -->
+    <div class="wrapper">
+        <!-- Revise 2.0 -->
+        <div class="step">
+            <p style="color:red;"><strong>STEP 1 :</strong></p>
+            <p>First enable facebook Sign-In in firebase console</p>
+            <p>Go into firebase console > Authentication > Sign-In Method > Facebook </p>
+        </div>
+            <img src="doc_assets/fb_setting4.jpg" alt="enable facebook sign-in ">
+            <br>
+        <div class="step">
+            <p>Click the Enable toggle.</p>
+        </div>
+            <img src="doc_assets/fb_setting5.jpg" alt="">
+            <br>
+        <div class="step">   
+            <p>Now you need to enter your Facebook <strong>App ID</strong> and <strong>App secret</strong>.</p>
+        </div>
+            <img src="doc_assets/fb_setting6.jpg" alt="enter your facebook App ID ">
+            <br><br>
+
+        <div class="step">  
+            <p style="color:red;"><strong>STEP 2 :</strong></p>
+            <p><span >To get Facebook <strong>App ID</strong> and <strong>App secret</strong>.</span></p>
+            <p>You first have to create a new Facebook App inside of the Facebook developer portal at <a href="https://developers.facebook.com/apps">https://developers.facebook.com/apps</a>.</p>  
+            <p>Click “Add a new App”</p> 
+        </div>   
+        <img src="doc_assets/fb_setting1.jpg">    
+             
+        <div class="step">             
+            <p>Once you click on the button, you’ll get a short form pop up, add the name you want for your app and the contact email that will be public to users.</p>  
+        </div>
+        <img src="doc_assets/fb_setting2.jpg">
+        
+        <div class="step">  
+                <p> <strong>App ID</strong> and <strong>App secret</strong> can be found in your Facebook app under settings:</p>
+        </div>
+        <img src="doc_assets/fb_setting3.jpg">
+        <div class="step">  
+            <p>Now copy facebook App ID and App Secret to firebase console</p>
+        </div>
+            <img src="doc_assets/fb_setting7.jpg">
+ 
+
+        <br><br>
+        <div class="step">
+            <p style="color:red;"><strong>STEP 3 :</strong></p>
+            <p>Add your Platforms to Facebook</p>
+            <P>Once everything is set up in our development environment, we need to let Facebook know which platforms we’ll be using (if it’s just web, iOS, or Android).</P>
+            <P>In our case, we want to add Android platforms.</P>
+            <P>To add the platforms, go ahead and inside your Facebook dashboard click on settings, then, right below the app’s information you’ll see a button that says Add Platform, click it.</P>
+        </div>
+        <img src="doc_assets/fb_setting8.jpg">
+
+        <div class="step">
+            <P>Click Android</P>
+        </div>
+        <img src="doc_assets/fb_setting9.jpg">
+
+
+        <div class="step">
+            <p>Enter your Google Play Package Name</p>
+        </div>
+        <img src="doc_assets/fb_setting10.jpg">
+
+        <div class="step">
+            <P>To get Google Play Package Name  </P>
+            <p>Open <strong>config.xml</strong>  and copy package name </p>
+        </div>
+        <img src="doc_assets/fb_setting11.jpg">
+        
+
+        <div class="step">
+                <P>Paste into Google Play Package Name</P>
+            </div>
+            <img src="doc_assets/fb_setting12.jpg">
+            
+
+            <br><br>
+            <div class="step">
+                    <p style="color:red;"><strong>STEP 4 :</strong></p>
+                    <p>Adding the Cordova Facebook Plugin to your app</p>
+            </div>
+                    <!-- <p>For using the Facebook login also on your mobile device, you need to add a Facebook Cordova plugin. First you need to add, if you haven’t already, a mobile platform e.g. ionic cordova platform add android.</p> -->
+
+                    <p>Now you are able to add the Facebook plugin:</p>
+                    <div class="wrapper">
+
+                            <div class="code-border">
+                                   $ ionic cordova plugin add cordova-plugin-facebook4 --variable APP_ID="<strong>123456789</strong>" --variable APP_NAME="<strong>myApplication</strong>" --save. <br>
+                            </div>
+                     </div>                
+                    <p>You’ll need to replace the values or <strong> APP_ID and APP_NAME  </strong>for your real credentials. You can find both of those inside your Facebook Developers Dashboard.</p>
+
+
+                    <p>So the next thing we need to do is install the facebook package from Ionic Native, open your terminal again and type:</p>
+                      <div class="wrapper">
+                            <div class="code-border">
+                                    $ npm install --save @ionic-native/facebook <br>
+                            </div>
+                     </div>    
+              
+            
+    
+      
+
+
+    <!--############## Google Sign-in ##############-->
+
+    <br><br><br><br>
+    <h1 id="google">Google sign-in setting</h1>
+    <!-- <h3 id="facebook">Facebook authentication</h3> -->
+    <div class="wrapper">
+        <!-- Revise 2.0 -->
+        <div class="step">   
+            <p style="color:red;"><strong>STEP 1 :</strong></p>
+            <p>First enable google Sign-In in firebase console</p>
+            <p>Go into firebase console > Authentication > Sign-In Method > Google </p>
+        </div>
+        <img src="doc_assets/google_setting1.jpg" alt="enable google sign-in ">
+        <br>
+        <div class="step">
+            <p>Click the Enable toggle and save.</p>
+        </div>
+
+            <img src="doc_assets/google_setting2.jpg" alt="">
+            <br>
+        <div class="step">   
+            <p>Now you need to reopen google Sign-in again.</p>
+        </div>
+            <img src="doc_assets/google_setting1.jpg" alt="enter your facebook App ID ">
+            <br>
+
+            <div class="step">   
+                <p>Click Project Settings.</p>
+            </div>
+                <img src="doc_assets/google_setting3.jpg" alt="enter your facebook App ID ">
+                <br>
+        <div class="step">  
+            <p><span >Click Add Firebase to your Android app.</span></p>
+        </div>   
+            <img src="doc_assets/google_setting4.jpg">    
+             
+            <div class="step">             
+            <p>Once you click on the button, you’ll get a short form pop up, now add Android Package Name.</p>  
+
+        </div>
+        <img src="doc_assets/google_setting5.jpg">
+        
+        <div class="step">  
+                <p> To get Android Package Name</p>
+                <p>Open <strong>config.xml</strong> and copy package name</p>
+        </div>
+        <img src="doc_assets/fb_setting11.jpg">
+        <div class="step"> 
+            <p>Then paste it into Android Package Name</p>
+        </div>
+        <img src="doc_assets/google_setting6.jpg">
+
+        <div class="step">  
+            <p><strong>Now you need to add debug signing certificate SHA-1</strong></p>
+        </div>
+        <img src="doc_assets/google_setting7.jpg">
+        <div class="step">  
+                <p> To get Debug signing certificate <strong>SHA-1</strong> key</p>
+                <p>Run this command:</p>
+        </div>
+        <div class="wrapper">                 
+            <div class="code-border">
+                keytool -exportcert -list -v -alias androiddebugkey -keystore ~/.android/debug.keystore <br>
+            </div>
+        </div>  
+        <p style="color:red;">For window user:</p>
+        <p></p>
+        <div class="wrapper">                 
+            <div class="code-border">
+                Please view this<a href="https://www.youtube.com/watch?v=aakXkUY6MYU"> video</a><br>
+            </div>
+        </div>  
+
+        <div class="step">  
+            <p><strong>Now copy SHA-1 from command line</strong></p>
+        </div>
+        <img src="doc_assets/SHA1_command.jpg">
+        <div class="step">  
+            <p>Then paste it into Debug signing certificate SHA-1 and click <strong>REGISTER APP</strong></p>
+        </div>
+        <img src="doc_assets/google_setting8.jpg">
+ 
+
+        <br><br>
+        <div class="step">
+            <p style="color:red;"><strong>STEP 2 :</strong></p>
+            <p>Add Cordova Plugin</p>
+        </div>
+        <div class="wrapper">                 
+            <div class="code-border">
+                cordova plugin add cordova-plugin-googleplus --save --variable REVERSED_CLIENT_ID=<strong>myreversedclientid</strong><br>
+            </div>
+        </div>  
+        <P>
+            Note: <strong>myreversedclientid</strong> in above command should be replaced by <strong>WEB Client Id</strong> in Reverse and it will start like com.googleusercontent.apps.XXXXXXXXXXXX</P>       
+
+        <div class="step">  
+            <p>To get <strong>WEB Client Id</strong></p>
+            <p>Go into firebase console > Authentication > Sign-In Method > Google >  click Web SDK configuration</p>
+        </div>
+        <img src="doc_assets/google_setting9.jpg">
+
+        <div class="step">
+            <p>INSTALL GOOGLE PLUS NATIVE RAPPER</p>
+        </div>
+        <div class="wrapper">                 
+            <div class="code-border">
+                $ npm install --save @ionic-native/google-plus<br>
+            </div>
+        </div>  
+
+        <br><br>
+        <div class="step">
+            <p style="color:red;"><strong>STEP 3 :</strong></p>
+            <p>Replace Web Client Id in <strong>providers/auth_data.ts</strong> file</p>     
+        </div>
+        <img src="doc_assets/google_setting10.jpg">
+
+
+
+    </div>
+    <!--############## Usage  #############-->
+
+    <br><br>
+    <h1 id="usage">Usage</h1>
+
+
+
+
+
+
+
+
+    <h3 id="google">Google authentication</h3>
+    <div class="wrapper">
+        
+        <p>-Copy <b>variables.scss</b> (src/theme/variables.scss) to your src/theme folder </p>
+        <p>-Usage : color="color name" </p>
+        <p><b>EXAMPLE :</b></p>
+           <div class="code-border">
+             &lt;ion-navbar <b>color="lightblue"</b> &gt;&lt;/ion-navbar&gt;<br>
+           </div>
+             <div class="code-border">
+               &lt;button ion-button  <b>color="bluegray"</b> &gt;Button&lt;/button&gt;<br>
+           </div>          
+    </div>
+
+
+
+
+
+
+
+
+     <h3 id="theme">Theme</h3>
+     <div class="wrapper">
+         
+         <p>-Copy <b>variables.scss</b> (src/theme/variables.scss) to your src/theme folder </p>
+         <p>-Usage : color="color name" </p>
+         <p><b>EXAMPLE :</b></p>
+            <div class="code-border">
+              &lt;ion-navbar <b>color="lightblue"</b> &gt;&lt;/ion-navbar&gt;<br>
+            </div>
+              <div class="code-border">
+                &lt;button ion-button  <b>color="bluegray"</b> &gt;Button&lt;/button&gt;<br>
+            </div>          
+     </div>
+
+
+     <h3 id="map">Google map</h3>
+     <div class="wrapper">
+            <p>Add the Google Maps JavaScript SDK </p>
+            <p>- Include the Google Maps API in your src/index.html file </p>
+            <p>- Replace Google Maps API key (To generate an API key, <a href="https://developers.google.com/maps/documentation/javascript/get-api-key">go to this page</a> and follow the instructions.)</p>
+            <div class="code-border">
+                 &lt;script src="http://maps.google.com/maps/api/js?key=<b>YOUR_API_KEY_HERE</b>"&gt;&lt;/script&gt;<br>                  
+            </div>
+            <p>Add the Geolocation plugin</p>
+            <div class="code-border">
+               $ npm install --save @ionic-native/geolocation
+            </div>
+     </div>
+
+     <h3 id="gallery">Image gallery</h3>
+     <div class="wrapper">
+            <p>run npm install command.</p>         
+            <div class="code-border">
+                 npm install ionic-gallery-modal --save
+            </div>
+             <p> <a href="https://github.com/nikini/ionic-gallery-modal">More detail</a></p>           
+     </div>
+
+
+
+
+     <h3 id="chart">Chart</h3>
+     <div class="wrapper">
+            <p>run npm install command.</p>
+            <div class="code-border">
+               $ npm install ng2-charts --save <br>
+               $ npm install chart.js --save              
+            </div>
+
+     </div>
+
+
+     <h3 id="rating">Rating</h3>
+     <div class="wrapper">
+            <p>run npm install command.</p>
+            <div class="code-border">
+                $ npm install --save ionic2-rating <br>
+            </div>
+            <p> <a href="https://github.com/andrucz/ionic2-rating">More detail</a></p>  
+     </div>
+
+     <h3 id="animation">Animation</h3>
+     <div class="wrapper">
+            <p>-Copy <b>animation.scss</b> (src/theme/animation.scss) to your src/theme folder </p>
+            <p>-Import '../theme/animations' in your <b>src/app/app.scss</b> file </p>
+            <div class="code-border">
+                 @import '../theme/animations';
+            </div>
+
+            <p>-Usage : class="effect name" </p>
+            <p><b>EXAMPLE :</b></p>
+
+              <div class="code-border">
+                &lt;button ion-button  <b>class="slide-up"</b> &gt;Button&lt;/button&gt;<br>
+            </div>   
+     </div>
+
+
+    <br><br>
+    <h1 id="version">Changelog</h1>
+    
+     <div class="wrapper">
+
+        <h3>Version 2.0.2</h3>
+   
+            <h4>Upgrade</h4>
+            <p>- Change from <strike>angularfire2 v4</strike> to <strong>angularfire 5.0</strong></p>
+            <p>- Added <strong>facebook</strong> sign-in.</p>
+            <p>- Added <strong>google</strong> sign-in.</p>
+            <p>- Added facebook user profile .</p>
+            <p>- Added google user  profile. </p>
+            <p>- More color themes.</p>
+            <p>- Upgrade image gallery plugin.</p>
+            <p>- Fixed: Pie chart size.</p>
+            <p>- Fixed: Donut chart size.</p>
+            <p>- Fixed: Half donut chart size.</p>
+            <p>- improved documentation. </p>
+   
+           <br>
+
+
+         <h3>Version 1.1.0</h3>
+         <h4>Bug Fixes</h4>              
+            <p>- fixed: resetPassword error</p>
+        <h4>Upgrade</h4>
+         <p>- change from <strike>angularfire2 : 2.0.0-beta.8 </strike> to <b>angularfire2 v4</b></p>
+         <p>- improved documentation </p>
+
+        <br>
+        <h3>Version 1.0.0</h3>
+        <p>-released</p>
+     </div>
+
+
+
+
+
+    <br><br>
+    <h1 id="contact">Contact us</h1>
+    <div class="code-border">
+        email: methee1979@gmail.com
+    </div>
+    <div class="code-border">
+        <a href="https://market.ionic.io/starters/ionic-3-full-app-template-with-firebase-backend"> Product update </a>
+    </div>
+</body>
+
+</html>

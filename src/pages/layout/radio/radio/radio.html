@@ -1,0 +1,30 @@
+<ion-header no-border>
+  <ion-navbar transparent color="light">
+   <ion-buttons (click)="dismiss()" >
+        <button color="light" ion-button icon-only>
+            <ion-icon name="md-close"></ion-icon> close
+        </button>
+    </ion-buttons> 
+  </ion-navbar>
+</ion-header>
+
+<ion-content  no-padding >
+
+    <div class="profile-header" [ngStyle]="{'background-image': 'url(' + (radio | async)?.image  + ')'}"></div>
+    <div class="profile">
+      <div class="profile-box">
+        
+          <ion-img  class="profile-image" src="{{(radio | async)?.image}}"></ion-img>
+          <h3 padding-top>{{(radio | async)?.title}}</h3>
+          <p padding-top>{{(radio | async)?.description}}</p>
+          <!-- play/stop button-->
+          <div>    
+              <input #dummy style="display: none" type="text" value="{{(radio | async)?.url}}">
+              <button ion-button *ngIf="!playing"  large (click)="play(dummy.value)"  clear icon-only color="dark"><ion-icon name="play"></ion-icon></button>
+              <button ion-button color="dark"  *ngIf="playing" large (click)="pause()" clear icon-only><ion-icon name="pause"></ion-icon></button>
+          </div>
+      
+      </div>
+    </div>
+
+</ion-content>

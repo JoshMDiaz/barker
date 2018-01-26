@@ -1,0 +1,97 @@
+<!--https://github.com/driftyco/ionic/blob/master/demos/src/item-sliding/pages/page-one/page-one.ts-->
+
+
+<ion-header>
+  <ion-navbar  color="lightblue" >
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>DateTime</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content class="outer-content">
+
+    <ion-item>
+      <ion-label stacked>Stacked</ion-label>
+      <ion-datetime ></ion-datetime>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Floating</ion-label>
+      <ion-datetime  displayFormat="MMMM YY"></ion-datetime>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Floating</ion-label>
+      <ion-datetime  displayFormat="MMMM YY"></ion-datetime>
+    </ion-item>
+
+    <ion-item>
+      <ion-label fixed>Fixed</ion-label>
+      <ion-datetime displayFormat="MM/DD/YYYY"></ion-datetime>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Inline</ion-label>
+      <ion-datetime displayFormat="MM/DD/YYYY"></ion-datetime>
+    </ion-item>
+
+
+  <ion-item>
+    <ion-label floating>Floating outside form</ion-label>
+    <ion-datetime displayFormat="MMMM YY"></ion-datetime>
+  </ion-item>
+  
+  <ion-list>
+  <ion-list-header>
+    Action
+  </ion-list-header>    
+    <ion-item>
+      <ion-label color="green">Start Date</ion-label>
+      <ion-datetime displayFormat="MMM DD YYYY" [(ngModel)]="event.month"></ion-datetime>
+    </ion-item>
+
+
+    <ion-item>
+      <ion-label color="green">Start Time</ion-label>
+      <ion-datetime displayFormat="h:mm A" pickerFormat="h mm A" [(ngModel)]="event.timeStarts"></ion-datetime>
+    </ion-item>
+
+    <ion-item>
+      <ion-label color="green">Ends</ion-label>
+      <ion-datetime displayFormat="MMM DD YYYY" [(ngModel)]="event.timeEnds"></ion-datetime>
+    </ion-item>
+
+    <ion-item>
+      <ion-label color="green">Day</ion-label>
+      <ion-datetime displayFormat="YYYY"></ion-datetime>
+    </ion-item>
+
+    <ion-item>
+      <ion-label color="green">Time</ion-label>
+      <ion-datetime displayFormat="HH"></ion-datetime>
+    </ion-item>
+  </ion-list>
+
+  <ion-list>
+      <ion-list-header>
+        Date picker
+      </ion-list-header>   
+      <ion-item>
+        <ion-label color="dark">pickerFormat 1</ion-label>
+        <ion-datetime displayFormat="MM/YYYY" pickerFormat="MMMM YYYY" ></ion-datetime>
+      </ion-item>
+
+      <ion-item>
+        <ion-label color="dark">pickerFormat 2</ion-label>
+        <ion-datetime displayFormat="HH" pickerFormat="HH" ></ion-datetime>
+      </ion-item>
+  
+  </ion-list>
+
+</ion-content>
+<style>
+
+</style>

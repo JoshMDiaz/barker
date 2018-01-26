@@ -1,0 +1,94 @@
+page-detail3 {
+    .content{
+        background-color: #eee;
+    }
+    .scroll-content{
+        margin-top: 0 !important;
+        padding-top: 44px;
+    }
+
+    .item.item-ios .checkbox-ios {
+        margin: 10px 16px 8px 2px !important;
+    }
+    .item.item-md .checkbox-md {
+        margin: 14px 30px 9px 4px;
+    }
+    .card .note-md {
+        font-size: 18px;
+        color: color($colors, green);
+        font-weight: 500;
+    }
+    .card .note-ios {
+        font-size: 18px;
+        color: color($colors, green);
+        font-weight: 400;
+    }
+
+
+    ion-navbar{
+        transition: all .5s;
+        .back-button,.bar-button{
+            color: #fff;
+        }
+    }
+    .header-md::after{
+        background-image: none;
+    }
+
+    .product-header:before {
+        content: ' ';
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        // background-color: rgba(0, 0, 0, 0.3);
+        background: -moz-linear-gradient(top,  rgba(0,0,0,0) 68%, rgba(0,0,0,0.65) 100%); /* FF3.6-15 */
+        background: -webkit-linear-gradient(top,  rgba(0,0,0,0) 68%,rgba(0,0,0,0.65) 100%); /* Chrome10-25,Safari5.1-6 */
+        background: linear-gradient(to bottom,  rgba(0,0,0,0) 68%,rgba(0,0,0,0.65) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#a6000000',GradientType=0 ); /* IE6-9 */
+    }
+    .product-header {
+        position: relative;
+        height: 300px;
+        background: url(img/1.jpg) no-repeat;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+    }
+
+    .product-header .product-name {
+        font-size: 22px;
+        font-weight: normal;
+        color: #FFFFFF;
+        position: absolute;
+        left: 20px;
+        bottom: 43px;
+        text-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    }
+    .product-header .product-price {
+        color: color($colors, lightgreen);
+        font-size: 24px;
+        font-weight: bold;
+        /*color: #86d44d;*/
+        position: absolute;
+        left: 20px;
+        bottom: 17px;
+        text-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    }
+
+
+    //************ Fading header  **********//
+    .show-background{
+        border-style: none;
+        background : color($colors, green)
+    }
+    .transition{
+        transition: background-size .3s ease-in;
+    }
+    .toolbar-title {
+        color:#FFFFFF;
+    }
+
+}

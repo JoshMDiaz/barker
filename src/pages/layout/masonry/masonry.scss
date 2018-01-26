@@ -1,0 +1,29 @@
+page-masonry {
+    .content{
+        background-color: #eeeeee;
+    }
+    .expanded-image img {
+      min-height: initial;
+    }
+    .list-ios, .list-md {
+     margin-bottom: 0px; 
+    }
+    .item-ios, .item.md {
+    padding-left: 10px;
+    }
+    .masonry-layout{
+      column-count: 2;
+      column-gap: 8px;
+      padding: 8px;
+    }
+    .masonry-content{
+      background-color: #fff;
+      display: inline-block;
+      // margin: 0 0 1em;
+      margin: 0px 0px 8px 0px;
+      width: 100%;
+    }
+    .content-padding{
+      padding:0px 5px 0px 10px;
+    }
+}

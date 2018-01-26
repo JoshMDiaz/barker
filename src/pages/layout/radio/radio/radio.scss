@@ -1,0 +1,63 @@
+page-radio {
+    .scroll-content {
+        margin-top: 0 !important;
+    }
+  .profile-header:before{
+    content: ' ';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: -moz-linear-gradient(top,  rgba(0,0,0,0.42) 0%, rgba(0,0,0,0.42) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top,  rgba(0,0,0,0.42) 0%,rgba(0,0,0,0.42) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom,  rgba(0,0,0,0.42) 0%,rgba(0,0,0,0.42) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6b000000', endColorstr='#6b000000',GradientType=0 ); /* IE6-9 */
+	  
+  }
+  .profile-header{
+	position: relative;
+	// height: 200px;
+	height: 30vh;
+	// background: url(img/1.jpg) no-repeat;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	-webkit-filter: blur(15px);
+	-moz-filter: blur(15px);
+	-o-filter: blur(15px);
+	-ms-filter: blur(15px);
+	filter: blur(15px);
+	transform: scale(1.5);
+	-webkit-transform: scale(1.5);
+	-moz-transform:    scale(1.5);
+	-ms-transform:     scale(1.5);
+	-o-transform:      scale(1.5);
+	transform:         scale(1.5);
+  }
+  .profile{
+    position: relative;
+  }
+  .profile-box{
+      position: absolute;
+      padding:30px !important;
+      top: -55px;
+      width: 100%;
+      z-index: 2;
+      text-align: center;
+  }
+  .profile-image{
+      width: 115px;
+      height: 115px;
+      margin: 0 auto 0;
+          border-width: 3px;
+      border-style: solid;
+      border-color: rgb(255, 255, 255);
+      border-image: initial;
+	  background-color: #ffffff;
+  }
+
+}

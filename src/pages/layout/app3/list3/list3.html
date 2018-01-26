@@ -1,0 +1,30 @@
+
+<ion-header>
+    <ion-navbar color="green">
+        <button ion-button menuToggle color="light">
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title color="light">Restaurant</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content >
+  
+  <div>
+      <ion-grid >
+          <ion-row wrap>
+            <ion-col col-6  tappable  *ngFor="let item of items" (click)="goToDetail(item.$key)" color="gray">
+              
+              <ion-card class="thumbnail" >
+                <div class="thumbnail-bg" [ngStyle]="{'background-image': 'url(' + item.imgSmall+ ')'}">
+                    <h2 class="thumbnail-title"> {{item.name}}</h2>                                
+                </div>
+              </ion-card>
+              
+            </ion-col>
+          </ion-row>
+      </ion-grid>
+  </div>
+
+</ion-content>
+

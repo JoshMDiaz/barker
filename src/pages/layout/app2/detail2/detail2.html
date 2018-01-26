@@ -1,0 +1,80 @@
+
+<ion-header >
+    <ion-navbar color="flat-wet-asphalt"  > 
+        <ion-title color="light">Detail</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content  no-padding  class="content" >
+
+    <!--*********** Header with image background  ***********-->
+    <div class="product-header slide-up" [ngStyle]="{'background-image': 'url(' + (item | async)?.imgSmall + ')'}">
+            <div *ngIf="(item | async)?.discount"  class="ribbon">SALE</div>
+    </div>
+
+    <!--*********** Product name / Price  ***********-->
+    <div text-center>
+        <h2 ion-text> {{(item | async)?.name}}</h2>
+        <div *ngIf="(item | async)?.discount"  class="discount"> 
+          <h3 ion-text color="special-blue">Price: ${{(item | async)?.price}}</h3>
+        </div>
+        <h3 *ngIf="!(item | async)?.discount" ion-text color="special-blue">Price: ${{(item | async)?.price}}</h3>
+        <h3 *ngIf="(item | async)?.discount" ion-text color="red">Price: ${{(item | async)?.discountPrice}}</h3>
+    </div>
+  
+    <!--*********** Detail ( Description,Color,Size)  ***********-->
+    <ion-card>
+      <ion-card-content>
+        <div class="description" no-padding>
+            <div [innerHTML]="(item | async)?.description"></div>
+            <!--<p>{{(item | async)?.description}}</p> -->
+        </div>
+
+        <ion-list no-lines margin-top>
+            <ion-item>
+              <ion-label>Color</ion-label>
+              <ion-select [(ngModel)]="color">
+                <ion-option  value="Red" selected="true">Red</ion-option>
+                <ion-option value="Black">Black</ion-option>
+                <ion-option value="Blue">Blue</ion-option>
+              </ion-select>
+            </ion-item>
+          </ion-list>
+            <ion-list no-lines>
+            <ion-item>
+              <ion-label>Size</ion-label>
+              <ion-select [(ngModel)]="size">
+                <ion-option  value="nes" selected="true">Small</ion-option>
+                <ion-option value="n64">Middle</ion-option>
+                <ion-option value="ps">Large</ion-option>
+                <ion-option value="genesis">Extra large</ion-option>
+              </ion-select>
+            </ion-item>
+          </ion-list>
+          <br><br>
+      </ion-card-content>
+    </ion-card>
+
+  <ion-fab right bottom class="pop-in">
+    <button ion-fab color="amber"><ion-icon name="md-share"></ion-icon></button>
+    <ion-fab-list side="top">
+      <button ion-fab><ion-icon name="logo-facebook"></ion-icon></button>
+      <button ion-fab><ion-icon name="logo-twitter"></ion-icon></button>
+      <button ion-fab><ion-icon name="logo-vimeo"></ion-icon></button>
+      <button ion-fab><ion-icon name="logo-googleplus"></ion-icon></button>
+    </ion-fab-list>
+  </ion-fab>
+
+</ion-content>
+
+
+<!--*********** Add to cart button ***********-->
+<ion-footer no-border>
+  <ion-toolbar color="red">
+    <button ion-button full clear icon-left (click)="addToCart('bottom')" color="light" >
+      <ion-icon name="ios-cart"></ion-icon>
+      Add to cart
+    </button>
+  </ion-toolbar>
+</ion-footer>
+

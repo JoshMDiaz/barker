@@ -1,0 +1,83 @@
+page-timeline {
+        .leftLine{
+        //  border-left: 2px solid dashed
+            border-left-style: solid; 
+            border-left-width: 2px;
+            border-left-color: color($colors, ios-blue);
+            padding-left: 10px;
+            margin-left: 10px;
+        }
+        .imageTimeline{
+            padding: 10px 25px 15px 0px;
+        }
+        .highlight{
+            color:color($colors, ios-blue);
+        }
+        /*Optional*/
+        .bar-stable {
+        background-color: #d9d9d9 !important;
+        }
+        .tabs{
+        background-color: #d9d9d9 !important;
+        }
+        .icon-size-lg {
+        font-size: 40px;
+        }
+
+        /*Timeline*/
+        .pos-absolute-right {
+            position: absolute;
+            right: 8px;
+        }
+
+        .timeline {
+            position: relative;
+            margin: 15px 0 0 0;
+        }
+
+        .timeline:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: color($colors, ios-blue);
+            left: 44px;
+            margin-left: -10px;
+            z-index: 1;
+        }
+
+        .timeline .timeline-thumb {
+            border-radius: 500px;
+            width: 50px;
+            z-index: 2;
+            position: absolute;
+            left: 10px
+        }
+
+        .timeline .timeline-thumb.timeline-icon {
+            height: 50px;
+            text-align: center;
+            color: white;
+            border: 5px solid #CBD0D3;
+        }
+
+        .timeline .timeline-thumb.timeline-icon i {
+            font-size: 28px;
+            margin: 6px 0;
+            display: block;
+        }
+
+        .timeline .timeline-item {
+            margin-left: 35px;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 8px;
+        }
+
+        .timeline .timeline-stats {
+            position: relative;
+            font-size: 12px;
+            color: #7F8C8D;
+        }
+
+}

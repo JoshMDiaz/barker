@@ -1,0 +1,133 @@
+page-category3 {
+
+    ion-card  {
+        position: relative;
+        // text-align: center;
+        // width: 100% !important;
+    }
+    .content{
+         background-color: #fff;
+    }
+
+
+    //************ list view  *************//
+    ion-card.card-list {
+        height: 150px !important;
+        // margin: 5px 10px 5px 5px;
+    }
+    .card-list-bg:before {
+        content: ' ';
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.3);
+    
+        background: -moz-linear-gradient(left,  rgba(0,0,0,0.37) 0%, rgba(0,0,0,0.37) 1%, rgba(0,0,0,0.01) 48%, rgba(0,0,0,0) 49%); /* FF3.6-15 */
+        background: -webkit-linear-gradient(left,  rgba(0,0,0,0.37) 0%,rgba(0,0,0,0.37) 1%,rgba(0,0,0,0.01) 48%,rgba(0,0,0,0) 49%); /* Chrome10-25,Safari5.1-6 */
+        background: linear-gradient(to right,  rgba(0,0,0,0.37) 0%,rgba(0,0,0,0.37) 1%,rgba(0,0,0,0.01) 48%,rgba(0,0,0,0) 49%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#5e000000', endColorstr='#00000000',GradientType=1 ); /* IE6-9 */
+        background-size: cover;
+        background-position: center;
+    }
+    .card-list-bg {
+        position: relative;
+        height: 150px;
+        // background: url(img/1.jpg) no-repeat;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+    }
+    .card-list-bg .card-list-title {
+        font-size: 22px;
+        font-weight: normal;
+        color: #FFFFFF;
+        position: absolute;
+        top: 50px;
+        left: 15px;
+        text-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+        width: 100%;
+        // text-align: center;
+    }
+    .card-list-bg .card-list-description {
+        font-size: 16px;
+        font-weight: normal;
+        color: #FFFFFF;
+        position: absolute;
+        top: 80px;
+        left: 15px;
+        text-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+        width: 100%;
+        // text-align: center;
+    }
+
+    //************ grid view  *************//
+    ion-card.card-grid  {
+        height: 150px !important;
+        margin: 0px 0px 0px 0px !important;
+        text-align: center !important;
+        width: 100% !important;
+    }
+    ion-card.card-grid .card-grid-bg{
+        height: 150px; 
+    }
+    .card-grid-bg:before {
+        content: ' ';
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        background-size: cover;
+        background-position: center;
+        background: -moz-linear-gradient(top,  rgba(0,0,0,0) 68%, rgba(0,0,0,0.65) 100%); /* FF3.6-15 */
+        background: -webkit-linear-gradient(top,  rgba(0,0,0,0) 68%,rgba(0,0,0,0.65) 100%); /* Chrome10-25,Safari5.1-6 */
+        background: linear-gradient(to bottom,  rgba(0,0,0,0) 68%,rgba(0,0,0,0.65) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#a6000000',GradientType=0 ); /* IE6-9 */
+
+        // background-color: rgba(0, 0, 0, 0.3);
+        // background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0)), color-stop(100%,rgba(0,0,0,0.85)));
+        // background: -webkit-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0,0,0,0.85) 100%);
+        // background: -o-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0,0,0,0.85) 100%);
+        // background: -ms-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0,0,0,0.85) 100%);
+        // background: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,0.85) 100%);
+    }
+    .card-grid-bg {
+        position: relative;
+        height: 150px;
+        // background: url(img/1.jpg) no-repeat;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+        background-size: cover;
+        background-position: center;
+    }
+    .card-grid-bg .card-grid-title {
+        font-size: 20px;
+        font-weight: normal;
+        color: #FFFFFF;
+        position: absolute;
+        bottom: 20px;
+        text-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+        width: 100%;
+        text-align: center;
+    }
+
+
+   .bookmarkRibbon{
+        position: absolute;
+        top: 0px;
+        right: 10px;
+        width:0; 
+        height:25px; 
+        border-right:10px solid #ffeb3b;
+        border-left:10px solid #ffeb3b;
+        border-bottom:10px solid transparent;
+        
+    }
+
+
+}

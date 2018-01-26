@@ -1,0 +1,37 @@
+<!--*********** Header ***********-->
+<ion-header no-border>
+    <ion-navbar color="flat-wet-asphalt">
+        <button ion-button menuToggle>
+          <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>Shopping</ion-title>
+        <ion-buttons right>
+            <button ion-button icon-only>
+                <ion-icon name="md-more"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+  <ion-toolbar color="flat-wet-asphalt">
+      <ion-searchbar ></ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-card tappable  *ngFor="let category of category" (click)="openList(category.$key)">
+        <div class="banner-bg" [ngStyle]="{'background-image': 'url(' + category.imgBg+ ')'}">
+          <h2 class="banner-title"> {{category.name}}</h2> 
+          <p class="banner-description"> {{category.description}}</p>               
+        </div>
+  </ion-card>
+
+  <ion-fab right bottom>
+      <button ion-fab color="ios-orange"><ion-icon name="chatbubbles"></ion-icon></button>
+      <ion-fab-list side="left">
+        <button ion-fab><ion-icon name="call"></ion-icon></button>
+        <button ion-fab><ion-icon name="chatboxes"></ion-icon></button>
+        <button ion-fab><ion-icon name="images"></ion-icon></button>
+      </ion-fab-list>
+    </ion-fab>
+
+</ion-content>

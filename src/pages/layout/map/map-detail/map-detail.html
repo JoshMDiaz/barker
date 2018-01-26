@@ -1,0 +1,43 @@
+
+<ion-header>
+  <ion-navbar>
+   <ion-buttons (click)="closeModal()" >
+        <button color="lightblue" ion-button icon-only>
+            <ion-icon name="md-close"></ion-icon>close
+        </button>
+    </ion-buttons> 
+    <ion-buttons end>
+      <button ion-button (click)="getCurrentLocation()" color="lightblue" icon-only><ion-icon name="ios-locate-outline" ></ion-icon></button>
+    </ion-buttons>  
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  
+<div id="wrapper">
+
+    <div #map id="map"></div>
+
+    <div class="map-bottom request-controls">
+
+        <ion-row>
+            <ion-col >
+                <ion-list margin-bottom>
+                  <ion-item tappable  (click)="showDetail(mapId)">
+                    <ion-thumbnail big item-left>
+                      <img src="{{(mapDetail | async)?.image}}">
+                    </ion-thumbnail>
+                    <h2>{{(mapDetail | async)?.name}} </h2>
+                    <p>{{(mapDetail | async)?.description}}</p>
+                    <button ion-button clear item-right>Detail</button>
+                  </ion-item>
+                </ion-list>
+               <button ion-button full mode="ios" color="lightblue" (click)="calculateAndDisplayRoute()">Get direction</button>
+            </ion-col>
+        </ion-row>
+
+    </div>
+
+</div>
+
+</ion-content>

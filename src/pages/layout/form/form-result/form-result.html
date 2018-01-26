@@ -1,0 +1,42 @@
+
+<ion-header>
+  <ion-navbar color="pink" class="white-text">
+     <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+        <ion-title >Send list</ion-title>
+    <ion-buttons  right>
+        <button color="light" ion-button icon-only>
+            <ion-icon name="more"></ion-icon>
+        </button>
+    </ion-buttons> 
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content no-padding>
+
+    <ion-list>
+      <ion-item-sliding *ngFor="let message of messagesArray">
+        <ion-item>
+          <ion-avatar item-left>
+            <img [src]="message.imgProfile">
+          </ion-avatar>
+          <h2>to:{{message.toName}}</h2>
+          <h3>title: {{message.messageTitle}}</h3>
+          <p>body: {{message.messageBody}}</p>
+        </ion-item>
+        <ion-item-options>
+          <button ion-button color="danger" icon-left (click)="deleteMessage(message.$key)" >
+            <ion-icon name="ios-trash"></ion-icon>
+            Delete
+          </button>
+        </ion-item-options>
+      </ion-item-sliding>
+    </ion-list>
+
+    <ion-fab right bottom (click)="createMessage()">
+        <button ion-fab color="green"><ion-icon name="md-add" ></ion-icon></button>
+    </ion-fab>   
+
+</ion-content>

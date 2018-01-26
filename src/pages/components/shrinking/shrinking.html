@@ -1,0 +1,24 @@
+
+<ion-header  no-border  class="shrinking-header" >
+
+  <ion-navbar  color="lightblue" >
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Shrinking</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only >
+        <ion-icon name="more"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content fullscreen=""  no-paddding shrink-header  [headerToHide]="'shrinking-header'">
+  <ion-list>
+    <ion-item *ngFor="let item of items">
+      {{ item }}
+    </ion-item>
+  </ion-list>
+</ion-content>

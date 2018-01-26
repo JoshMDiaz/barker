@@ -1,0 +1,58 @@
+<ion-header>
+  <ion-navbar color="pink" class="white-text">
+     <button ion-button menuToggle class="TopLMenu">
+      <ion-icon name="menu"></ion-icon>
+    </button>
+        <ion-title >New message</ion-title>
+    <ion-buttons right>
+        <button color="light" ion-button icon-only>
+            <ion-icon name="more"></ion-icon>
+        </button>
+    </ion-buttons> 
+  </ion-navbar>
+</ion-header>
+
+<ion-content no-padding>
+
+    <form [formGroup]="messageForm" (ngSubmit)="submitForm(messageForm.value)">
+        <ion-list>
+          <ion-item tappable (click)="selectContact()">
+            <span>To :</span>
+            <ion-icon name="md-person-add" item-right color="gray"></ion-icon>
+            <!--<ion-chip [hidden]="!contactSel" ><span>{{contactName}}</span></ion-chip>-->
+            <ion-chip [hidden]="!contactSel">
+                <ion-avatar>
+                    <img src="{{contactImgProfile}}">
+                </ion-avatar>
+                <span padding-left>{{contactName}}</span>
+            </ion-chip>
+          </ion-item>
+          <ion-item>
+            <ion-label floating>Message title :</ion-label>
+            <ion-input type="text" value="" [formControl]="messageForm.controls['title']" [ngClass]="{'error-border':!messageForm.controls['title'].valid}"></ion-input>
+          </ion-item>            
+          <ion-item>
+            <ion-label floating>Message body :</ion-label>
+            <ion-textarea   type="text" row="10" [formControl]="messageForm.controls['body']" [ngClass]="{'error-border':!messageForm.controls['body'].valid}"></ion-textarea>
+          </ion-item>
+        </ion-list>
+
+        <div margin>
+            <div class="error-box" *ngIf="messageForm.controls['title'].hasError('required') && messageForm.controls['title'].touched">* Message title is required!</div>
+            <div class="error-box" *ngIf="messageForm.controls['title'].hasError('minlength') && messageForm.controls['title'].touched">* Minimum message title length is 5!</div>
+            <div class="error-box" *ngIf="messageForm.controls['title'].hasError('maxlength') && messageForm.controls['title'].touched">* Maximum message title length is 10!</div>
+
+            <div class="error-box" *ngIf="messageForm.controls['body'].hasError('required') && messageForm.controls['body'].touched">* Message body is required!</div>
+            <div class="error-box" *ngIf="messageForm.controls['body'].hasError('minlength') && messageForm.controls['body'].touched">* Minimum message body length is 5!</div>
+            <div class="error-box" *ngIf="messageForm.controls['body'].hasError('maxlength') && messageForm.controls['body'].touched">* Maximum message body length is 10!</div>
+        </div>
+
+        <ion-footer>
+          <div padding>
+            <button type="submit" color="orange" [disabled]="!messageForm.valid" ion-button full >Submit</button>
+          </div>
+        </ion-footer>
+    </form>
+</ion-content>
+
+

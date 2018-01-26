@@ -1,0 +1,35 @@
+
+<ion-header>
+    <ion-navbar color="flat-wet-asphalt">
+        <button ion-button menuToggle color="light">
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title color="light" >Shopping</ion-title>
+    </ion-navbar>
+  <ion-toolbar color="flat-wet-asphalt">
+      <ion-searchbar ></ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content >
+        <!--*********** 2 colomns list  ***********-->
+        <ion-grid >
+            <ion-row wrap >
+            <ion-col tappable  col-6  *ngFor="let item of items" (click)="goToDetail(item.$key)" color="gray">
+                    <ion-card class="cardList">
+                        <div *ngIf="item.discount"  class="ribbon pop-in">SALE</div>
+                        <img class="pop-in" src={{item.imgSmall}}   />
+                        <ion-card-header>
+                            {{item.name}} 
+                        </ion-card-header>
+                        <ion-card-content>
+                            <p *ngIf="!item.discount" ion-text  color="special-blue"><strong>${{item.price}}</strong></p>
+                            <p *ngIf="item.discount" ion-text  color="special-blue" class="discount">${{item.price}}</p>
+                            <p *ngIf="item.discount" ion-text  large color="red"><strong>${{item.discountPrice}}</strong></p>
+                        </ion-card-content>
+                    </ion-card>
+            </ion-col>
+            </ion-row>
+        </ion-grid>
+</ion-content>
+

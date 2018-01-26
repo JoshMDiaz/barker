@@ -1,0 +1,86 @@
+<ion-header>
+  <ion-navbar   [color]="color" >
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Theme</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only >
+        <ion-icon name="more"></ion-icon>
+      </button>
+    </ion-buttons>
+</ion-navbar>
+
+  <ion-toolbar no-border-top  [color]="color">
+    <ion-segment [(ngModel)]="themeView" color="light" padding-left padding-right>
+      <ion-segment-button value="md">
+        md
+      </ion-segment-button>
+      <ion-segment-button value="ios">
+        ios
+      </ion-segment-button>
+      <ion-segment-button value="flat">
+        flat
+      </ion-segment-button>
+
+      <ion-segment-button value="solar">
+        solarized
+      </ion-segment-button>
+      <ion-segment-button value="tango">
+        tango
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content >
+<div *ngIf="themeView==='md'">
+    <ion-list>
+      <ion-item tappable  *ngFor="let mdColor of mdColor " (click)="changeColor(mdColor.colorName)" >
+        <button ion-button color="{{mdColor.colorName}}" mode="ios"   item-left >{{mdColor.colorCode}}</button>
+        <h2>Usage: color="{{mdColor.colorName}}"</h2>
+      </ion-item>
+    </ion-list>
+</div>
+
+<div *ngIf="themeView==='ios'">
+    <ion-list>
+      <ion-item tappable  *ngFor="let iosColor of iosColor" (click)="changeColor(iosColor.colorName)">
+        <button ion-button color="{{iosColor.colorName}}" mode="ios"   item-left >{{iosColor.colorCode}}</button>
+        <h2>Usage: color="{{iosColor.colorName}}"</h2>
+      </ion-item>
+    </ion-list>
+</div>
+
+
+<div *ngIf="themeView==='flat'">
+  <ion-list>
+    <ion-item tappable  *ngFor="let flatColor of flatColor" (click)="changeColor(flatColor.colorName)">
+      <button ion-button color="{{flatColor.colorName}}" mode="ios"   item-left >{{flatColor.colorCode}}</button>
+      <h2>Usage: color="{{flatColor.colorName}}"</h2>
+    </ion-item>
+  </ion-list>
+</div>
+
+
+<div *ngIf="themeView==='solar'">
+  <ion-list>
+    <ion-item tappable *ngFor="let solarColor of solarColor" (click)="changeColor(solarColor.colorName)">
+      <button ion-button color="{{solarColor.colorName}}" mode="ios"   item-left >{{solarColor.colorCode}}</button>
+      <h2>Usage: color="{{solarColor.colorName}}"</h2>
+    </ion-item>
+  </ion-list>
+</div>
+
+
+<div *ngIf="themeView==='tango'">
+  <ion-list>
+    <ion-item tappable *ngFor="let tangoColor of tangoColor" (click)="changeColor(tangoColor.colorName)">
+      <button ion-button color="{{tangoColor.colorName}}" mode="ios"   item-left >{{tangoColor.colorCode}}</button>
+      <h2>Usage: color="{{tangoColor.colorName}}"</h2>
+    </ion-item>
+  </ion-list>
+</div>
+
+</ion-content>
+

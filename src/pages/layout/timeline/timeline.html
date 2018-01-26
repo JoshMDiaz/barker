@@ -1,0 +1,58 @@
+
+<ion-header >
+  <ion-navbar no-border-bottom color="ios-blue">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+       Timeline
+    </ion-title>
+    <ion-buttons start hideWhen="ios">
+        <button ion-button icon-only color="light">
+            <ion-icon name="notifications"></ion-icon>
+        </button>
+    </ion-buttons>
+    <ion-buttons right>
+        <button ion-button icon-only>
+            <ion-icon name="md-more"></ion-icon>
+        </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content no-padding>
+
+ <ion-list>
+  <ion-item-group>
+      <div stlye="timelineBg" *ngFor="let timeline of timeline  | async" >
+          <!--***********  item divider  ***********-->
+          <ion-item-divider sticky>  <!-- *ngFor GroupTitle for feeds -->
+            <ion-label>
+              <h2>{{timeline.date | date: 'fullDate'}}</h2>
+            </ion-label>
+          </ion-item-divider>
+
+          <ul class="timeline">
+              <li   *ngFor="let list of  timeline.lists | async ">
+                <img src="{{list.profileImage}}" alt="" class="timeline-thumb pop-in">
+                <div class="timeline-item">
+                  <p><strong>Updated Profile Picture</strong></p>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi, error.....</p>
+                  <img data-src="{{list.images}}" class="imageTimeline">
+                  <div class="timeline-stats">
+                    <ion-icon name="heart"></ion-icon> 2,450
+                    <span class="pos-absolute-right"><ion-icon name="clock"></ion-icon> 2 mins ago</span>
+                  </div>
+                </div>
+              </li>
+          </ul>
+      </div>
+  </ion-item-group>
+</ion-list>
+
+<ion-fab right bottom>
+  <button ion-fab color="amber"><ion-icon name="md-calendar"></ion-icon></button>
+</ion-fab>
+
+</ion-content>

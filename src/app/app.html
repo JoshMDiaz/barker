@@ -1,0 +1,123 @@
+
+<ion-menu [content]="content">
+  <ion-content>
+
+<!--***********  Side menu for android ***********-->
+      <div id="menu-material" showWhen="android">
+          <ion-header class="menu-header">      
+            <img class="user-avatar round" src =  "https://pbs.twimg.com/profile_images/834457277830541312/bYMCvtHD.jpg"/>
+            <p class="name">ionic3fullapp</p>
+            <p class="email">with firebase backend</p>
+          </ion-header>
+      <!--***********  Menu for android  ***********-->
+          <div class="list-box">
+            <ion-list  no-lines>
+
+              <div *ngFor="let d of menu">
+                  <ion-item tappable  (click)="toggleDetails(d)">
+                    <ion-icon  color="gray" [name]="d.iconLeft" item-left></ion-icon>
+                      {{d.title}}
+                    <ion-icon item-right [name]="d.icon"></ion-icon>
+                  </ion-item>
+                      <div class="sub-menu"  *ngIf="d.showDetails"   >
+                            <ion-item tappable  menuClose item-right *ngFor="let item of d.items"  (click)="openPage(item)" >
+                                <div >{{item.name}}</div>             
+                            </ion-item>
+                      </div>
+              </div> 
+
+              <div *ngFor="let p of pages">
+                  <ion-item menuClose (click)="openPage(p)">
+                    <ion-icon  [name]="p.icon" color="gray"item-left></ion-icon>
+                      {{p.title}}
+                  </ion-item>
+                </div> 
+
+            </ion-list>
+          </div>
+      </div>
+
+
+
+
+
+<!--***********  Header for ios ***********-->
+  
+    <div id="menu-ios" showWhen="ios" class="sideMenu-header"  color="gray">
+        <div class="menu-header">
+  
+                <img class="user-avatar round" src = "https://pbs.twimg.com/profile_images/834457277830541312/bYMCvtHD.jpg"/>
+                <p class="name">ionic3fullapp</p>
+                <p class="email">with firebase backend</p>             
+          
+        </div>
+      <!--***********  menu ***********-->
+        <ion-list no-lines>
+          <div *ngFor="let d of menu">
+            <ion-item tappable  (click)="toggleDetails(d)">
+              <ion-icon  color="gray" [name]="d.iconLeft" item-left></ion-icon>
+                {{d.title}}
+              <ion-icon item-right [name]="d.icon"></ion-icon>
+            </ion-item>
+                <div class="sub-menu"  *ngIf="d.showDetails" >
+                      <ion-item tappable  menuClose item-right *ngFor="let item of d.items" (click)="openPage(item)" >
+                          <div >{{item.name}}</div>             
+                      </ion-item>
+                </div>
+          </div> 
+          <div *ngFor="let p of pages">
+              <ion-item menuClose (click)="openPage(p)">
+                <ion-icon  [name]="p.icon" color="gray"item-left></ion-icon>
+                  {{p.title}}
+              </ion-item>
+          </div> 
+        </ion-list>
+    </div>
+
+
+
+<!--***********  Side menu for PWA ***********-->
+      <div id="menu-pwa" hideWhen="android,ios">
+        <div class="menu-header">
+  
+                <img class="user-avatar round" src = "https://pbs.twimg.com/profile_images/834457277830541312/bYMCvtHD.jpg"/>
+                <p class="name">ionic3fullapp</p>
+                <p class="email">with firebase backend</p>             
+          
+        </div>
+          <div class="list-box">
+            <ion-list  no-lines>
+
+              <div *ngFor="let d of menu">
+                <ion-item tappable  (click)="toggleDetails(d)">
+                  <ion-icon  color="gray" [name]="d.iconLeft" item-left></ion-icon>
+                    {{d.title}}
+                  <ion-icon item-right [name]="d.icon"></ion-icon>
+                </ion-item>
+                    <div class="sub-menu"  *ngIf="d.showDetails"   >
+                          <ion-item tappable  menuClose item-right *ngFor="let item of d.items"  (click)="openPage(item)" >
+                              <div >{{item.name}}</div>             
+                          </ion-item>
+                    </div>
+              </div> 
+
+             <div *ngFor="let p of pages">
+                <ion-item menuClose (click)="openPage(p)">
+                  <ion-icon  [name]="p.icon" color="gray"item-left></ion-icon>
+                    {{p.title}}
+                </ion-item>
+              </div> 
+
+            </ion-list>
+          </div>
+      </div>
+
+
+
+  </ion-content>
+
+
+</ion-menu>
+
+<!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
+<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>

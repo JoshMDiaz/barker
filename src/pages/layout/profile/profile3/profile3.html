@@ -1,0 +1,59 @@
+<ion-header class="hello2" no-border>
+    <ion-navbar color="lightblue" class="white-text">
+      <button ion-button menuToggle class="TopLMenu">
+        <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-buttons end>
+        <button ion-button icon-only>
+          <ion-icon name="more"></ion-icon>
+        </button>
+      </ion-buttons>
+    </ion-navbar>
+
+    <ion-toolbar color="lightblue">
+      <div class="avatar-box" text-center>
+        <img src="{{(profile | async)?.imgProfile}}" class="avatar pop-in" alt="">
+        <h4>{{(profile | async)?.name}}</h4>
+        <p>{{(profile | async)?.company}} &bull; {{(profile | async)?.position}}</p>
+      </div>
+    </ion-toolbar>
+
+    <ion-fab bottom right edge class="pop-in">
+      <button ion-fab color="green">
+        <ion-icon name="ios-heart" color="white"></ion-icon>
+      </button>
+    </ion-fab>
+</ion-header>
+
+<ion-content fullscreen="" class="profile">
+
+  <ion-list no-lines text-wrap no-padding no-margin>
+    <ion-list-header padding-top>
+      <h2> About</h2>
+    </ion-list-header>
+    <ion-item>
+      <p>{{(profile | async)?.aboutMe}}</p>
+    </ion-item>
+  </ion-list>
+
+  <div class="followBox">
+    <button ion-button *ngIf="!following" block color="lightblue" (click)="follow()">Follow</button>
+    <button ion-button icon-left *ngIf="following" color="gray" block (click)="follow()">
+      <ion-icon name="checkmark"></ion-icon>
+      Following
+    </button>
+  </div>
+
+  <ion-list-header>
+    <h2> Photos</h2>
+    <button ion-button item-right outline color="lightblue">More</button>
+  </ion-list-header>
+  <ion-grid>
+    <ion-row wrap color="gray">
+      <ion-col col-3 *ngFor="let imgGallery of imgGalleryArray">
+        <img src={{imgGallery.imgUrl}}/>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

@@ -1,0 +1,18 @@
+
+<ion-header>
+  <ion-navbar  transparent  [class.show-background]="showToolbar">
+    <button ion-button menuToggle  [hidden]="!showToolbar">
+      <ion-icon name="menu"></ion-icon>
+    </button>
+     <ion-title color="light" [hidden]="!showToolbar">Fading</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content  no-padding  class="content" (ionScroll)="onScroll($event)" [class.transition]="transition"  >
+  
+  <ion-list margin-top>
+    <button ion-item *ngFor="let item of items" (click)="itemSelected(item)">
+      {{ item }}
+    </button>
+  </ion-list>
+</ion-content>

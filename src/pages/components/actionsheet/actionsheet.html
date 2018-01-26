@@ -1,0 +1,20 @@
+
+<ion-header>
+  <ion-navbar  color="lightblue" >
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Action Sheets</ion-title>
+  </ion-navbar>
+
+</ion-header>
+<ion-content padding class="action-sheets-basic-page">
+  <button ion-button block color="gray" (click)="openMenu()">
+    Show Action Sheet
+  </button>
+</ion-content>
+<ion-footer color="danger">
+  <ion-toolbar tappable (click)="openMenu()" color="danger"> 
+    <ion-title>Show Action Sheet</ion-title>
+  </ion-toolbar>
+</ion-footer>

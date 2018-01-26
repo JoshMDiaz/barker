@@ -1,0 +1,63 @@
+
+<ion-header>
+  <ion-navbar color="tango-slate">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Image gallery</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only >
+        <ion-icon name="more"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+  <ion-toolbar no-border-top color="tango-slate">
+    <ion-segment [(ngModel)]="galleryView" color="light">
+      <ion-segment-button value="two">
+        Two columns
+      </ion-segment-button>
+      <ion-segment-button value="three">
+        Three columns
+      </ion-segment-button>
+      <ion-segment-button value="four">
+        Four columns
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content >
+
+
+<!--***********  2 columns  ***********-->
+<ion-grid *ngIf="galleryView==='two'">
+    <ion-row wrap color="gray">
+      <ion-col col-6 *ngFor="let image of imgGalleryArray , let i = index  " >
+      <img tappable class="expanded-image " src={{image.url}}   (click)="fullscreenImage(i)" />
+      </ion-col>
+    </ion-row>
+</ion-grid>
+
+<!--***********  3 columns  ***********-->
+
+<ion-grid *ngIf="galleryView==='three'">
+    <ion-row wrap color="gray">
+      <ion-col col-4 *ngFor="let image of imgGalleryArray , let i = index  " >
+        <img tappable class="expanded-image"  [src]="image.url"   (click)="fullscreenImage(i)" />
+      
+      </ion-col>
+    </ion-row>
+</ion-grid>
+
+
+<!--***********  4 columns  ***********-->
+<ion-grid *ngIf="galleryView==='four'">
+    <ion-row wrap color="gray">
+      <ion-col  col-3 *ngFor="let image of imgGalleryArray  ,let i = index  " >
+      <img  tappable class="expanded-image"  [src]="image.url"  (click)="fullscreenImage(i)" />
+      </ion-col>
+    </ion-row>
+</ion-grid>
+
+</ion-content>

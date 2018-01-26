@@ -1,0 +1,91 @@
+page-category1 {
+
+    ion-card  {
+        position: relative;
+        text-align: center;
+        width: 100% !important;
+    }
+    // ************ list view ************//  
+        ion-card.card-list {
+            height: 200px !important;
+            margin: 0px 0px 0px 0px !important;
+            //border-bottom: 1px solid #333333;         
+        }
+    
+        .card-list-bg:before {
+            content: ' ';
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            background-size: cover;
+            background-position: center;
+        }
+        .card-list-bg {
+            position: relative;
+            height: 200px;
+            // background: url(img/1.jpg) no-repeat;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+        }
+        .card-list-bg .card-list-title {
+            font-size: 28px;
+            font-weight: normal;
+            color: #FFFFFF;
+            position: absolute;
+            top: 40%;
+            text-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+            width: 100%;
+            text-align: center;
+        }
+
+    //************  grid view ************//
+        ion-card.card-grid  {
+           height: 140px !important;
+            //min-height: 150vh !important;
+            //max-height: 160vh !important;
+            margin: 0px 0px 0px 0px !important;
+        }
+        ion-card.card-grid  .card-grid-bg{
+            height: 140px; 
+        }
+        .card-grid-bg:before {
+            content: ' ';
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            background-size: cover;
+            background-position: center;
+        }
+        .card-grid-bg {
+            position: relative;
+            height: 140px;
+            // background: url(img/1.jpg) no-repeat;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+            background-size: cover;
+            background-position: center;
+        }
+        .card-grid-bg .card-grid-title {
+            width: 100px;
+            padding:0px 5px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis; // This is where the magic happens
+            font-size: 24px;
+            font-weight: normal;
+            color: #FFFFFF;
+            position: absolute;
+            top: 39%;
+            text-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+            width: 100%;
+            text-align: center;
+        }
+}

@@ -1,0 +1,112 @@
+page-profile3 {
+
+    .friendProfileImg{
+      padding: 10px;
+    }
+    .followBox{
+      padding: 10px 20px;
+    }
+    ion-card{
+      margin: 0px;
+    }
+    ion-title {
+      color:#fff
+    }
+    ion-label .profile2 {
+      color: #333;
+      font-size: 20px;
+      font-weight: bold;
+    }
+    .avatar-box{
+      color: #ffffff;
+    }
+    .moreImage{
+      background-color: #34354c;
+    }
+    ion-header  {
+        height: 250px;    
+    }
+    ion-avatar {      
+      margin-top: 10px;
+      color:#fff;
+    }
+    ion-avatar h4  {
+      margin-top: 10px;
+    }
+    ion-avatar p  {
+      margin-top: 0px;
+    }
+    ion-avatar img {
+      max-width: 115px;
+      max-height: 115px;
+      border-radius: 50%;
+      border: 3px solid #f4f4f4;
+    }
+    ion-avatar img .small-avatar {
+      max-width: 70;
+      max-height: 70;
+      border-radius: 50%;
+      border: 3px solid #f4f4f4;
+    }
+    .avatarBox{
+      height: 240px;
+      // background-color: #03a9f4;
+    }
+    .profile-chip-box{
+      padding: 20px 20px;
+    }
+    #profile-image {
+      display: block;
+      // border-radius: 50%;
+      width: 150px;
+      height: 150px;
+      margin: 0 auto 0;
+      border-width: 4px;
+      border-style: solid;
+      border-color: rgb(255, 255, 255);
+      border-image: initial;
+      // box-shadow: 0px 11px 20px -3px rgba(142, 136, 146, 0.75);
+    }
+    .follow-button {
+      text-transform: none;
+      border-radius: 3px !important;
+      ion-icon {
+        font-weight: bold;
+        padding-left: 5px;
+        font-size: 2.5rem;
+      }
+    }
+
+    .avatar {
+      margin: auto;
+      border-radius: 100%;
+      width: 100px;
+      height: 100px;
+      border: 2px solid #ffffff;
+    }
+
+  // Following, Followers and all..
+    .profile-numbers {
+      text-align: center;
+      p {
+        color: #444;
+        font-size: medium;
+        margin-bottom: 3px;
+        text-align: center;
+      }
+      span {
+        font-weight: bold;
+        font-size: 18px;
+        color: #34354c;
+        text-align: center;
+      }
+    }
+    
+    hr {
+      border: 0;
+      height: 1px;
+      background: #444;
+      background: -webkit-linear-gradient(left, hsla(0, 0%, 0%, 0) 0%, rgb(188, 198, 214) 50%, hsla(0, 0%, 0%, 0) 100%);
+    }
+  
+}

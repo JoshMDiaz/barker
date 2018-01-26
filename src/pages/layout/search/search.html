@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-navbar  color="deeporange" >
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Contact search</ion-title>
+  </ion-navbar>
+  <ion-toolbar color="deeporange">
+      <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content >
+
+  <ion-list>
+    <ion-item *ngFor="let contact of contactList">
+      <ion-avatar item-start>
+        <img [src]="contact.img">
+      </ion-avatar>  
+      <h2> {{ contact.name }} </h2>
+      <h3> Company : <strong>{{ contact.company }}</strong> </h3>
+    </ion-item>   
+  </ion-list>
+   
+
+</ion-content>

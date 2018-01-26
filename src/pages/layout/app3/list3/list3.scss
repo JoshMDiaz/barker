@@ -1,0 +1,50 @@
+page-list3 {
+
+    ion-card  {
+        position: relative;
+        text-align: center;
+        width: 100% !important;
+    }
+    ion-card.thumbnail {
+        height: 150px !important;
+        margin: 0px 0px 0px 0px !important;
+    }
+    ion-card.thumbnail .thumbnail-bg{
+        height: 150px; 
+    }
+    .thumbnail-bg:before {
+        content: ' ';
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        background-size: cover;
+        background-position: center;
+        background: -moz-linear-gradient(top,  rgba(0,0,0,0) 60%, rgba(0,0,0,0.43) 100%); /* FF3.6-15 */
+        background: -webkit-linear-gradient(top,  rgba(0,0,0,0) 60%,rgba(0,0,0,0.43) 100%); /* Chrome10-25,Safari5.1-6 */
+        background: linear-gradient(to bottom,  rgba(0,0,0,0) 60%,rgba(0,0,0,0.43) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#6e000000',GradientType=0 ); /* IE6-9 */
+    }
+    .thumbnail-bg {
+        position: relative;
+        height: 150px;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+        background-size: cover;
+        background-position: center;
+    }
+    .thumbnail-bg .thumbnail-title {
+        font-size: 20px;
+        font-weight: normal;
+        color: #FFFFFF;
+        position: absolute;
+        bottom: 20px;
+        text-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+        width: 100%;
+        text-align: center;
+    }
+
+}

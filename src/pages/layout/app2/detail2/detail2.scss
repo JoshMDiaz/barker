@@ -1,0 +1,62 @@
+page-detail2 {
+  
+    h2{
+      font-size: 20px;
+    }
+    h3{
+      font-size: 18px;
+      color: color($colors, primary);
+    }
+
+    ion-card{
+        margin: 12px 0px 15px 0px !important;
+        width: 100% !important;
+    }
+
+    .product-header {
+          position: relative;
+          height: 300px;
+          // background: url(img/1.jpg) no-repeat;
+          -webkit-background-size: cover;
+          -moz-background-size: cover;
+          -o-background-size: cover;
+          background-size: cover;
+          // background-position: center !important;
+    }
+    .discount h3 {
+      text-decoration: line-through;
+
+    }
+    .description{
+      font-size: 16px;
+    }
+    .indent{
+      text-indent: 20px;
+    }
+    .ribbon{
+      position:absolute;
+      padding:0;
+      margin:0;
+      text-align:center;
+      white-space:nowrap;
+      overflow:hidden;
+      transform-origin:0 100%;
+      box-shadow:0 1px 6px 0 rgba(0,0,0,.12),0 1px 6px 0 rgba(0,0,0,.12);
+      background-color:color($colors, tango-scarlet-red);
+      color: #fff;
+      height:25px;
+      width:100px;
+      top:-30px;
+      transform:rotateZ(45deg);
+      padding-left:30px;
+      padding-right:30px;
+      line-height:30px;
+      // right:-14.644660940673px;
+      right: -34px;
+      -webkit-transform:rotateZ(45deg);
+      -moz-transform:rotateZ(45deg);
+      -o-transform:rotateZ(45deg);
+    }
+
+
+}

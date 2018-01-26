@@ -1,0 +1,64 @@
+
+<ion-header>
+  <ion-navbar no-border-bottom color="indigo">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+     City Guide
+    </ion-title>
+    <ion-buttons right>
+        <button ion-button icon-only>
+            <ion-icon name="md-more"></ion-icon>
+        </button>
+    </ion-buttons>
+  </ion-navbar>
+
+  <!--*********** Toolbar with segment ***********-->
+  <ion-toolbar no-border-top color="indigo">
+       <ion-segment  [(ngModel)]="viewType" color="light">
+      <ion-segment-button value="list">
+        List view
+      </ion-segment-button>
+      <ion-segment-button value="grid">
+        Grid view
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!--*********** List view ***********-->
+  <div *ngIf="viewType==='list'">
+    <ion-card tappable  class="card-list fadein-down" *ngFor="let category of category" (click)="openList(category.$key)">
+        <div class="card-list-bg" [ngStyle]="{'background-image': 'url(' + category.imgBg+ ')'}">
+          <h2 class="card-list-title"> {{category.name}}</h2>              
+        </div>
+    </ion-card>
+  </div>
+
+  <!--*********** Grid View  ***********-->
+  <div *ngIf="viewType==='grid'">
+      <ion-grid >
+          <ion-row wrap>
+            <ion-col tappable  col-6 *ngFor="let category2 of category" (click)="openList(category2.$key)" color="gray">
+              <ion-card class="card-grid drop-in" >
+                <div class="card-grid-bg" [ngStyle]="{'background-image': 'url(' + category2.imgBg+ ')'}">
+                    <h2 class="card-grid-title"> {{category2.name}}</h2>                                
+                </div>
+              </ion-card>
+            </ion-col>
+          </ion-row>
+      </ion-grid>
+  </div>
+
+<!--*********** Fab  ***********-->
+ <ion-fab right bottom>
+    <button ion-fab class="pop-in" color="lightblue"><ion-icon name="chatbubbles"></ion-icon></button>
+    <ion-fab-list side="left">
+      <button ion-fab><ion-icon name="call"></ion-icon></button>
+      <button ion-fab><ion-icon name="chatboxes"></ion-icon></button>
+      <button ion-fab><ion-icon name="images"></ion-icon></button>
+    </ion-fab-list>
+  </ion-fab>
+</ion-content>

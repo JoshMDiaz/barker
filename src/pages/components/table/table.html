@@ -1,0 +1,59 @@
+<ion-header>
+  <ion-navbar  color="lightblue" >
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Table</ion-title>
+  </ion-navbar>
+  <!--<ion-toolbar color="ios-yellow">
+      <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
+  </ion-toolbar>-->
+</ion-header>
+
+
+<ion-content>
+  <ion-grid>
+    <ion-row class="tableHeader">
+        <ion-col>
+          <strong>Product </strong>
+        </ion-col>
+        <ion-col>
+          <strong>Price</strong>
+        </ion-col>
+        <ion-col>
+          <strong>Status</strong>
+        </ion-col>
+        <ion-col class="actionCol">
+          <strong></strong>
+        </ion-col>
+      </ion-row>
+    <ion-row *ngFor="let product of products">
+        <ion-col>
+          <p>{{product.name}}</p>
+        </ion-col>
+        <ion-col>
+          <p>{{product.price}}</p>
+        </ion-col>
+        <ion-col>
+          <p>{{product.status}}</p>
+        </ion-col>
+        <ion-col class="actionCol">
+          <!--<button ion-button color="teal" small>Add</button>-->
+          <button ion-button icon-left color="teal" small>
+            <ion-icon name="ios-add"></ion-icon>
+            Add
+          </button>
+          <button ion-button icon-left color="green" small>
+            <ion-icon name="md-create"></ion-icon>
+            Edit
+          </button>
+          <!--<button ion-button color="green" small>Edit</button>-->
+        </ion-col>
+      </ion-row>
+  </ion-grid>
+
+<!--  Ex 2 : ref> https://forum.ionicframework.com/t/ionic2-grid-example/48046/8 -->
+
+
+
+</ion-content>

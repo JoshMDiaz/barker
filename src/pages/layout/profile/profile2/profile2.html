@@ -1,0 +1,58 @@
+<ion-header no-border>
+    <ion-navbar transparent> 
+        <button ion-button menuToggle>
+          <ion-icon name="menu" color="light"  [hidden]="showToolbar"></ion-icon>
+        </button>
+        <ion-title color="light" [hidden]="showToolbar">Detail</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content  no-padding  class="content" (ionScroll)="onScroll($event)" [class.transition]="transition"  >
+
+    <div class="profile-header" [ngStyle]="{'background-image': 'url(' + (profile2 | async)?.imgCover + ')'}"></div>
+    <div class="profile">
+      <div class="profile-box">
+          <ion-img  class="profile-image" src="{{(profile2 | async)?.imgProfile}}"></ion-img>
+          <h3 id="profile2-name" padding-top>{{(profile2 | async)?.name}}</h3>
+          <button ion-button *ngIf="!following"  block color="green" (click)="follow()">Follow</button>
+          <button ion-button icon-left *ngIf="following"  block color="gray" (click)="follow()">
+            <ion-icon name="checkmark"></ion-icon>
+            Following
+          </button>
+
+          <ion-list no-lines padding-top>
+              <ion-item class="icon-align" >
+                <ion-icon name="md-cafe" item-left></ion-icon>
+                <h2>Opening time</h2>
+                  <div [innerHTML]="(profile2 | async)?.openingTime" class="opening-time"></div>
+              </ion-item>
+              <ion-item class="icon-align" text-wrap>
+                  <ion-icon name="ios-pin" item-left></ion-icon>
+                  <h2>About</h2>
+                  <p>{{(profile2 | async)?.aboutMe}}</p>
+              </ion-item>
+              <ion-item class="icon-align">
+                  <ion-icon name="ios-call"  item-left></ion-icon>
+                  <h2>{{(profile2 | async)?.phone}}</h2>
+                  <p>Contact</p>
+              </ion-item>
+              <ion-item class="icon-align">
+                <ion-icon name="logo-facebook"  item-left></ion-icon>
+                <h2>facebook.com/starbuck</h2>
+                <p>facebook</p>
+              </ion-item>
+              <ion-item class="icon-align">
+                  <ion-icon name="logo-skype" item-left></ion-icon>
+                  <h2>starbuck@outlook.com</h2>
+                  <p>skype</p>
+              </ion-item>
+          </ion-list>
+
+      </div>
+    </div>
+
+</ion-content>
+
+
+
+

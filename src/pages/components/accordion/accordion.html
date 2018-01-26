@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-navbar  color="lightblue" >
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Accordion</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content >
+
+
+  <ion-list>
+    <ion-list-header>
+      Our customers 
+    </ion-list-header>
+    <ion-item class="item-align" tappable *ngFor="let list of lists; let i=index" text-wrap (click)="toggleDetail(i)" [ngClass]="{active: isDetailShown(i)}">
+      <ion-avatar item-left>
+          <img src={{list.img}} >
+      </ion-avatar>
+    <!--<ion-thumbnail item-left>
+      <ion-img src="{{list.img}} " padding-bottom></ion-img>
+    </ion-thumbnail>-->
+      <h2> {{list.name}} </h2>
+      <p *ngIf="isDetailShown(i)" margin-top>{{list.detail}}</p>
+       <ion-icon color="gray" item-right [name]="isDetailShown(i) ? 'arrow-dropdown' : 'arrow-dropright'"></ion-icon>
+    </ion-item>
+  </ion-list>
+
+</ion-content>
