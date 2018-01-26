@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "527910470763",
+    "firebase_url": "https://barker-503ee.firebaseio.com",
+    "project_id": "barker-503ee",
+    "storage_bucket": "barker-503ee.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:527910470763:android:dbf0231ce4fc8e60",
+        "android_client_info": {
+          "package_name": "com.ionicframework.ionic3barker"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "527910470763-bcp4ik93ifd0vg706i55u6835qfkju53.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ionicframework.ionic3barker",
+            "certificate_hash": "96731b6fd04e2473009f3d1b1267ca49abaaaa74"
+          }
+        },
+        {
+          "client_id": "527910470763-g0pfa2k6qfaqm4qe6gqtv4ocjglciq68.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCzZN-gBIQyuV5SZFXbcLhexL8rownecIU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "527910470763-g0pfa2k6qfaqm4qe6gqtv4ocjglciq68.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
