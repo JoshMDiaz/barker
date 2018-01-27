@@ -1,3 +1,17 @@
 page-looking-for {
-
+  ion-row {
+    height: 200px;
+    margin: 10px 0;
+    border-radius: 4px;
+    &.breeding {
+      background: url("http://placehold.it/500x500");
+      background-size: cover;
+      background-position: 50% 50%;
+    }
+    &.play-date {
+      background: url("http://placehold.it/500x500");
+      background-size: cover;
+      background-position: 50% 50%;
+    }
+  }
 }
