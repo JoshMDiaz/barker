@@ -37,7 +37,7 @@ export class MainPage {
 
   facebookLogin(){
     let loadingPopup = this.loadingCtrl.create({
-      spinner: 'crescent', 
+      spinner: 'crescent',
       content: '',
       duration: 15000
     });
@@ -66,7 +66,7 @@ export class MainPage {
 
   googleLogin(){
     let loadingPopup = this.loadingCtrl.create({
-    spinner: 'crescent', 
+    spinner: 'crescent',
     content: '',
     duration: 15000
     });
@@ -82,7 +82,7 @@ export class MainPage {
         loadingPopup.dismiss().then( () => {
           alert("Error"+errorMessage)
         });
-      });  
+      });
     }
     else {
       alert("Please install app in device.")
@@ -91,8 +91,8 @@ export class MainPage {
 
 
   }
-  
-  
+
+
   loginWithEmail(){
     this.navCtrl.push('LoginPage');
   }

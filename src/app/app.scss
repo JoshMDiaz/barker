@@ -1,6 +1,5 @@
 // http://ionicframework.com/docs/v2/theming/
 
-
 // App Global Sass
 // --------------------------------------------------
 // Put style rules here that you want to apply globally. These
@@ -17,22 +16,21 @@
 
 //*************** for sidemenu  ***************//
 // Material Design Sidemenu
-@import '../theme/animations';
-
+@import "../theme/animations";
 
 #menu-material {
-  .list-box{
-    margin-top:190px;
+  .list-box {
+    margin-top: 190px;
   }
   .menu-header {
     padding: 5px 15px;
-    background-image: url('../assets/md-bg6.jpg');
+    background-image: url("../assets/md-bg6.jpg");
     background-size: cover;
     background-color: color($colors, blue2);
     color: white;
     .name {
       font-weight: 400;
-      font-size:18px;
+      font-size: 18px;
       margin-top: 10px;
       margin-bottom: 3px;
     }
@@ -41,15 +39,14 @@
       margin-bottom: 5px;
     }
     .user-avatar {
-      padding: .5em;
+      padding: 0.5em;
       height: 12vh;
       margin-top: 15px;
       // border: 3px solid #fff;
     }
   }
   h3,
-  .label,
-  {
+  .label {
     color: #616161;
     font-weight: 400;
   }
@@ -57,7 +54,7 @@
     color: #616161;
   }
 }
-#menu-ios{
+#menu-ios {
   .menu-header {
     text-align: center;
     margin: auto;
@@ -66,11 +63,11 @@
     margin-bottom: 20px;
     padding: 5px 15px;
     background-color: #fff;
-    color:#000;
+    color: #000;
     .name {
-      margin-top:8px;
+      margin-top: 8px;
       font-weight: 500;
-      font-size:16px;
+      font-size: 16px;
       margin-bottom: 3px;
     }
     .email {
@@ -78,7 +75,7 @@
       margin-bottom: 5px;
     }
     .user-avatar {
-      padding: .5em;
+      padding: 0.5em;
       height: 15vh;
       margin-top: 15px;
       // border: 3px solid #fff;
@@ -87,8 +84,8 @@
 }
 
 #menu-pwa {
-  .list-box{
-    margin-top:10px;
+  .list-box {
+    margin-top: 10px;
   }
   .menu-header {
     text-align: center;
@@ -101,9 +98,9 @@
     background-color: color($colors, ios-gray);
     color: #ffffff;
     .name {
-      margin-top:8px;
+      margin-top: 8px;
       font-weight: 500;
-      font-size:16px;
+      font-size: 16px;
       margin-bottom: 3px;
     }
     .email {
@@ -111,7 +108,7 @@
       margin-bottom: 5px;
     }
     .user-avatar {
-      padding: .5em;
+      padding: 0.5em;
       height: 15vh;
       margin-top: 15px;
       // border: 3px solid #fff;
@@ -119,8 +116,7 @@
   }
 
   h3,
-  .label,
-  {
+  .label {
     color: #616161;
     font-weight: 400;
   }
@@ -128,9 +124,14 @@
     color: #616161;
   }
 }
-.sub-menu .item-inner{
+.sub-menu .item-inner {
   padding-left: 56px;
 }
 .round {
   border-radius: 50%;
+}
+.top-right {
+  position: fixed;
+  top: 5px;
+  right: 5px;
 }

@@ -10,7 +10,7 @@ export class IntroPage {
 
   slides = [
     {
-      title: "Welcome to ionic 3",
+      title: "Welcome to ionic 3!",
       description: "This is introduction header.<br>Walkthrough page. ",
       image: "./assets/slide1.png",
       color: "#3465a4"
@@ -32,7 +32,7 @@ export class IntroPage {
       description: "This is introduction header.<br>Walkthrough page. ",
       image: "./assets/slide4.png",
       color: "#75507b"
-      
+
     }
   ];
 
