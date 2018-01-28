@@ -51,7 +51,69 @@ export class AuthData {
       });
   }
 
-  updateUserProfile(uid, displayName, email, photo, phone) {
+  updateUserProfile(
+    uid,
+    displayName,
+    email,
+    photo,
+    phone,
+    city,
+    numberOfDogs,
+    state,
+    dogs,
+    description
+  ) {
+    firebase
+      .database()
+      .ref("/userProfile")
+      .child(uid)
+      .once("value", function(snapshot) {
+        var exists = snapshot.val() !== null;
+
+        if (exists) {
+          console.log("user " + uid + " exists!");
+          firebase
+            .database()
+            .ref("userProfile/" + uid)
+            .update({
+              name: displayName,
+              email: email,
+              photo: photo,
+              phone: phone,
+              city: city,
+              numberOfDogs: numberOfDogs,
+              state: state,
+              dogs: dogs,
+              description: description
+            });
+        } else {
+          console.log("user " + uid + " does not exist!");
+          firebase
+            .database()
+            .ref("/userProfile")
+            .child(uid)
+            .set({
+              name: displayName,
+              email: email,
+              photo: photo,
+              phone: phone,
+              city: city,
+              numberOfDogs: numberOfDogs,
+              state: state,
+              dogs: dogs,
+              description: description
+            });
+        }
+      });
+  }
+
+  updateUserProfileFB(
+    uid,
+    displayName,
+    email,
+    photo,
+    phone
+  ) {
     firebase
       .database()
       .ref("/userProfile")
@@ -113,8 +175,7 @@ export class AuthData {
           .child(newUser.uid)
           .set({
             email: email,
-            name: name,
-            phone: phone
+            name: name
           });
       });
   }

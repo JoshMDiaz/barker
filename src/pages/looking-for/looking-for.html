@@ -1,16 +1,24 @@
+<ion-header no-border>
+  <ion-navbar transparent>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+  </ion-navbar>
+</ion-header>
+
 <ion-content padding>
   <!-- What are you looking for? -->
   <div *ngIf="!whichDogScreen">
     <h3 text-center padding>What are you looking for?</h3>
     <ion-grid>
-      <ion-row text-center align-items-center class="breeding" (click)="check('breeding')">
+      <ion-row text-center align-items-center class="breeding" (click)="lookingFor('breeding')">
         <ion-col>
           <div>
             <h4>Breeding</h4>
           </div>
         </ion-col>
       </ion-row>
-      <ion-row text-center align-items-center class="play-date" (click)="check()">
+      <ion-row text-center align-items-center class="play-date" (click)="lookingFor('playDate')">
         <ion-col>
           <div>
             <h4>Play Date</h4>
@@ -20,15 +28,19 @@
     </ion-grid>
   </div>
 
-  <!-- Which dog -->
+  <!-- Which dog? -->
   <div *ngIf="whichDogScreen">
+    <button ion-button icon-start clear color="light" class="no-padding" (click)="whichDogScreen = !whichDogScreen">
+      <ion-icon name="arrow-back"></ion-icon>
+      Back
+    </button>
     <h3 text-center padding>Which dog is looking {{choice}}?</h3>
     <ion-grid>
-      <!-- TODO: put image of dog in a card along with their name -->
-      <ion-row text-center align-items-center *ngFor="let dog of dogs" (click)="pickDog(dog)">
+      <ion-row text-center align-items-center *ngFor="let dog of profileArray.dogs" (click)="goToFeed(dog, this.decision)">
         <ion-col>
           <div>
-            <h4>{{dog.name}}</h4>
+            <!-- TODO: dog name and image -->
+            <h4>test: {{dog.name}}</h4>
           </div>
         </ion-col>
       </ion-row>

@@ -61,14 +61,12 @@ export class LoginPage {
         content: ""
       });
       loadingPopup.present();
-
       this.authData
         .loginUser(this.loginForm.value.email, this.loginForm.value.password)
         .then(
           authData => {
             loadingPopup.dismiss();
-            // this.navCtrl.setRoot("FeedPage");
-            this.navCtrl.setRoot("LookingForPage");
+            this.navCtrl.setRoot("LandingPage");
           },
           error => {
             var errorMessage: string = error.message;
@@ -92,7 +90,7 @@ export class LoginPage {
       this.authData.signInWithFacebook().then(
         authData => {
           var resJSON = JSON.stringify(authData);
-          this.authData.updateUserProfile(
+          this.authData.updateUserProfileFB(
             authData.uid,
             authData.displayName,
             authData.email,

@@ -56,7 +56,8 @@ export class MyApp {
 
               {name:'Search',component:'SearchPage'},
               {name:'Timeline',component: 'TimelinePage'},
-              {name:'Looking For',component: 'LookingForPage'}
+              {name:'Looking For',component: 'LookingForPage'},
+              {name:'Create Profile',component: 'CreateProfilePage'},
           ]
         }, {
           title: 'Components',

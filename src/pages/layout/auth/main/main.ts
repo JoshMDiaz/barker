@@ -47,7 +47,7 @@ export class MainPage {
       this.authData.signInWithFacebook()
       .then( authData => {
         var resJSON = JSON.stringify(authData);
-        this.authData.updateUserProfile(authData.uid,authData.displayName,authData.email,authData.photoURL,authData.phoneNumber)
+        this.authData.updateUserProfileFB(authData.uid,authData.displayName,authData.email,authData.photoURL,authData.phoneNumber)
         loadingPopup.dismiss();
         this.navCtrl.setRoot('AfterLoginPage');
 

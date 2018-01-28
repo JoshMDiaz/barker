@@ -2,6 +2,10 @@ import { BrowserModule } from "@angular/platform-browser";
 import { ErrorHandler, NgModule } from "@angular/core";
 import { IonicApp, IonicErrorHandler, IonicModule } from "ionic-angular";
 
+// HTTP
+import { HttpModule } from "@angular/http";
+import { HttpClientModule } from "@angular/common/http";
+
 //*********** ionic Native **************/
 import { StatusBar } from "@ionic-native/status-bar";
 import { SplashScreen } from "@ionic-native/splash-screen";
@@ -30,6 +34,10 @@ import { RadioPlayer } from "../providers/radio-service";
 import * as ionicGalleryModal from "ionic-gallery-modal";
 import { HAMMER_GESTURE_CONFIG } from "@angular/platform-browser";
 
+// My Custom Components
+import { ComponentsModule } from "../components/components.module";
+import { PipesModule } from "../pipes/pipes.module";
+
 //********** firebase configuration  ************ */
 export const firebaseConfig = {
   apiKey: "AIzaSyAMA0D9NvHCYjB-JMXZWGW0RMQpUgyGERY",
@@ -46,10 +54,13 @@ export const firebaseConfig = {
     BrowserModule,
     ionicGalleryModal.GalleryModalModule,
     IonicModule.forRoot(MyApp),
-
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    ComponentsModule,
+    PipesModule,
+    HttpModule,
+    HttpClientModule,
   ],
   bootstrap: [IonicApp],
   entryComponents: [MyApp],

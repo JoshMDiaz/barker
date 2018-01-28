@@ -3,10 +3,8 @@ import {
   IonicPage,
   NavController,
   LoadingController,
-  AlertController,
   ToastController
 } from "ionic-angular";
-import { AuthData } from "../../providers/auth-data";
 
 import {
   AngularFireDatabase,
@@ -18,10 +16,10 @@ import md5 from "crypto-md5"; // dependencies:"crypto-md5"
 
 @IonicPage()
 @Component({
-  selector: "page-looking-for",
-  templateUrl: "looking-for.html"
+  selector: 'page-landing',
+  templateUrl: 'landing.html',
 })
-export class LookingForPage {
+export class LandingPage {
   profileArray: any = [];
   profile: FirebaseObjectObservable<any[]>;
 
@@ -32,8 +30,6 @@ export class LookingForPage {
 
   constructor(
     public navCtrl: NavController,
-    public authData: AuthData,
-    public alertCtrl: AlertController,
     public loadingCtrl: LoadingController,
     private toastCtrl: ToastController,
     public afAuth: AngularFireAuth,
@@ -41,33 +37,28 @@ export class LookingForPage {
   ) {}
 
   ionViewDidLoad() {
-    console.log("ionViewDidLoad LookingForPage");
+    let loadingPopup = this.loadingCtrl.create({
+      spinner: "crescent",
+      content: ""
+    });
+    loadingPopup.present();
     this.afAuth.authState.subscribe(userAuth => {
       if (userAuth) {
         this.profile = this.afDb.object("/userProfile/" + userAuth.uid);
         this.profile.subscribe(profile => {
           this.profileArray = profile;
+          if (this.profileArray.dogs) {
+            loadingPopup.dismiss();
+            this.navCtrl.setRoot("LookingForPage");
+          } else {
+            loadingPopup.dismiss();
+            this.navCtrl.setRoot("CreateProfilePage", {userData: this.profileArray, uid: userAuth.uid});
+          }
         });
       } else {
         this.navCtrl.setRoot("MainPage");
       }
     });
-  }
-
-  lookingFor(decision) {
-    this.decision = decision;
-    if (this.profileArray.numberOfDogs > 1) {
-      this.whichDogScreen = true;
-      if (decision === "playDate") {
-        this.choice = "for a play date";
-      }
-    } else {
-      this.goToFeed(this.profileArray.dogs[0], decision);
-    }
-  }
-
-  goToFeed(dog, searchType) {
-    this.navCtrl.push("FeedPage", { dog: dog, searchType: searchType });
   }
 
 }

@@ -1511,8 +1511,8 @@
           "breed": ["Labrador Retriever"],
           "gender": "male",
           "name": "Spooky",
-          "neutered": "fixed",
-          "papered": "notPapered",
+          "neutered": true,
+          "papered": false,
           "registered": false
         },
         {
@@ -1520,13 +1520,31 @@
           "breed": ["Siberian Husky"],
           "gender": "male",
           "name": "Rafi",
-          "neutered": "notFixed",
-          "papered": "notPapered",
+          "neutered": false,
+          "papered": false,
           "registered": false
         }
       ],
       "numberOfDogs": 2,
       "state": "CA"
+    },
+    "66ihWQRfoXNqLOwwGWsiLhwulmK2": {
+      "email": "test@test.com",
+      "name": "Test",
+      "city": "Oakley",
+      "dogs": [
+        {
+          "age": "5",
+          "breed": ["Labrador Retriever"],
+          "gender": "female",
+          "name": "Shady",
+          "neutered": false,
+          "papered": false,
+          "registered": false
+        }
+      ],
+      "numberOfDogs": 1,
+      "state": "UT"
     }
   }
 }
