@@ -16,34 +16,34 @@ export class CountingConverterPipe implements PipeTransform {
     let newValue = '';
     switch (value) {
       case 1:
-        return 'First';
+        newValue = 'First';
         break;
       case 2:
-        return 'Second';
+        newValue = 'Second';
         break;
       case 3:
-        return 'Third';
+        newValue = 'Third';
         break;
       case 4:
-        return 'Fourth';
+        newValue = 'Fourth';
         break;
       case 5:
-        return 'Fifth';
+        newValue = 'Fifth';
         break;
       case 6:
-        return 'Sixth';
+        newValue = 'Sixth';
         break;
       case 7:
-        return 'Seventh';
+        newValue = 'Seventh';
         break;
       case 8:
-        return 'Eighth';
+        newValue = 'Eighth';
         break;
       case 9:
-        return 'Ninth';
+        newValue = 'Ninth';
         break;
       case 10:
-        return 'Tenth';
+        newValue = 'Tenth';
         break;
 
       default:

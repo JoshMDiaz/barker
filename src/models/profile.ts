@@ -11,9 +11,10 @@ export interface Profile {
     age: number;
     breed: string;
     gender: string;
-    neutered: boolean;
+    fixed: boolean;
     papered: boolean;
     registered: boolean;
+    description: string;
     photos: Array<string>;
   }>;
 }

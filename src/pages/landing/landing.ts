@@ -52,7 +52,7 @@ export class LandingPage {
             this.navCtrl.setRoot("LookingForPage");
           } else {
             loadingPopup.dismiss();
-            this.navCtrl.setRoot("CreateProfilePage", {userData: this.profileArray, uid: userAuth.uid});
+            this.navCtrl.setRoot("IntroPage", {email: this.profileArray.email, uid: userAuth.uid});
           }
         });
       } else {

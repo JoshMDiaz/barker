@@ -1,7 +1,11 @@
 <ion-header no-border>
   <ion-navbar transparent>
-    <button ion-button menuToggle>
+    <button ion-button menuToggle *ngIf="!isShowAboutDog">
       <ion-icon name="menu"></ion-icon>
+    </button>
+    <button ion-button icon-start clear *ngIf="isShowAboutDog" class="no-padding" (click)="goBack()">
+      <ion-icon name="arrow-back"></ion-icon>
+      Back
     </button>
   </ion-navbar>
 </ion-header>
@@ -9,22 +13,30 @@
   <div *ngIf="!isShowAboutDog">
     <h2>About You</h2>
     <ion-item>
-      <ion-label>Name</ion-label>
+      <ion-label floating>Name</ion-label>
       <ion-input name="name" [(ngModel)]="profile.name"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label>City</ion-label>
+      <ion-label floating>Phone</ion-label>
+      <ion-input name="phone" [(ngModel)]="profile.phone" type="tel"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>City</ion-label>
       <ion-input name="city" [(ngModel)]="profile.city"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label>State</ion-label>
+      <ion-label floating>State</ion-label>
       <ion-select name="state" [(ngModel)]="profile.state">
         <ion-option value="{{state.abbreviation}}" *ngFor="let state of usStates">{{state.name}}</ion-option>
       </ion-select>
     </ion-item>
     <ion-item>
-      <ion-label>How Many Dogs?</ion-label>
+      <ion-label floating>How Many Dogs?</ion-label>
       <ion-input name="numberOfDogs" type="number" [(ngModel)]="profile.numberOfDogs"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Description <small>(Not Required)</small></ion-label>
+      <ion-textarea [(ngModel)]="profile.description"></ion-textarea>
     </ion-item>
     <button ion-button (click)="showAboutDog()">Next</button>
   </div>
@@ -34,51 +46,53 @@
     <div class="dog-info" *ngFor="let dog of profile.dogs; let i = index">
       <h4 *ngIf="profile.dogs.length > 1">{{i + 1 | countingConverter}} Dog</h4>
       <ion-item>
-        <ion-label>Name</ion-label>
+        <ion-label floating>Name</ion-label>
         <ion-input name="dogName" [(ngModel)]="dog.name"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-label>Breed</ion-label>
+        <ion-label floating>Breed</ion-label>
         <ion-select name="breed" [(ngModel)]="dog.breed" multiple="true">
           <ion-option value="{{breed}}" *ngFor="let breed of breeds">{{breed}}</ion-option>
         </ion-select>
       </ion-item>
       <ion-item>
-        <ion-label>Age</ion-label>
+        <ion-label floating>Age</ion-label>
         <ion-input type="number" name="name" [(ngModel)]="dog.age"></ion-input>
       </ion-item>
       <ion-list radio-group [(ngModel)]="dog.gender">
         <ion-item>
-          <ion-label>Male</ion-label>
+          <ion-label>
+            Male
+            <ion-icon name="male"></ion-icon>
+          </ion-label>
           <ion-radio value="male" checked></ion-radio>
         </ion-item>
         <ion-item>
-          <ion-label>Female</ion-label>
+          <ion-label>
+            Female
+            <ion-icon name="female"></ion-icon>
+          </ion-label>
           <ion-radio value="female"></ion-radio>
         </ion-item>
       </ion-list>
-      <ion-list radio-group [(ngModel)]="dog.neutered">
-        <ion-item>
-          <ion-label>Neutered / Spayed</ion-label>
-          <ion-radio value="fixed" checked></ion-radio>
-        </ion-item>
-        <ion-item>
-          <ion-label>Intact</ion-label>
-          <ion-radio value="notFixed"></ion-radio>
-        </ion-item>
-      </ion-list>
-      <ion-list radio-group [(ngModel)]="dog.papered">
-        <ion-item>
-          <ion-label>Papered</ion-label>
-          <ion-radio value="papered" checked></ion-radio>
-        </ion-item>
-        <ion-item>
-          <ion-label>Not Papered</ion-label>
-          <ion-radio value="notPapered"></ion-radio>
-        </ion-item>
-      </ion-list>
+      <ion-item>
+        <ion-label>Neutered / Spayed</ion-label>
+        <ion-toggle [(ngModel)]="dog.fixed"></ion-toggle>
+      </ion-item>
+      <ion-item>
+        <ion-label>Papered</ion-label>
+        <ion-toggle [(ngModel)]="dog.papered"></ion-toggle>
+      </ion-item>
+      <ion-item *ngIf="dog.papered">
+        <ion-label>AKC Registered</ion-label>
+        <ion-toggle [(ngModel)]="dog.registered"></ion-toggle>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>About {{dog.name || 'Dog'}}</ion-label>
+        <ion-textarea name="dogDescription" [(ngModel)]="dog.description"></ion-textarea>
+      </ion-item>
     </div>
-    <button ion-button (click)="createProfile()">Create Profile</button>
+    <button ion-button (click)="createProfile(profile)">Create Profile</button>
   </div>
 
   <!-- city, state, number of dogs to register -->

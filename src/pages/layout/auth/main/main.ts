@@ -64,33 +64,33 @@ export class MainPage {
     }
   }
 
-  googleLogin(){
-    let loadingPopup = this.loadingCtrl.create({
-    spinner: 'crescent',
-    content: '',
-    duration: 15000
-    });
-    loadingPopup.present();
-    if (this.platform.is('cordova')) {
-      this.authData.signInWithGoogle()
-      .then( authData => {
-        this.authData.updateUserProfile(authData.uid,authData.displayName,authData.email,authData.photoURL,authData.phoneNumber)
-        loadingPopup.dismiss();
-        this.navCtrl.setRoot('AfterLoginPage');
-      }, error => {
-        var errorMessage: string = error.message;
-        loadingPopup.dismiss().then( () => {
-          alert("Error"+errorMessage)
-        });
-      });
-    }
-    else {
-      alert("Please install app in device.")
-      loadingPopup.dismiss();
-    }
+  // googleLogin(){
+  //   let loadingPopup = this.loadingCtrl.create({
+  //   spinner: 'crescent',
+  //   content: '',
+  //   duration: 15000
+  //   });
+  //   loadingPopup.present();
+  //   if (this.platform.is('cordova')) {
+  //     this.authData.signInWithGoogle()
+  //     .then( authData => {
+  //       this.authData.updateUserProfile(authData.uid,authData.displayName,authData.email,authData.photoURL,authData.phoneNumber)
+  //       loadingPopup.dismiss();
+  //       this.navCtrl.setRoot('AfterLoginPage');
+  //     }, error => {
+  //       var errorMessage: string = error.message;
+  //       loadingPopup.dismiss().then( () => {
+  //         alert("Error"+errorMessage)
+  //       });
+  //     });
+  //   }
+  //   else {
+  //     alert("Please install app in device.")
+  //     loadingPopup.dismiss();
+  //   }
 
 
-  }
+  // }
 
 
   loginWithEmail(){

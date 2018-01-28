@@ -30,7 +30,7 @@ export class MyApp {
           showDetails: false,
           items:  [
 
-              {name:'Authentication(Login)',component:'MainPage'},
+              {name:'Authentication(Login)',component:'LoginPage'},
               {name:'Authentication(Register)',component:'RegisterPage'},
               {name:'Authentication(Forgot)',component:'ForgotPage'},
               {name:'Authentication(Profile)',component:'AfterLoginPage'},

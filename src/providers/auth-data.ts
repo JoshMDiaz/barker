@@ -161,10 +161,8 @@ export class AuthData {
   }
 
   registerUser(
-    name: string,
     email: string,
-    password: string,
-    phone: number
+    password: string
   ): Promise<any> {
     return this.afAuth.auth
       .createUserWithEmailAndPassword(email, password)
@@ -174,8 +172,7 @@ export class AuthData {
           .ref("/userProfile")
           .child(newUser.uid)
           .set({
-            email: email,
-            name: name
+            email: email
           });
       });
   }
