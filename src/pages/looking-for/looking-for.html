@@ -1,7 +1,11 @@
 <ion-header no-border>
   <ion-navbar transparent>
-    <button ion-button menuToggle>
+    <button ion-button menuToggle *ngIf="!whichDogScreen">
       <ion-icon name="menu"></ion-icon>
+    </button>
+    <button ion-button icon-start clear *ngIf="whichDogScreen" (click)="whichDogScreen = !whichDogScreen">
+      <ion-icon name="arrow-back"></ion-icon>
+      Back
     </button>
   </ion-navbar>
 </ion-header>
@@ -14,14 +18,14 @@
       <ion-row text-center align-items-center class="breeding" (click)="lookingFor('breeding')">
         <ion-col>
           <div>
-            <h4>Breeding</h4>
+            <h1>Breeding</h1>
           </div>
         </ion-col>
       </ion-row>
       <ion-row text-center align-items-center class="play-date" (click)="lookingFor('playDate')">
         <ion-col>
           <div>
-            <h4>Play Date</h4>
+            <h1>Play Date</h1>
           </div>
         </ion-col>
       </ion-row>
@@ -30,17 +34,13 @@
 
   <!-- Which dog? -->
   <div *ngIf="whichDogScreen">
-    <button ion-button icon-start clear class="no-padding" (click)="whichDogScreen = !whichDogScreen">
-      <ion-icon name="arrow-back"></ion-icon>
-      Back
-    </button>
     <h3 text-center padding>Which dog is looking {{choice}}?</h3>
     <ion-grid>
       <ion-row text-center align-items-center *ngFor="let dog of profileArray.dogs" (click)="goToFeed(dog, this.decision)">
         <ion-col>
           <div>
             <!-- TODO: dog name and image -->
-            <h4>test: {{dog.name}}</h4>
+            <h4>{{dog.name}}</h4>
           </div>
         </ion-col>
       </ion-row>

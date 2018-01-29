@@ -11,7 +11,7 @@ import { AuthData } from '../../../../providers/auth-data';
 })
 export class ForgotPage {
   public resetPasswordForm;
-  public backgroundImage: any = "./assets/bg3.jpg"; 
+  public backgroundImage: any = "./assets/j_bg4.jpg";
 
   constructor(public authData: AuthData, public fb: FormBuilder, public nav: NavController, public loadingCtrl: LoadingController, public alertCtrl: AlertController) {
 
@@ -27,7 +27,7 @@ export class ForgotPage {
     } else {
 
       let loadingPopup = this.loadingCtrl.create({
-        spinner: 'crescent', 
+        spinner: 'crescent',
         content: ''
       });
       loadingPopup.present();

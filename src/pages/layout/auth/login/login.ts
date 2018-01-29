@@ -22,7 +22,7 @@ import { AuthData } from '../../../../providers/auth-data';
 })
 export class LoginPage {
   public loginForm: any;
-  public backgroundImage: any = "./assets/bg1.jpg";
+  public backgroundImage: any = "./assets/j_bg7.jpg";
   public imgLogo: any = "./assets/medium_150.70391061453px_1202562_easyicon.net.png";
 
   constructor(

@@ -11,7 +11,7 @@ import { Platform } from 'ionic-angular';
 })
 export class RegisterPage {
   public registerForm;
-  public backgroundImage: any = "./assets/bg2.jpg";
+  public backgroundImage: any = "./assets/j_bg11.jpg";
   private platform: Platform;
 
   constructor(public nav: NavController, public authData: AuthData, public fb: FormBuilder, public loadingCtrl: LoadingController, public alertCtrl: AlertController) {

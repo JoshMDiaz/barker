@@ -1,16 +1,15 @@
-<ion-header no-border>
+<ion-header no-border padding>
   <ion-navbar transparent>
-    <button ion-button menuToggle>
-      <ion-icon name="menu" color="light"></ion-icon>
-    </button>
+    <ion-buttons end>
+      <button ion-button mode="ios" clear (click)="facebookLogin()" color="blue2" icon-only>
+        <ion-icon name="logo-facebook"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 <ion-content [ngStyle]="{'background-image': 'url(' + backgroundImage +')'}">
   <div class="login-container">
-    <button ion-button mode="ios" clear (click)="facebookLogin()" color="blue2" icon-only class="top-right">
-      <ion-icon name="logo-facebook"></ion-icon>
-    </button>
     <img class="logo" src="./assets/ionic.png" />
 
     <!--*********** Form ***********-->
