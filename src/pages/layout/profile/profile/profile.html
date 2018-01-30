@@ -1,97 +1,50 @@
-
-<ion-header>
-  <ion-navbar color="white" class="white-text">
-     <button ion-button menuToggle class="TopLMenu">
+<ion-header no-border>
+  <ion-navbar transparent>
+    <button ion-button menuToggle *ngIf="true">
       <ion-icon name="menu"></ion-icon>
     </button>
-        <ion-title >Profile</ion-title>
-    <ion-buttons  right>
-        <button color="light" ion-button icon-only>
-            <ion-icon name="more"></ion-icon>
-        </button>
-    </ion-buttons> 
+    <!-- TODO: add back button correctly here -->
+    <back-button *ngIf="false"></back-button>
   </ion-navbar>
 </ion-header>
 
 
 <ion-content padding>
 
-  <div id="profile1-info" class="test-class" padding>
+  <div id="profile-info" padding>
 
-    <img id="profile1-image" class="pop-in" src="{{(profile | async)?.imgProfile}}"/>
-    <h3 id="profile1-name">{{(profile | async)?.name}}</h3>
-    <!--<p>{{(profile2 | async)?.company}} &bull; {{(profile2 | async)?.position}}</p> -->
-    <p class="profile1-description">{{(profile | async)?.position}} of {{(profile | async)?.company}}</p>
-    <button ion-button *ngIf="!following"  block color="green" (click)="follow()">Follow</button>
-    <button ion-button icon-left *ngIf="following"  block color="gray" (click)="follow()">
+    <img id="profile-image" class="pop-in" src="{{(profile | async)?.photo || 'http:/placehold.it/200x200'}}" />
+    <h3 id="profile-name">{{(profile | async)?.name}}</h3>
+    <p>{{(profile | async)?.city}}, {{(profile | async)?.state}}</p>
+    <button ion-button *ngIf="!messageSent" block color="green" (click)="message()">Message</button>
+    <button ion-button icon-left *ngIf="messageSent" block color="gray" (click)="message()">
       <ion-icon name="checkmark"></ion-icon>
-      Following
+      Message Sent
     </button>
-
-    <ion-grid >
-      <ion-row class="profile1-numbers">
-
-        <ion-col width-33>
-          <span>{{(profile | async)?.follower}}</span>
-          <p>Followers</p>
-        </ion-col>
-
-        <ion-col width-33>      
-          <span>{{(profile | async)?.following}}</span>
-          <p>Following</p>
-        </ion-col>
-
-        <ion-col width-33>   
-          <span>{{(profile | async)?.following}}</span>
-          <p>Following</p>
-        </ion-col>
-
-      </ion-row>
-    </ion-grid>
 
   </div>
 
 
-<!--***********  About  ***********-->
+  <!--***********  About  ***********-->
 
   <ion-list no-lines text-wrap>
-      <ion-list-header>
-        <h2> About</h2>
-      </ion-list-header>
-      <ion-item>
-        <p >{{(profile | async)?.aboutMe}}</p>
-      </ion-item>
-  </ion-list>
-
-<!--***********  Contact  ***********-->
-  <ion-list no-lines>
     <ion-list-header>
-      <h2>Contact</h2>
+      <h2> About</h2>
     </ion-list-header>
     <ion-item>
-        <ion-icon name="ios-mail" item-left></ion-icon>
-        <h2>ceo@cemo.com</h2>
-        <p>work email</p>
+      <p>{{(profile | async)?.description}}</p>
     </ion-item>
-    <ion-item>
-      <ion-icon name="ios-call" item-left></ion-icon>
-      <h2>009923124322</h2>
-      <p>mobile phone</p>
-    </ion-item>
-    <ion-item>
-        <ion-icon name="logo-linkedin" item-left></ion-icon>
-        <h2>linkedin.com/cemo</h2>
-        <p>linked in </p>
-    </ion-item>
-     <ion-item>
-      <ion-icon name="logo-facebook" item-left></ion-icon>
-      <h2>facebook.com/cemo</h2>
-      <p>facebook</p>
-    </ion-item>
-    <ion-item>
-        <ion-icon name="logo-skype" item-left></ion-icon>
-        <h2>cemo@outlook.com</h2>
-        <p>skype</p>
+  </ion-list>
+
+  <!--***********  Dogs  ***********-->
+  <ion-list>
+    <ion-item *ngFor="let dog of profileArray.dogs">
+      <ion-avatar item-start>
+        <img src="http://placehold.it/50x50">
+      </ion-avatar>
+      <h2>{{dog.name}} <img [src]="dog.gender === 'male' ? '/assets/male.png' : '/assets/imgs/female.png'" class="gender-icon" /></h2>
+      <h3>{{dog.breed | commaSpace}}</h3>
+      <p>{{dog.age}} year{{dog.age > 1 ? 's' : null}} old</p>
     </ion-item>
   </ion-list>
 

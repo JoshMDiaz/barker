@@ -41,7 +41,6 @@ export class LookingForPage {
   ) {}
 
   ionViewDidLoad() {
-    console.log("ionViewDidLoad LookingForPage");
     this.afAuth.authState.subscribe(userAuth => {
       if (userAuth) {
         this.profile = this.afDb.object("/userProfile/" + userAuth.uid);

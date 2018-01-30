@@ -31,31 +31,10 @@ export class MyApp {
           items:  [
 
               {name:'Authentication(Login)',component:'LoginPage'},
-              {name:'Authentication(Register)',component:'RegisterPage'},
-              {name:'Authentication(Forgot)',component:'ForgotPage'},
-              {name:'Authentication(Profile)',component:'AfterLoginPage'},
-              {name:'Chart',component:'ChartPage'},
-
-              {name:'City guide', component: 'Category1Page'},// app1 folder
-              {name:'Shopping',component:'Category2Page'},// app2 folder
-              {name:'Restaurant',component:'Category3Page'}, // app3 folder
-              {name:'Google map',component: 'MapPage'},
               {name:'Image gallery',component: 'GalleryPage'},
               {name:'Feed',component: 'FeedPage'},
-              {name:'Form',component: 'FormResultPage'},
-
-
-              {name:'Intro', component:'IntroPage'},
-
-              {name:'Pinterest(Masonry)',component: 'MasonryPage'},
               {name:'Profile1',component: 'ProfilePage'},
-              {name:'Profile2',component: 'Profile2Page'},
-              {name:'Profile3',component: 'Profile3Page'},
               {name:'Profile4', component: 'Profile4Page'},
-              {name:'Radio player',component:'RadioListPage'},
-
-              {name:'Search',component:'SearchPage'},
-              {name:'Timeline',component: 'TimelinePage'},
               {name:'Looking For',component: 'LookingForPage'},
               {name:'Create Profile',component: 'CreateProfilePage'},
           ]

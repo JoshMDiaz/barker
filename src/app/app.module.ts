@@ -10,6 +10,7 @@ import { HttpClientModule } from "@angular/common/http";
 import { StatusBar } from "@ionic-native/status-bar";
 import { SplashScreen } from "@ionic-native/splash-screen";
 import { Geolocation } from "@ionic-native/geolocation";
+import { Camera } from "@ionic-native/camera";
 
 import { MyApp } from "./app.component";
 
@@ -27,7 +28,6 @@ import { GooglePlus } from "@ionic-native/google-plus";
 
 //*********** Provider **************/
 import { AuthData } from "../providers/auth-data";
-import { RadioPlayer } from "../providers/radio-service";
 
 //************** import image gallery *********************//
 
@@ -75,9 +75,9 @@ export const firebaseConfig = {
     { provide: ErrorHandler, useClass: IonicErrorHandler },
     AuthData,
     Facebook,
-    RadioPlayer,
     Facebook,
-    GooglePlus
+    GooglePlus,
+    Camera
   ]
 })
 export class AppModule {}

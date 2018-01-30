@@ -56,7 +56,6 @@ export class AuthData {
     displayName,
     email,
     photo,
-    phone,
     city,
     numberOfDogs,
     state,
@@ -79,7 +78,6 @@ export class AuthData {
               name: displayName,
               email: email,
               photo: photo,
-              phone: phone,
               city: city,
               numberOfDogs: numberOfDogs,
               state: state,
@@ -96,7 +94,6 @@ export class AuthData {
               name: displayName,
               email: email,
               photo: photo,
-              phone: phone,
               city: city,
               numberOfDogs: numberOfDogs,
               state: state,
@@ -112,7 +109,6 @@ export class AuthData {
     displayName,
     email,
     photo,
-    phone
   ) {
     firebase
       .database()
@@ -130,7 +126,6 @@ export class AuthData {
               name: displayName,
               email: email,
               photo: photo,
-              phone: phone
             });
         } else {
           console.log("user " + uid + " does not exist!");
@@ -142,7 +137,6 @@ export class AuthData {
               name: displayName,
               email: email,
               photo: photo,
-              phone: phone
             });
         }
       });

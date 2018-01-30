@@ -94,8 +94,7 @@ export class LoginPage {
             authData.uid,
             authData.displayName,
             authData.email,
-            authData.photoURL,
-            authData.phoneNumber
+            authData.photoURL
           );
           loadingPopup.dismiss();
           this.navCtrl.setRoot("AfterLoginPage");

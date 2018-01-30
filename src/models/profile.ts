@@ -1,7 +1,6 @@
 export interface Profile {
   name: string;
   description: string;
-  phone: string;
   city: string;
   state: string;
   numberOfDogs: number;

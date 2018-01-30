@@ -5,6 +5,8 @@ import { Http, Response } from "@angular/http";
 import { Profile } from "../../models/profile";
 import "rxjs/add/operator/map";
 import { AlertController } from "ionic-angular/components/alert/alert-controller";
+import { Camera, CameraOptions } from "@ionic-native/camera";
+import { storage } from "firebase";
 
 @IonicPage()
 @Component({
@@ -27,7 +29,8 @@ export class CreateProfilePage {
     public navParams: NavParams,
     private http: Http,
     private authData: AuthData,
-    private alertCtrl: AlertController
+    private alertCtrl: AlertController,
+    private camera: Camera
   ) {
     this.profile.dogs = [];
     // TODO: remove the OR from the email and uid
@@ -36,21 +39,11 @@ export class CreateProfilePage {
   }
 
   createProfile(profileData) {
-    console.log(profileData);
-    // this.afAuth.authState.take(1).subscribe(auth => {
-    //   this.afDatabase
-    //     .object(`profile/${auth.uid}`)
-    //     .set(this.profile)
-    //     .then(() => this.navCtrl.setRoot('HomePage'));
-    // });
-
-    // TODO: fill in all the data below based off NavParams and user input from form
     this.authData.updateUserProfile(
       this.uid,
       profileData.name,
       this.email,
       profileData.photo || "",
-      profileData.phone,
       profileData.city,
       profileData.numberOfDogs,
       profileData.state,
@@ -58,6 +51,27 @@ export class CreateProfilePage {
       profileData.description || ""
     );
     this.navCtrl.setRoot('LookingForPage');
+  }
+
+  takePhoto() {
+    try {
+      const options: CameraOptions = {
+        quality: 50,
+        targetHeight: 600,
+        targetWidth: 600,
+        destinationType: this.camera.DestinationType.DATA_URL,
+        encodingType: this.camera.EncodingType.JPEG,
+        mediaType: this.camera.MediaType.PICTURE,
+        correctOrientation: true
+      }
+      const result = this.camera.getPicture(options);
+      const image = `data:image/jpeg;base64,${result}`;
+      const pictures = storage().ref('pictures');
+      pictures.putString(image, 'data_url');
+
+    } catch (error) {
+
+    }
   }
 
   goBack() {

@@ -77,8 +77,7 @@ export class RegisterPage {
             authData.uid,
             authData.displayName,
             authData.email,
-            authData.photoURL,
-            authData.phoneNumber
+            authData.photoURL
           );
           loadingPopup.dismiss();
           this.nav.setRoot("AfterLoginPage");
