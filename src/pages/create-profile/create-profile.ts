@@ -2,7 +2,7 @@ import { Component } from "@angular/core";
 import { IonicPage, NavController, NavParams } from "ionic-angular";
 import { AuthData } from "../../providers/auth-data";
 import { Http, Response } from "@angular/http";
-import { Profile } from "../../models/profile";
+import { ProfileModel } from "../../models/profile";
 import "rxjs/add/operator/map";
 import { AlertController } from "ionic-angular/components/alert/alert-controller";
 import { Camera, CameraOptions } from "@ionic-native/camera";
@@ -14,7 +14,7 @@ import { storage } from "firebase";
   templateUrl: "create-profile.html"
 })
 export class CreateProfilePage {
-  profile = {} as Profile;
+  profile = {} as ProfileModel;
   email: string;
   uid: string;
   usStates: Array<{

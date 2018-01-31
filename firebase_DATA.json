@@ -1059,7 +1059,7 @@
         "breed" : [ "Labrador Retriever" ],
         "gender" : "female",
         "name" : "Shady",
-        "neutered" : false,
+        "fixed" : false,
         "papered" : false,
         "registered" : false
       } ],
@@ -1082,21 +1082,25 @@
       "city" : "Oakley",
       "description" : "I have two huskies. The male, Rafi, is available for stud. The female, Cici, is only available for play dates. Both dogs are fun, loving, and willing to play with anyone!",
       "dogs" : [ {
-        "age" : "10",
+        "age" : "5",
         "breed" : [ "Labrador Retriever" ],
-        "gender" : "male",
-        "name" : "Spooky",
-        "neutered" : true,
+        "gender" : "female",
+        "name" : "Cici",
+        "fixed" : true,
         "papered" : false,
-        "registered" : false
-      }, {
-        "age" : "2",
-        "breed" : [ "Siberian Husky" ],
-        "gender" : "male",
-        "name" : "Rafi",
-        "neutered" : false,
-        "papered" : false,
-        "registered" : false
+        "registered" : false,
+        "eyes" : "brown",
+        "description" : "Cici has always had issues around other animals, but I would love to help socialize her with anyone who is interested in helping me. She is a kind dog, she just doesn't know how to act around other animals."
+        }, {
+          "age" : "2",
+          "breed" : [ "Siberian Husky" ],
+          "gender" : "male",
+          "name" : "Rafi",
+          "fixed" : false,
+          "papered" : false,
+          "registered" : false,
+          "eyes" : "brown",
+        "description" : "Rafi loves everything and everyone. He is super playful and would love any play date that we could set up. He is also available as a stud if you are looking to breed."
       } ],
       "email" : "iknowtennispro@gmail.com",
       "name" : "Josh",

@@ -33,8 +33,8 @@ export class MyApp {
               {name:'Authentication(Login)',component:'LoginPage'},
               {name:'Image gallery',component: 'GalleryPage'},
               {name:'Feed',component: 'FeedPage'},
-              {name:'Profile1',component: 'ProfilePage'},
-              {name:'Profile4', component: 'Profile4Page'},
+              {name:'Profile',component: 'ProfilePage'},
+              {name:'Dog Profile', component: 'DogProfilePage'},
               {name:'Looking For',component: 'LookingForPage'},
               {name:'Create Profile',component: 'CreateProfilePage'},
           ]

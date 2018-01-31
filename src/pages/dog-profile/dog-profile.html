@@ -1,0 +1,89 @@
+<ion-header no-border>
+  <ion-navbar transparent>
+    <button ion-button menuToggle *ngIf="true">
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{dogProfile.name}}
+      <img [src]="dogProfile.gender === 'male' ? '/assets/male.png' : '/assets/female.png'" class="gender-icon"
+      />
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <div id="profile-info" padding>
+    <img id="profile-image" class="pop-in" src="{{'http://placehold.it/200x200'}}" />
+    <h3>{{dogProfile.breed | commaSpace}}</h3>
+    <p>{{dogProfile.age}} year{{dogProfile.age > 1 ? 's' : null}} old</p>
+    <button ion-button *ngIf="!messageSent" block color="green" (click)="message()">Message</button>
+    <button ion-button icon-left *ngIf="messageSent" block color="gray" (click)="message()">
+      <ion-icon name="checkmark"></ion-icon>
+      Message Sent
+    </button>
+  </div>
+
+
+  <!-- About -->
+  <ion-list no-lines text-wrap>
+    <ion-list-header>
+      <h2>About</h2>
+    </ion-list-header>
+    <ion-item>
+      <p>{{dogProfile.description}}</p>
+    </ion-item>
+  </ion-list>
+
+  <!--***********  Segement tab ***********-->
+  <ion-segment mode="md" [(ngModel)]="segmentView" color="blue2">
+    <ion-segment-button value="one">
+      <ion-icon name="ios-apps"></ion-icon>
+    </ion-segment-button>
+    <ion-segment-button value="two">
+      <ion-icon name="md-list" md="md-bookmark"></ion-icon>
+    </ion-segment-button>
+  </ion-segment>
+
+  <!--***********  Segement one ***********-->
+  <ion-grid *ngIf="segmentView==='one'">
+    <ion-row wrap color="gray">
+      <ion-col col-4 *ngFor="let image of imgGalleryArray  ,let i = index  ">
+        <img src={{image.url}} />
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <!--***********  Segment two  ***********-->
+  <div *ngIf="segmentView==='two'">
+    <ion-list no-lines padding>
+      <ion-list-header>
+        <h2>Info</h2>
+      </ion-list-header>
+      <ion-item>
+        <ion-icon name="ios-mail" item-left></ion-icon>
+        <h4>Gender</h4>
+        <p>{{dogProfile.gender | capitalize}}</p>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="ios-call" item-left></ion-icon>
+        <h4>Eye Color</h4>
+        <p>{{dogProfile.eyes | capitalize}}</p>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="logo-linkedin" item-left></ion-icon>
+        <h4>Neutered / Spayed</h4>
+        <p>{{dogProfile.fixed ? 'Yes' : 'No'}}</p>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="logo-facebook" item-left></ion-icon>
+        <h4>Papered</h4>
+        <p>{{dogProfile.papered ? 'Yes' : 'No'}}</p>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="logo-skype" item-left></ion-icon>
+        <h4>Registered</h4>
+        <p>{{dogProfile.registered ? 'Yes' : 'No'}}</p>
+      </ion-item>
+    </ion-list>
+  </div>
+
+</ion-content>

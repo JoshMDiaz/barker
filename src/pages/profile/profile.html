@@ -3,8 +3,6 @@
     <button ion-button menuToggle *ngIf="true">
       <ion-icon name="menu"></ion-icon>
     </button>
-    <!-- TODO: add back button correctly here -->
-    <back-button *ngIf="false"></back-button>
   </ion-navbar>
 </ion-header>
 
@@ -13,7 +11,7 @@
 
   <div id="profile-info" padding>
 
-    <img id="profile-image" class="pop-in" src="{{(profile | async)?.photo || 'http:/placehold.it/200x200'}}" />
+    <img id="profile-image" class="pop-in" src="{{(profile | async)?.photo || 'http://placehold.it/200x200'}}" />
     <h3 id="profile-name">{{(profile | async)?.name}}</h3>
     <p>{{(profile | async)?.city}}, {{(profile | async)?.state}}</p>
     <button ion-button *ngIf="!messageSent" block color="green" (click)="message()">Message</button>
@@ -26,10 +24,9 @@
 
 
   <!--***********  About  ***********-->
-
   <ion-list no-lines text-wrap>
     <ion-list-header>
-      <h2> About</h2>
+      <h2>About</h2>
     </ion-list-header>
     <ion-item>
       <p>{{(profile | async)?.description}}</p>
@@ -38,11 +35,11 @@
 
   <!--***********  Dogs  ***********-->
   <ion-list>
-    <ion-item *ngFor="let dog of profileArray.dogs">
+    <ion-item *ngFor="let dog of profileArray.dogs; let i = index" (click)="goToDogProfile(dog, i)">
       <ion-avatar item-start>
         <img src="http://placehold.it/50x50">
       </ion-avatar>
-      <h2>{{dog.name}} <img [src]="dog.gender === 'male' ? '/assets/male.png' : '/assets/imgs/female.png'" class="gender-icon" /></h2>
+      <h2>{{dog.name}} <img [src]="dog.gender === 'male' ? '/assets/male.png' : '/assets/female.png'" class="gender-icon" /></h2>
       <h3>{{dog.breed | commaSpace}}</h3>
       <p>{{dog.age}} year{{dog.age > 1 ? 's' : null}} old</p>
     </ion-item>

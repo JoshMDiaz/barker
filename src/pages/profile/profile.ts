@@ -45,6 +45,10 @@ export class ProfilePage {
     toast.present();
   }
 
+  goToDogProfile(dog, i) {
+    this.navCtrl.push('DogProfilePage', {dog: dog})
+  }
+
   ionViewDidLoad() {
     let loadingPopup = this.loadingCtrl.create({
       spinner: "crescent",
