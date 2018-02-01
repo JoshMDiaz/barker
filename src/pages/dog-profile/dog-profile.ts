@@ -31,8 +31,8 @@ export class DogProfilePage {
     breed: string;
     gender: string;
     fixed: boolean;
-    papered: boolean;
     eyes: string;
+    papered: boolean;
     registered: boolean;
     description: string;
     photos: Array<string>;
@@ -59,6 +59,14 @@ export class DogProfilePage {
     //     this.imgGalleryArray = imgGallery;
     //     loadingPopup.dismiss()
     // })
+  }
+
+  toggleInterest() {
+    console.log("interested");
+  }
+
+  toggleFavorite() {
+    console.log("favorited");
   }
 
   message() {

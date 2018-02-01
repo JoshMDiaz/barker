@@ -36,6 +36,10 @@ export class ProfilePage {
     this.presentToast("bottom", "message user clicked");
   }
 
+  editProfile() {
+    console.log('editing profile');
+  }
+
   presentToast(position: string, message: string) {
     let toast = this.toastCtrl.create({
       message: message,

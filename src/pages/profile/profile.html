@@ -1,8 +1,15 @@
 <ion-header no-border>
   <ion-navbar transparent>
-    <button ion-button menuToggle *ngIf="true">
-      <ion-icon name="menu"></ion-icon>
-    </button>
+    <ion-buttons start>
+      <button ion-button menuToggle *ngIf="true">
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-buttons end>
+      <button ion-button icon-only clear (click)="editProfile()">
+        <ion-icon name="build"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
@@ -37,7 +44,9 @@
       <ion-avatar item-start>
         <img src="http://placehold.it/50x50">
       </ion-avatar>
-      <h2>{{dog.name}} <ion-icon [name]="dog.gender === 'male' ? 'male' : 'female'" item-left class="gender-icon" [ngClass]="dog.gender === 'male' ? 'male' : 'female'"></ion-icon></h2>
+      <h2>{{dog.name}}
+        <ion-icon [name]="dog.gender === 'male' ? 'male' : 'female'" item-left class="gender-icon" [ngClass]="dog.gender === 'male' ? 'male' : 'female'"></ion-icon>
+      </h2>
       <h3>{{dog.breed | commaSpace}}</h3>
       <p>{{dog.age}} year{{dog.age > 1 ? 's' : null}} old</p>
     </ion-item>

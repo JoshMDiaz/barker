@@ -31,7 +31,9 @@
       <ion-input name="numberOfDogs" type="number" [(ngModel)]="profile.numberOfDogs"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label floating>Description <small>(Not Required)</small></ion-label>
+      <ion-label floating>Description
+        <small>(Not Required)</small>
+      </ion-label>
       <ion-textarea [(ngModel)]="profile.description"></ion-textarea>
     </ion-item>
     <button ion-button (click)="showAboutDog()">Next</button>
@@ -50,6 +52,10 @@
         <ion-select name="breed" [(ngModel)]="dog.breed" multiple="true">
           <ion-option value="{{breed}}" *ngFor="let breed of breeds">{{breed}}</ion-option>
         </ion-select>
+        <ion-item>
+          <ion-label floating>Eye Color</ion-label>
+          <ion-input name="dogName" [(ngModel)]="dog.eyes"></ion-input>
+        </ion-item>
       </ion-item>
       <ion-item>
         <ion-label floating>Age</ion-label>
@@ -59,14 +65,14 @@
         <ion-item>
           <ion-label>
             Male
-            <ion-icon name="male"></ion-icon>
+            <ion-icon name="male" class="male"></ion-icon>
           </ion-label>
           <ion-radio value="male" checked></ion-radio>
         </ion-item>
         <ion-item>
           <ion-label>
             Female
-            <ion-icon name="female"></ion-icon>
+            <ion-icon name="female" class="female"></ion-icon>
           </ion-label>
           <ion-radio value="female"></ion-radio>
         </ion-item>

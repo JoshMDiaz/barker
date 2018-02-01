@@ -10,6 +10,7 @@ export interface ProfileModel {
     age: number;
     breed: string;
     gender: string;
+    eyes: string;
     fixed: boolean;
     papered: boolean;
     registered: boolean;

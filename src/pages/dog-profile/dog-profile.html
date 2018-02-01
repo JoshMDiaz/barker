@@ -1,11 +1,16 @@
 <ion-header no-border>
   <ion-navbar transparent>
-    <button ion-button menuToggle *ngIf="true">
+    <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
     <ion-title>{{dogProfile.name}}
       <ion-icon [name]="dogProfile.gender === 'male' ? 'male' : 'female'" item-left class="gender-icon" [ngClass]="dogProfile.gender === 'male' ? 'male' : 'female'"></ion-icon>
     </ion-title>
+    <ion-buttons>
+      <button ion-button (click)="toggleFavorite()" icon-only clear>
+        <ion-icon name="star" [ngClass]="false ? 'checked' : ''" class="favorite-button"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
@@ -79,7 +84,7 @@
       </ion-item>
       <ion-item>
         <ion-icon name="clipboard" item-left></ion-icon>
-        <h4>Registered</h4>
+        <h4>AKC Registered</h4>
         <p>{{dogProfile.registered ? 'Yes' : 'No'}}</p>
       </ion-item>
     </ion-list>

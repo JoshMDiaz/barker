@@ -104,6 +104,7 @@ export class CreateProfilePage {
           name: "",
           age: null,
           breed: "",
+          eyes: "",
           gender: "",
           fixed: false,
           papered: false,
