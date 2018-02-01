@@ -130,3 +130,11 @@
 .round {
   border-radius: 50%;
 }
+ion-icon {
+  &.male {
+    color: map-get($colors, male)
+  }
+  &.female {
+    color: map-get($colors, female)
+  }
+}

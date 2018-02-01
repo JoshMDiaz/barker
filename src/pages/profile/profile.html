@@ -10,7 +10,6 @@
 <ion-content padding>
 
   <div id="profile-info" padding>
-
     <img id="profile-image" class="pop-in" src="{{(profile | async)?.photo || 'http://placehold.it/200x200'}}" />
     <h3 id="profile-name">{{(profile | async)?.name}}</h3>
     <p>{{(profile | async)?.city}}, {{(profile | async)?.state}}</p>
@@ -19,7 +18,6 @@
       <ion-icon name="checkmark"></ion-icon>
       Message Sent
     </button>
-
   </div>
 
 
@@ -39,7 +37,7 @@
       <ion-avatar item-start>
         <img src="http://placehold.it/50x50">
       </ion-avatar>
-      <h2>{{dog.name}} <img [src]="dog.gender === 'male' ? '/assets/male.png' : '/assets/female.png'" class="gender-icon" /></h2>
+      <h2>{{dog.name}} <ion-icon [name]="dog.gender === 'male' ? 'male' : 'female'" item-left class="gender-icon" [ngClass]="dog.gender === 'male' ? 'male' : 'female'"></ion-icon></h2>
       <h3>{{dog.breed | commaSpace}}</h3>
       <p>{{dog.age}} year{{dog.age > 1 ? 's' : null}} old</p>
     </ion-item>

@@ -4,8 +4,7 @@
       <ion-icon name="menu"></ion-icon>
     </button>
     <ion-title>{{dogProfile.name}}
-      <img [src]="dogProfile.gender === 'male' ? '/assets/male.png' : '/assets/female.png'" class="gender-icon"
-      />
+      <ion-icon [name]="dogProfile.gender === 'male' ? 'male' : 'female'" item-left class="gender-icon" [ngClass]="dogProfile.gender === 'male' ? 'male' : 'female'"></ion-icon>
     </ion-title>
   </ion-navbar>
 </ion-header>
@@ -46,7 +45,7 @@
   <!--***********  Segement one ***********-->
   <ion-grid *ngIf="segmentView==='one'">
     <ion-row wrap color="gray">
-      <ion-col col-4 *ngFor="let image of imgGalleryArray  ,let i = index  ">
+      <ion-col col-4 *ngFor="let image of imgGalleryArray, let i = index">
         <img src={{image.url}} />
       </ion-col>
     </ion-row>
@@ -59,27 +58,27 @@
         <h2>Info</h2>
       </ion-list-header>
       <ion-item>
-        <ion-icon name="ios-mail" item-left></ion-icon>
+        <ion-icon [name]="dogProfile.gender === 'male' ? 'male' : 'female'" item-left></ion-icon>
         <h4>Gender</h4>
         <p>{{dogProfile.gender | capitalize}}</p>
       </ion-item>
       <ion-item>
-        <ion-icon name="ios-call" item-left></ion-icon>
+        <ion-icon name="eye" item-left></ion-icon>
         <h4>Eye Color</h4>
         <p>{{dogProfile.eyes | capitalize}}</p>
       </ion-item>
       <ion-item>
-        <ion-icon name="logo-linkedin" item-left></ion-icon>
+        <ion-icon [name]="dogProfile.fixed=== false ? 'happy' : 'sad'" item-left></ion-icon>
         <h4>Neutered / Spayed</h4>
         <p>{{dogProfile.fixed ? 'Yes' : 'No'}}</p>
       </ion-item>
       <ion-item>
-        <ion-icon name="logo-facebook" item-left></ion-icon>
+        <ion-icon name="paper" item-left></ion-icon>
         <h4>Papered</h4>
         <p>{{dogProfile.papered ? 'Yes' : 'No'}}</p>
       </ion-item>
       <ion-item>
-        <ion-icon name="logo-skype" item-left></ion-icon>
+        <ion-icon name="clipboard" item-left></ion-icon>
         <h4>Registered</h4>
         <p>{{dogProfile.registered ? 'Yes' : 'No'}}</p>
       </ion-item>
