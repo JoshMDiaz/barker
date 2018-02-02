@@ -50,16 +50,16 @@
       <ion-item>
         <ion-label floating>Breed</ion-label>
         <ion-select name="breed" [(ngModel)]="dog.breed" multiple="true">
-          <ion-option value="{{breed}}" *ngFor="let breed of breeds">{{breed}}</ion-option>
+          <ion-option [value]="breed" *ngFor="let breed of breeds">{{breed}}</ion-option>
         </ion-select>
-        <ion-item>
-          <ion-label floating>Eye Color</ion-label>
-          <ion-input name="dogName" [(ngModel)]="dog.eyes"></ion-input>
-        </ion-item>
       </ion-item>
       <ion-item>
-        <ion-label floating>Age</ion-label>
-        <ion-input type="number" name="name" [(ngModel)]="dog.age"></ion-input>
+        <ion-label floating>Eye Color</ion-label>
+        <ion-input name="eyes" [(ngModel)]="dog.eyes"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Birthday</ion-label>
+        <ion-input type="text" name="name" (click)="openCalendar(dog)" [(ngModel)]="dog.birthdate"></ion-input>
       </ion-item>
       <ion-list radio-group [(ngModel)]="dog.gender">
         <ion-item>
@@ -90,7 +90,7 @@
         <ion-toggle [(ngModel)]="dog.registered"></ion-toggle>
       </ion-item>
       <ion-item>
-        <ion-label floating>About {{dog.name || 'Dog'}}</ion-label>
+        <ion-label floating>About {{dog.description || 'Dog'}}</ion-label>
         <ion-textarea name="dogDescription" [(ngModel)]="dog.description"></ion-textarea>
       </ion-item>
     </div>

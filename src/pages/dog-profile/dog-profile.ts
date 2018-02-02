@@ -27,7 +27,6 @@ export class DogProfilePage {
   messageSent: boolean = false;
   dogProfile: {
     name: string;
-    age: number;
     breed: string;
     gender: string;
     fixed: boolean;
@@ -35,6 +34,7 @@ export class DogProfilePage {
     papered: boolean;
     registered: boolean;
     description: string;
+    birthdate: string;
     photos: Array<string>;
   };
 

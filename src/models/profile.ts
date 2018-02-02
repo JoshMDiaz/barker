@@ -7,7 +7,6 @@ export interface ProfileModel {
   photo: string;
   dogs: Array<{
     name: string;
-    age: number;
     breed: string;
     gender: string;
     eyes: string;
@@ -15,6 +14,7 @@ export interface ProfileModel {
     papered: boolean;
     registered: boolean;
     description: string;
+    birthdate: string;
     photos: Array<string>;
   }>;
 }

@@ -34,6 +34,8 @@ import { AuthData } from "../providers/auth-data";
 import * as ionicGalleryModal from "ionic-gallery-modal";
 import { HAMMER_GESTURE_CONFIG } from "@angular/platform-browser";
 
+import { CalendarModule } from "ion2-calendar";
+
 // My Custom Components
 import { ComponentsModule } from "../components/components.module";
 import { PipesModule } from "../pipes/pipes.module";
@@ -61,6 +63,7 @@ export const firebaseConfig = {
     PipesModule,
     HttpModule,
     HttpClientModule,
+    CalendarModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [MyApp],

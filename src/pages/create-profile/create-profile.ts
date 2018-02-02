@@ -7,6 +7,13 @@ import "rxjs/add/operator/map";
 import { AlertController } from "ionic-angular/components/alert/alert-controller";
 import { Camera, CameraOptions } from "@ionic-native/camera";
 import { storage } from "firebase";
+import { ModalController } from "ionic-angular";
+import {
+  CalendarModal,
+  CalendarModalOptions,
+  DayConfig,
+  CalendarResult
+} from "ion2-calendar";
 
 @IonicPage()
 @Component({
@@ -23,6 +30,7 @@ export class CreateProfilePage {
   }>;
   breeds: Array<string>;
   isShowAboutDog: boolean = false;
+  type: "string"; // 'string' | 'js-date' | 'moment' | 'time' | 'object'
 
   constructor(
     public navCtrl: NavController,
@@ -30,12 +38,13 @@ export class CreateProfilePage {
     private http: Http,
     private authData: AuthData,
     private alertCtrl: AlertController,
+    public modalCtrl: ModalController,
     private camera: Camera
   ) {
     this.profile.dogs = [];
     // TODO: remove the OR from the email and uid
-    this.email = this.navParams.data.email || 'nodogs@test.com';
-    this.uid = this.navParams.data.uid || 'CzEe3rEBlSSgooQR62ti6AJQUjm1';
+    this.email = this.navParams.data.email || "nodogs@test.com";
+    this.uid = this.navParams.data.uid || "CzEe3rEBlSSgooQR62ti6AJQUjm1";
   }
 
   createProfile(profileData) {
@@ -50,7 +59,7 @@ export class CreateProfilePage {
       profileData.dogs,
       profileData.description || ""
     );
-    this.navCtrl.setRoot('LookingForPage');
+    this.navCtrl.setRoot("LookingForPage");
   }
 
   takePhoto() {
@@ -63,15 +72,12 @@ export class CreateProfilePage {
         encodingType: this.camera.EncodingType.JPEG,
         mediaType: this.camera.MediaType.PICTURE,
         correctOrientation: true
-      }
+      };
       const result = this.camera.getPicture(options);
       const image = `data:image/jpeg;base64,${result}`;
-      const pictures = storage().ref('pictures');
-      pictures.putString(image, 'data_url');
-
-    } catch (error) {
-
-    }
+      const pictures = storage().ref("pictures");
+      pictures.putString(image, "data_url");
+    } catch (error) {}
   }
 
   goBack() {
@@ -102,14 +108,14 @@ export class CreateProfilePage {
       for (let i = 0; i < this.profile.numberOfDogs; i++) {
         this.profile.dogs.push({
           name: "",
-          age: null,
           breed: "",
           eyes: "",
           gender: "",
           fixed: false,
           papered: false,
           registered: false,
-          description: '',
+          description: "",
+          birthdate: "",
           photos: []
         });
       }
@@ -122,6 +128,33 @@ export class CreateProfilePage {
       });
       alert.present();
     }
+  }
+
+  setCalendarFromDate() {
+    let today = new Date();
+    let day = today.getDate();
+    let month = today.getMonth();
+    let year = today.getFullYear() - 20;
+    return new Date(year, month, day);
+  }
+
+  openCalendar(dog) {
+    const options: CalendarModalOptions = {
+      title: "Birthday",
+      from: this.setCalendarFromDate(),
+      to: new Date(),
+      defaultScrollTo: new Date()
+    };
+    let myCalendar = this.modalCtrl.create(CalendarModal, {
+      options: options
+    });
+
+    myCalendar.present();
+
+    myCalendar.onDidDismiss((date: CalendarResult, type: string) => {
+      dog.birthdate = date.string;
+      console.log(dog);
+    });
   }
 
   ionViewDidLoad() {
