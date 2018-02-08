@@ -54,7 +54,6 @@ export class CreateProfilePage {
       this.email,
       profileData.photo || "",
       profileData.city,
-      profileData.numberOfDogs,
       profileData.state,
       profileData.dogs,
       profileData.description || ""
@@ -62,73 +61,77 @@ export class CreateProfilePage {
     this.navCtrl.setRoot("LookingForPage");
   }
 
-  takePhoto() {
-    try {
-      const options: CameraOptions = {
-        quality: 50,
-        targetHeight: 600,
-        targetWidth: 600,
-        destinationType: this.camera.DestinationType.DATA_URL,
-        encodingType: this.camera.EncodingType.JPEG,
-        mediaType: this.camera.MediaType.PICTURE,
-        correctOrientation: true
-      };
-      const result = this.camera.getPicture(options);
-      const image = `data:image/jpeg;base64,${result}`;
-      const pictures = storage().ref("pictures");
-      pictures.putString(image, "data_url");
-    } catch (error) {}
+  addDogs(profileData) {
+    this.navCtrl.push("CreateDogsProfilePage", { profileData: profileData });
   }
 
-  goBack() {
-    let alert = this.alertCtrl.create({
-      title: "Are you sure?",
-      message:
-        "Going back will clear all data about dogs. Are you sure you want to go back?",
-      buttons: [
-        {
-          text: "Cancel",
-          role: "cancel",
-          handler: () => {}
-        },
-        {
-          text: "Go Back",
-          handler: () => {
-            this.isShowAboutDog = false;
-          }
-        }
-      ]
-    });
-    alert.present();
-  }
+  // takePhoto() {
+  //   try {
+  //     const options: CameraOptions = {
+  //       quality: 50,
+  //       targetHeight: 600,
+  //       targetWidth: 600,
+  //       destinationType: this.camera.DestinationType.DATA_URL,
+  //       encodingType: this.camera.EncodingType.JPEG,
+  //       mediaType: this.camera.MediaType.PICTURE,
+  //       correctOrientation: true
+  //     };
+  //     const result = this.camera.getPicture(options);
+  //     const image = `data:image/jpeg;base64,${result}`;
+  //     const pictures = storage().ref("pictures");
+  //     pictures.putString(image, "data_url");
+  //   } catch (error) {}
+  // }
 
-  showAboutDog() {
-    if (this.profile.numberOfDogs > 0) {
-      this.profile.dogs = [];
-      for (let i = 0; i < this.profile.numberOfDogs; i++) {
-        this.profile.dogs.push({
-          name: "",
-          breed: "",
-          eyes: "",
-          gender: "",
-          fixed: false,
-          papered: false,
-          registered: false,
-          description: "",
-          birthdate: "",
-          photos: []
-        });
-      }
-      this.isShowAboutDog = true;
-    } else {
-      let alert = this.alertCtrl.create({
-        title: "Missing dogs",
-        subTitle: "Please tell us how many dogs you would like to sign up.",
-        buttons: ["Ok"]
-      });
-      alert.present();
-    }
-  }
+  // goBack() {
+  //   let alert = this.alertCtrl.create({
+  //     title: "Are you sure?",
+  //     message:
+  //       "Going back will clear all data about dogs. Are you sure you want to go back?",
+  //     buttons: [
+  //       {
+  //         text: "Cancel",
+  //         role: "cancel",
+  //         handler: () => {}
+  //       },
+  //       {
+  //         text: "Go Back",
+  //         handler: () => {
+  //           this.isShowAboutDog = false;
+  //         }
+  //       }
+  //     ]
+  //   });
+  //   alert.present();
+  // }
+
+  // showAboutDog() {
+  //   if (this.profile.numberOfDogs > 0) {
+  //     this.profile.dogs = [];
+  //     for (let i = 0; i < this.profile.numberOfDogs; i++) {
+  //       this.profile.dogs.push({
+  //         name: "",
+  //         breed: "",
+  //         eyes: "",
+  //         gender: "",
+  //         fixed: false,
+  //         papered: false,
+  //         registered: false,
+  //         description: "",
+  //         birthdate: "",
+  //         photos: []
+  //       });
+  //     }
+  //     this.isShowAboutDog = true;
+  //   } else {
+  //     let alert = this.alertCtrl.create({
+  //       title: "Missing dogs",
+  //       subTitle: "Please tell us how many dogs you would like to sign up.",
+  //       buttons: ["Ok"]
+  //     });
+  //     alert.present();
+  //   }
+  // }
 
   setCalendarFromDate() {
     let today = new Date();

@@ -47,7 +47,7 @@ export class LandingPage {
         this.profile = this.afDb.object("/userProfile/" + userAuth.uid);
         this.profile.subscribe(profile => {
           this.profileArray = profile;
-          if (this.profileArray.dogs) {
+          if (this.profileArray.dogs && this.profileArray.dogs.length > 0) {
             loadingPopup.dismiss();
             this.navCtrl.setRoot("LookingForPage");
           } else {

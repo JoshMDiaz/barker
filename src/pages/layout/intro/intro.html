@@ -4,7 +4,9 @@
     <ion-slide *ngFor="let slide of slides" [ngStyle]="{'background-color': slide.color} ">
       <ion-toolbar transparent>
         <ion-buttons end>
+          <!-- TODO: button should be modal to ask them if they want to set up their profile or dogs -->
           <button ion-button clear color="light" (click)="goToCreateProfile()">Skip</button>
+          <!-- <button ion-button clear color="light" (click)="goToCreateDogsProfile()">Skip</button> -->
         </ion-buttons>
       </ion-toolbar>
 
@@ -26,9 +28,14 @@
       </ion-toolbar>
       <div class="introBox" margin-top>
         <img src="./assets/slide5.png" class="slide-image" />
+        <h2>Let's get set up!</h2>
         <button ion-button large outline round icon-right color="primary" margin-top (click)="goToCreateProfile()">
-          Let's get set up!
+          Create Your Profile
           <ion-icon name="arrow-forward"></ion-icon>
+        </button>
+        <button ion-button large outline round icon-right color="primary" margin-top (click)="goToSetupDogsProfile()">
+          Continue to Dog's Profile
+          <ion-icon name="fastforward"></ion-icon>
         </button>
       </div>
     </ion-slide>

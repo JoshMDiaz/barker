@@ -57,7 +57,6 @@ export class AuthData {
     email,
     photo,
     city,
-    numberOfDogs,
     state,
     dogs,
     description
@@ -79,7 +78,6 @@ export class AuthData {
               email: email,
               photo: photo,
               city: city,
-              numberOfDogs: numberOfDogs,
               state: state,
               dogs: dogs,
               description: description
@@ -95,7 +93,6 @@ export class AuthData {
               email: email,
               photo: photo,
               city: city,
-              numberOfDogs: numberOfDogs,
               state: state,
               dogs: dogs,
               description: description

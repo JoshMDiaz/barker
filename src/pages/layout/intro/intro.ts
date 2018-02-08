@@ -53,4 +53,8 @@ export class IntroPage {
     this.navCtrl.setRoot('CreateProfilePage', {email: this.email, uid: this.uid});
   }
 
+  goToSetupDogsProfile() {
+    this.navCtrl.setRoot('CreateDogsProfilePage', {email: this.email, uid: this.uid});
+  }
+
 }
