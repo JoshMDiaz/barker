@@ -3,13 +3,15 @@ import { IonicPage, NavController, NavParams } from "ionic-angular";
 import { ProfileModel } from "../../models/profile";
 import { DogModel } from "../../models/dog";
 import { AngularFireAuth } from "angularfire2/auth";
-
-/**
- * Generated class for the CreateDogsProfilePage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { Http, Response } from "@angular/http";
+import "rxjs/add/operator/map";
+import {
+  CalendarModal,
+  CalendarModalOptions,
+  DayConfig,
+  CalendarResult
+} from "ion2-calendar";
+import { ModalController } from "ionic-angular/components/modal/modal-controller";
 
 @IonicPage()
 @Component({
@@ -29,17 +31,65 @@ export class CreateDogsProfilePage {
     description: "",
     birthdate: "",
     photos: []
-  } as DogModel;
+  };
   dogs: Array<{}>;
   uid: string;
+  comingFromCreateProfile: boolean = false;
+  numberOfDogs: number;
+  breeds: Array<string>;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public afAuth: AngularFireAuth) {}
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public afAuth: AngularFireAuth,
+    private http: Http,
+    public modalCtrl: ModalController
+  ) {
+    if (this.navParams.data.profileData) {
+      this.comingFromCreateProfile = true;
+    }
+  }
+
+  createDogsProfile(dogs) {
+    console.log(dogs);
+  }
+
+  createEntireProfile(dogs) {
+    console.log(dogs);
+  }
 
   addEmptyDogs(num) {
     this.dogs = [];
     for (let i = 0; i < num; i++) {
       this.dogs.push(this.dog);
     }
+  }
+
+  setCalendarFromDate() {
+    let today = new Date();
+    let day = today.getDate();
+    let month = today.getMonth();
+    let year = today.getFullYear() - 20;
+    return new Date(year, month, day);
+  }
+
+  openCalendar(dog) {
+    const options: CalendarModalOptions = {
+      title: "Birthday",
+      from: this.setCalendarFromDate(),
+      to: new Date(),
+      defaultScrollTo: new Date()
+    };
+    let myCalendar = this.modalCtrl.create(CalendarModal, {
+      options: options
+    });
+
+    myCalendar.present();
+
+    myCalendar.onDidDismiss((date: CalendarResult, type: string) => {
+      dog.birthdate = date.string;
+      console.log(dog);
+    });
   }
 
   ionViewDidLoad() {
@@ -52,5 +102,11 @@ export class CreateDogsProfilePage {
         this.uid = userAuth.uid;
       }
     });
+    this.http
+      .get("/assets/data/breeds.json")
+      .map(data => data.json())
+      .subscribe(data => {
+        this.breeds = data;
+      });
   }
 }

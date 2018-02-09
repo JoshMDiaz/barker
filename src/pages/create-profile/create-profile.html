@@ -6,7 +6,7 @@
   </ion-navbar>
 </ion-header>
 <ion-content padding>
-  <div>
+  <ion-grid>
     <h2>About You</h2>
     <ion-item>
       <ion-label floating>Name</ion-label>
@@ -28,15 +28,13 @@
       </ion-label>
       <ion-textarea [(ngModel)]="profile.description"></ion-textarea>
     </ion-item>
-    <ion-grid>
-      <ion-row>
-        <ion-col>
-          <button ion-button block color="light" (click)="createProfile(profile)">Create Profile</button>
-        </ion-col>
-        <ion-col>
-          <button ion-button block (click)="addDogs(profile)">Add Dogs</button>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-  </div>
+    <ion-row margin-top>
+      <ion-col>
+        <button ion-button block color="light" (click)="createProfile(profile)">Create Profile</button>
+      </ion-col>
+      <ion-col>
+        <button ion-button block (click)="addDogs(profile)">Add Dogs</button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

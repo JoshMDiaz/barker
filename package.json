@@ -55,7 +55,6 @@
   },
   "devDependencies": {
     "@ionic/app-scripts": "3.1.2",
-    "@ionic/cli-plugin-ionic-angular": "1.4.1",
     "typescript": "2.4.2"
   },
   "cordovaPlugins": [

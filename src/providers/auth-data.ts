@@ -101,12 +101,66 @@ export class AuthData {
       });
   }
 
-  updateUserProfileFB(
+  updateDogsProfile(
     uid,
-    displayName,
-    email,
-    photo,
+    name,
+    breed,
+    gender,
+    eyes,
+    fixed,
+    papered,
+    registered,
+    description,
+    birthdate,
+    photos
   ) {
+    firebase
+      .database()
+      .ref("/dogProfile")
+      .child(uid)
+      .once("value", function(snapshot) {
+        var exists = snapshot.val() !== null;
+
+        if (exists) {
+          console.log("dog " + uid + " exists!");
+          firebase
+            .database()
+            .ref("dogProfile/" + uid)
+            .update({
+              name: name,
+              breed: breed,
+              gender: gender,
+              eyes: eyes,
+              fixed: fixed,
+              papered: papered,
+              registered: registered,
+              description: description,
+              birthdate: birthdate,
+              photos: photos
+            });
+        } else {
+          console.log("dog " + uid + " does not exist!");
+          firebase
+            .database()
+            .ref("/dogProfile")
+            .child(uid)
+            .set({
+              name: name,
+              breed: breed,
+              gender: gender,
+              eyes: eyes,
+              fixed: fixed,
+              papered: papered,
+              registered: registered,
+              description: description,
+              birthdate: birthdate,
+              photos: photos
+            });
+        }
+      });
+  }
+
+  updateUserProfileFB(uid, displayName, email, photo) {
     firebase
       .database()
       .ref("/userProfile")
@@ -122,7 +176,7 @@ export class AuthData {
             .update({
               name: displayName,
               email: email,
-              photo: photo,
+              photo: photo
             });
         } else {
           console.log("user " + uid + " does not exist!");
@@ -133,7 +187,7 @@ export class AuthData {
             .set({
               name: displayName,
               email: email,
-              photo: photo,
+              photo: photo
             });
         }
       });
@@ -151,10 +205,7 @@ export class AuthData {
     return this.afAuth.auth.signOut();
   }
 
-  registerUser(
-    email: string,
-    password: string
-  ): Promise<any> {
+  registerUser(email: string, password: string): Promise<any> {
     return this.afAuth.auth
       .createUserWithEmailAndPassword(email, password)
       .then(newUser => {

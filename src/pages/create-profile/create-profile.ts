@@ -7,13 +7,6 @@ import "rxjs/add/operator/map";
 import { AlertController } from "ionic-angular/components/alert/alert-controller";
 import { Camera, CameraOptions } from "@ionic-native/camera";
 import { storage } from "firebase";
-import { ModalController } from "ionic-angular";
-import {
-  CalendarModal,
-  CalendarModalOptions,
-  DayConfig,
-  CalendarResult
-} from "ion2-calendar";
 
 @IonicPage()
 @Component({
@@ -28,8 +21,6 @@ export class CreateProfilePage {
     name: string;
     abbreviation: string;
   }>;
-  breeds: Array<string>;
-  isShowAboutDog: boolean = false;
   type: "string"; // 'string' | 'js-date' | 'moment' | 'time' | 'object'
 
   constructor(
@@ -38,7 +29,6 @@ export class CreateProfilePage {
     private http: Http,
     private authData: AuthData,
     private alertCtrl: AlertController,
-    public modalCtrl: ModalController,
     private camera: Camera
   ) {
     this.profile.dogs = [];
@@ -133,45 +123,12 @@ export class CreateProfilePage {
   //   }
   // }
 
-  setCalendarFromDate() {
-    let today = new Date();
-    let day = today.getDate();
-    let month = today.getMonth();
-    let year = today.getFullYear() - 20;
-    return new Date(year, month, day);
-  }
-
-  openCalendar(dog) {
-    const options: CalendarModalOptions = {
-      title: "Birthday",
-      from: this.setCalendarFromDate(),
-      to: new Date(),
-      defaultScrollTo: new Date()
-    };
-    let myCalendar = this.modalCtrl.create(CalendarModal, {
-      options: options
-    });
-
-    myCalendar.present();
-
-    myCalendar.onDidDismiss((date: CalendarResult, type: string) => {
-      dog.birthdate = date.string;
-      console.log(dog);
-    });
-  }
-
   ionViewDidLoad() {
     this.http
       .get("/assets/data/states.json")
       .map(data => data.json())
       .subscribe(data => {
         this.usStates = data;
-      });
-    this.http
-      .get("/assets/data/breeds.json")
-      .map(data => data.json())
-      .subscribe(data => {
-        this.breeds = data;
       });
   }
 }

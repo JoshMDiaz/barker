@@ -7,13 +7,13 @@
 </ion-header>
 <ion-content padding>
 
-  <div>
+  <ion-grid>
     <h2>About Your Dog{{numberOfDogs > 1 ? 's' : ''}}</h2>
     <ion-item>
       <ion-label floating>How Many Dogs?</ion-label>
       <ion-input name="numberOfDogs" type="number" [(ngModel)]="numberOfDogs" (ionChange)="addEmptyDogs(numberOfDogs)"></ion-input>
     </ion-item>
-    <div class="dog-info" *ngFor="let dog of dogs; let i = index">
+    <ion-row class="dog-info" *ngFor="let dog of dogs; let i = index">
       <h4 *ngIf="dogs.length > 1">{{i + 1 | countingConverter}} Dog</h4>
       <ion-item>
         <ion-label floating>Name</ion-label>
@@ -62,12 +62,17 @@
         <ion-toggle [(ngModel)]="dog.registered"></ion-toggle>
       </ion-item>
       <ion-item>
-        <ion-label floating>About {{dog.description || 'Dog'}}</ion-label>
+        <ion-label floating>About {{dog.name || 'Dog'}}</ion-label>
         <ion-textarea name="dogDescription" [(ngModel)]="dog.description"></ion-textarea>
       </ion-item>
-    </div>
-    <button ion-button (click)="createDogProfile(dogs)">Add My Dog{{numberOfDogs > 1 ? 's' : ''}}</button>
-  </div>
+    </ion-row>
+    <button *ngIf="numberOfDogs > 0 && comingFromCreateProfile" ion-button margin-top (click)="createEntireProfile(dogs)">
+      <span>Finish Creating Profile</span>
+    </button>
+    <button *ngIf="numberOfDogs > 0 && !comingFromCreateProfile" ion-button margin-top (click)="createDogsProfile(dogs)">
+      <span>Add My Dog{{numberOfDogs > 1 ? 's' : ''}}</span>
+    </button>
+  </ion-grid>
 
   <!-- city, state, number of dogs to register -->
   <!-- DOG INFO: dog name, age, breed, gender, neutered / spayed, papered / registered -->
