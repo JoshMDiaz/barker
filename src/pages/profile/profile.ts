@@ -60,7 +60,7 @@ export class ProfilePage {
     });
     loadingPopup.present();
     this.afAuth.authState.subscribe(userAuth => {
-      this.profile = this.afDb.object("/userProfile/" + userAuth.uid);
+      this.profile = this.afDb.object("/userProfiles/" + userAuth.uid);
       this.profile.subscribe(profile => {
         this.profileArray = profile;
         loadingPopup.dismiss();

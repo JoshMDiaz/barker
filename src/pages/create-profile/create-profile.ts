@@ -21,7 +21,6 @@ export class CreateProfilePage {
     name: string;
     abbreviation: string;
   }>;
-  type: "string"; // 'string' | 'js-date' | 'moment' | 'time' | 'object'
 
   constructor(
     public navCtrl: NavController,
@@ -31,7 +30,6 @@ export class CreateProfilePage {
     private alertCtrl: AlertController,
     private camera: Camera
   ) {
-    this.profile.dogs = [];
     // TODO: remove the OR from the email and uid
     this.email = this.navParams.data.email || "nodogs@test.com";
     this.uid = this.navParams.data.uid || "CzEe3rEBlSSgooQR62ti6AJQUjm1";
@@ -45,7 +43,7 @@ export class CreateProfilePage {
       profileData.photo || "",
       profileData.city,
       profileData.state,
-      profileData.dogs,
+      profileData.dogs || [],
       profileData.description || ""
     );
     this.navCtrl.setRoot("LookingForPage");
@@ -71,56 +69,6 @@ export class CreateProfilePage {
   //     const pictures = storage().ref("pictures");
   //     pictures.putString(image, "data_url");
   //   } catch (error) {}
-  // }
-
-  // goBack() {
-  //   let alert = this.alertCtrl.create({
-  //     title: "Are you sure?",
-  //     message:
-  //       "Going back will clear all data about dogs. Are you sure you want to go back?",
-  //     buttons: [
-  //       {
-  //         text: "Cancel",
-  //         role: "cancel",
-  //         handler: () => {}
-  //       },
-  //       {
-  //         text: "Go Back",
-  //         handler: () => {
-  //           this.isShowAboutDog = false;
-  //         }
-  //       }
-  //     ]
-  //   });
-  //   alert.present();
-  // }
-
-  // showAboutDog() {
-  //   if (this.profile.numberOfDogs > 0) {
-  //     this.profile.dogs = [];
-  //     for (let i = 0; i < this.profile.numberOfDogs; i++) {
-  //       this.profile.dogs.push({
-  //         name: "",
-  //         breed: "",
-  //         eyes: "",
-  //         gender: "",
-  //         fixed: false,
-  //         papered: false,
-  //         registered: false,
-  //         description: "",
-  //         birthdate: "",
-  //         photos: []
-  //       });
-  //     }
-  //     this.isShowAboutDog = true;
-  //   } else {
-  //     let alert = this.alertCtrl.create({
-  //       title: "Missing dogs",
-  //       subTitle: "Please tell us how many dogs you would like to sign up.",
-  //       buttons: ["Ok"]
-  //     });
-  //     alert.present();
-  //   }
   // }
 
   ionViewDidLoad() {

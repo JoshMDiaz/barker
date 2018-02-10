@@ -33,6 +33,26 @@
         <ion-label floating>Birthday</ion-label>
         <ion-input type="text" name="name" (click)="openCalendar(dog)" [(ngModel)]="dog.birthdate"></ion-input>
       </ion-item>
+      <ion-item>
+        <ion-label floating>About {{dog.name || 'Dog'}}</ion-label>
+        <ion-textarea name="dogDescription" [(ngModel)]="dog.description"></ion-textarea>
+      </ion-item>
+      <ion-item>
+        <ion-label>Neutered / Spayed</ion-label>
+        <ion-toggle [(ngModel)]="dog.fixed"></ion-toggle>
+      </ion-item>
+      <ion-item *ngIf="dog.fixed !== true">
+        <ion-label>Willing to breed?</ion-label>
+        <ion-toggle [(ngModel)]="dog.couldBreed"></ion-toggle>
+      </ion-item>
+      <ion-item>
+        <ion-label>Papered</ion-label>
+        <ion-toggle [(ngModel)]="dog.papered"></ion-toggle>
+      </ion-item>
+      <ion-item *ngIf="dog.papered">
+        <ion-label>AKC Registered</ion-label>
+        <ion-toggle [(ngModel)]="dog.registered"></ion-toggle>
+      </ion-item>
       <ion-list radio-group [(ngModel)]="dog.gender">
         <ion-item>
           <ion-label>
@@ -49,22 +69,6 @@
           <ion-radio value="female"></ion-radio>
         </ion-item>
       </ion-list>
-      <ion-item>
-        <ion-label>Neutered / Spayed</ion-label>
-        <ion-toggle [(ngModel)]="dog.fixed"></ion-toggle>
-      </ion-item>
-      <ion-item>
-        <ion-label>Papered</ion-label>
-        <ion-toggle [(ngModel)]="dog.papered"></ion-toggle>
-      </ion-item>
-      <ion-item *ngIf="dog.papered">
-        <ion-label>AKC Registered</ion-label>
-        <ion-toggle [(ngModel)]="dog.registered"></ion-toggle>
-      </ion-item>
-      <ion-item>
-        <ion-label floating>About {{dog.name || 'Dog'}}</ion-label>
-        <ion-textarea name="dogDescription" [(ngModel)]="dog.description"></ion-textarea>
-      </ion-item>
     </ion-row>
     <button *ngIf="numberOfDogs > 0 && comingFromCreateProfile" ion-button margin-top (click)="createEntireProfile(dogs)">
       <span>Finish Creating Profile</span>

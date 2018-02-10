@@ -4,6 +4,7 @@ export interface DogModel {
   gender: string;
   eyes: string;
   fixed: boolean;
+  couldBreed: boolean;
   papered: boolean;
   registered: boolean;
   description: string;

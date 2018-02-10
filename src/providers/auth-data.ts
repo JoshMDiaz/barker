@@ -63,7 +63,7 @@ export class AuthData {
   ) {
     firebase
       .database()
-      .ref("/userProfile")
+      .ref("/userProfiles")
       .child(uid)
       .once("value", function(snapshot) {
         var exists = snapshot.val() !== null;
@@ -86,7 +86,7 @@ export class AuthData {
           console.log("user " + uid + " does not exist!");
           firebase
             .database()
-            .ref("/userProfile")
+            .ref("/userProfiles")
             .child(uid)
             .set({
               name: displayName,
@@ -108,6 +108,7 @@ export class AuthData {
     gender,
     eyes,
     fixed,
+    couldBreed,
     papered,
     registered,
     description,
@@ -116,7 +117,7 @@ export class AuthData {
   ) {
     firebase
       .database()
-      .ref("/dogProfile")
+      .ref("/dogProfiles")
       .child(uid)
       .once("value", function(snapshot) {
         var exists = snapshot.val() !== null;
@@ -132,6 +133,7 @@ export class AuthData {
               gender: gender,
               eyes: eyes,
               fixed: fixed,
+              couldBreed: couldBreed,
               papered: papered,
               registered: registered,
               description: description,
@@ -142,7 +144,7 @@ export class AuthData {
           console.log("dog " + uid + " does not exist!");
           firebase
             .database()
-            .ref("/dogProfile")
+            .ref("/dogProfiles")
             .child(uid)
             .set({
               name: name,
@@ -150,6 +152,7 @@ export class AuthData {
               gender: gender,
               eyes: eyes,
               fixed: fixed,
+              couldBreed: couldBreed,
               papered: papered,
               registered: registered,
               description: description,
@@ -163,7 +166,7 @@ export class AuthData {
   updateUserProfileFB(uid, displayName, email, photo) {
     firebase
       .database()
-      .ref("/userProfile")
+      .ref("/userProfiles")
       .child(uid)
       .once("value", function(snapshot) {
         var exists = snapshot.val() !== null;
@@ -182,7 +185,7 @@ export class AuthData {
           console.log("user " + uid + " does not exist!");
           firebase
             .database()
-            .ref("/userProfile")
+            .ref("/userProfiles")
             .child(uid)
             .set({
               name: displayName,
@@ -211,7 +214,7 @@ export class AuthData {
       .then(newUser => {
         firebase
           .database()
-          .ref("/userProfile")
+          .ref("/userProfiles")
           .child(newUser.uid)
           .set({
             email: email

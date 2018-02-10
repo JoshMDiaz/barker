@@ -20,19 +20,7 @@ import { ModalController } from "ionic-angular/components/modal/modal-controller
 })
 export class CreateDogsProfilePage {
   profile = {} as ProfileModel;
-  dog = {
-    name: "",
-    breed: "",
-    gender: "",
-    eyes: "",
-    fixed: false,
-    papered: false,
-    registered: false,
-    description: "",
-    birthdate: "",
-    photos: []
-  };
-  dogs: Array<{}>;
+  dogs: Array<any>;
   uid: string;
   comingFromCreateProfile: boolean = false;
   numberOfDogs: number;
@@ -61,7 +49,19 @@ export class CreateDogsProfilePage {
   addEmptyDogs(num) {
     this.dogs = [];
     for (let i = 0; i < num; i++) {
-      this.dogs.push(this.dog);
+      this.dogs.push({
+        name: "",
+        breed: "",
+        gender: "",
+        eyes: "",
+        fixed: false,
+        couldBreed: false,
+        papered: false,
+        registered: false,
+        description: "",
+        birthdate: "",
+        photos: []
+      });
     }
   }
 
@@ -88,14 +88,12 @@ export class CreateDogsProfilePage {
 
     myCalendar.onDidDismiss((date: CalendarResult, type: string) => {
       dog.birthdate = date.string;
-      console.log(dog);
     });
   }
 
   ionViewDidLoad() {
     if (this.navParams.data && this.navParams.data.profileData) {
       this.profile = this.navParams.data.profileData;
-      console.log(this.profile);
     }
     this.afAuth.authState.subscribe(userAuth => {
       if (userAuth) {
