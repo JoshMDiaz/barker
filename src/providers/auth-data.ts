@@ -72,7 +72,7 @@ export class AuthData {
           console.log("user " + uid + " exists!");
           firebase
             .database()
-            .ref("userProfile/" + uid)
+            .ref("userProfiles/" + uid)
             .update({
               name: displayName,
               email: email,
@@ -126,7 +126,7 @@ export class AuthData {
           console.log("dog " + uid + " exists!");
           firebase
             .database()
-            .ref("dogProfile/" + uid)
+            .ref("dogProfiles/" + uid)
             .update({
               name: name,
               breed: breed,
@@ -175,7 +175,7 @@ export class AuthData {
           console.log("user " + uid + " exists!");
           firebase
             .database()
-            .ref("userProfile/" + uid)
+            .ref("userProfiles/" + uid)
             .update({
               name: displayName,
               email: email,

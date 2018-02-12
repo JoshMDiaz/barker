@@ -12,6 +12,7 @@ import {
   CalendarResult
 } from "ion2-calendar";
 import { ModalController } from "ionic-angular/components/modal/modal-controller";
+import { AuthData } from "../../providers/auth-data";
 
 @IonicPage()
 @Component({
@@ -31,6 +32,7 @@ export class CreateDogsProfilePage {
     public navParams: NavParams,
     public afAuth: AngularFireAuth,
     private http: Http,
+    private authData: AuthData,
     public modalCtrl: ModalController
   ) {
     if (this.navParams.data.profileData) {
@@ -40,10 +42,36 @@ export class CreateDogsProfilePage {
 
   createDogsProfile(dogs) {
     console.log(dogs);
+    dogs.forEach(dog => {
+      this.authData.updateDogsProfile(
+        this.uid,
+        dog.name,
+        dog.breed,
+        dog.gender,
+        dog.eyes,
+        dog.fixed,
+        dog.couldBreed,
+        dog.papered,
+        dog.registered,
+        dog.birthdate,
+        dog.description || "",
+        dog.photos || [""]
+      );
+    });
   }
 
   createEntireProfile(dogs) {
     console.log(dogs);
+    this.authData.updateUserProfile(
+      this.uid,
+      this.profile.name,
+      this.email,
+      this.profile.photo || "",
+      this.profile.city,
+      this.profile.state,
+      this.profile.dogs || [],
+      this.profile.description || ""
+    );
   }
 
   addEmptyDogs(num) {
@@ -94,12 +122,15 @@ export class CreateDogsProfilePage {
   ionViewDidLoad() {
     if (this.navParams.data && this.navParams.data.profileData) {
       this.profile = this.navParams.data.profileData;
+      console.log('profile:', this.profile);
     }
     this.afAuth.authState.subscribe(userAuth => {
       if (userAuth) {
         this.uid = userAuth.uid;
+        console.log('uid:', this.uid);
       }
     });
+
     this.http
       .get("/assets/data/breeds.json")
       .map(data => data.json())

@@ -35,6 +35,7 @@ export class SkipModalPage {
   ionViewDidLoad() {
     this.uid = this.navParams.data.uid;
     this.email = this.navParams.data.email;
+
   }
 
 }
