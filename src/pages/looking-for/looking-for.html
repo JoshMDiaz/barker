@@ -7,13 +7,13 @@
       <ion-icon name="arrow-back"></ion-icon>
       Back
     </button>
+    <ion-title>Interested in...</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
   <!-- What are you looking for? -->
   <div *ngIf="!whichDogScreen">
-    <h3 text-center padding>What are you looking for?</h3>
     <ion-grid>
       <ion-row text-center align-items-center class="breeding" (click)="lookingFor('breeding')">
         <ion-col>
