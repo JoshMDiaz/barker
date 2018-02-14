@@ -23,6 +23,7 @@ export class CreateDogsProfilePage {
   profile = {} as ProfileModel;
   dogs: Array<any>;
   uid: string;
+  email: string;
   comingFromCreateProfile: boolean = false;
   numberOfDogs: number;
   breeds: Array<string>;
@@ -41,10 +42,9 @@ export class CreateDogsProfilePage {
   }
 
   createDogsProfile(dogs) {
-    console.log(dogs);
     dogs.forEach(dog => {
       this.authData.updateDogsProfile(
-        this.uid,
+        this.uid + '-' + dog.name,
         dog.name,
         dog.breed,
         dog.gender,
@@ -61,7 +61,6 @@ export class CreateDogsProfilePage {
   }
 
   createEntireProfile(dogs) {
-    console.log(dogs);
     this.authData.updateUserProfile(
       this.uid,
       this.profile.name,
@@ -127,7 +126,8 @@ export class CreateDogsProfilePage {
     this.afAuth.authState.subscribe(userAuth => {
       if (userAuth) {
         this.uid = userAuth.uid;
-        console.log('uid:', this.uid);
+        this.email = userAuth.email;
+        console.log('uid:', this.uid, this.email);
       }
     });
 

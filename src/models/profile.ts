@@ -4,6 +4,6 @@ export interface ProfileModel {
   city: string;
   state: string;
   photo: string;
-  dogs: Array<string>
-  
+  dogs: Array<string>;
+  introComplete: boolean;
 }

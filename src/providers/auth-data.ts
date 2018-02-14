@@ -51,6 +51,16 @@ export class AuthData {
       });
   }
 
+  setUserProfileField(uid, field, value) {
+    let obj = {};
+    obj[field] = value;
+    firebase
+      .database()
+      .ref("/userProfiles")
+      .child(uid)
+      .update(obj);
+  }
+
   updateUserProfile(
     uid,
     displayName,
