@@ -41,7 +41,11 @@ export class CreateDogsProfilePage {
     }
   }
 
-  createDogsProfile(dogs) {
+  createProfile(dogs) {
+    let dogIds = [];
+    for (let i = 0; i < dogs.length; i++) {
+      dogIds.push(this.uid + '-' + dogs[i].name);
+    }
     dogs.forEach(dog => {
       this.authData.updateDogsProfile(
         this.uid + '-' + dog.name,
@@ -58,9 +62,6 @@ export class CreateDogsProfilePage {
         dog.photos || [""]
       );
     });
-  }
-
-  createEntireProfile(dogs) {
     this.authData.updateUserProfile(
       this.uid,
       this.profile.name,
@@ -68,7 +69,7 @@ export class CreateDogsProfilePage {
       this.profile.photo || "",
       this.profile.city,
       this.profile.state,
-      this.profile.dogs || [],
+      dogIds,
       this.profile.description || ""
     );
   }
@@ -121,13 +122,11 @@ export class CreateDogsProfilePage {
   ionViewDidLoad() {
     if (this.navParams.data && this.navParams.data.profileData) {
       this.profile = this.navParams.data.profileData;
-      console.log('profile:', this.profile);
     }
     this.afAuth.authState.subscribe(userAuth => {
       if (userAuth) {
         this.uid = userAuth.uid;
         this.email = userAuth.email;
-        console.log('uid:', this.uid, this.email);
       }
     });
 

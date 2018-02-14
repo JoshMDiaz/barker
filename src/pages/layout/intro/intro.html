@@ -4,7 +4,7 @@
     <ion-slide *ngFor="let slide of slides" [ngStyle]="{'background-color': slide.color} ">
       <ion-toolbar transparent>
         <ion-buttons end>
-          <button ion-button clear color="light" (click)="skip()">Skip</button>
+          <button ion-button clear color="light" (click)="goToCreateProfile()">Skip</button>
         </ion-buttons>
       </ion-toolbar>
 
@@ -30,10 +30,6 @@
         <button ion-button large outline round icon-right color="primary" margin-top (click)="goToCreateProfile()">
           Create Profile
           <ion-icon name="arrow-forward"></ion-icon>
-        </button>
-        <button ion-button large outline round icon-right color="primary" margin-top (click)="goToSetupDogsProfile()">
-          Register Dog's
-          <ion-icon name="fastforward"></ion-icon>
         </button>
       </div>
     </ion-slide>

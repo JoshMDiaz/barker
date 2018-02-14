@@ -35,20 +35,6 @@ export class CreateProfilePage {
     this.uid = this.navParams.data.uid || "CzEe3rEBlSSgooQR62ti6AJQUjm1";
   }
 
-  createProfile(profileData) {
-    this.authData.updateUserProfile(
-      this.uid,
-      profileData.name,
-      this.email,
-      profileData.photo || "",
-      profileData.city,
-      profileData.state,
-      profileData.dogs || [],
-      profileData.description || ""
-    );
-    this.navCtrl.setRoot("LookingForPage");
-  }
-
   addDogs(profileData) {
     this.navCtrl.push("CreateDogsProfilePage", { profileData: profileData });
   }

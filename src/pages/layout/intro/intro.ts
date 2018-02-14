@@ -1,7 +1,6 @@
 import { Component } from "@angular/core";
 import { IonicPage, NavController } from "ionic-angular";
 import { NavParams } from "ionic-angular/navigation/nav-params";
-import { ModalController } from "ionic-angular/components/modal/modal-controller";
 import { AuthData } from "../../../providers/auth-data";
 
 @IonicPage()
@@ -42,14 +41,8 @@ export class IntroPage {
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    public modalCtrl: ModalController,
     private authData: AuthData
   ) {}
-
-  skip() {
-    let skipModal = this.modalCtrl.create('SkipModalPage', {uid: this.navParams.data.uid, email: this.navParams.data.email});
-    skipModal.present();
-  }
 
   goToCreateProfile() {
     this.authData.setUserProfileField(
@@ -63,19 +56,6 @@ export class IntroPage {
     });
   }
 
-  goToSetupDogsProfile() {
-    this.authData.setUserProfileField(
-      this.navParams.data.uid,
-      'introCompleted',
-      true
-    );
-    this.navCtrl.setRoot("CreateDogsProfilePage", {
-      email: this.navParams.data.email,
-      uid: this.navParams.data.uid
-    });
-  }
-
-  ionViewDidLoad() {
-  }
+  ionViewDidLoad() {}
 
 }

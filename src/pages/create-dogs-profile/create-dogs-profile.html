@@ -70,11 +70,8 @@
         </ion-item>
       </ion-list>
     </ion-row>
-    <button *ngIf="numberOfDogs > 0 && comingFromCreateProfile" ion-button margin-top (click)="createEntireProfile(dogs)">
-      <span>Finish Creating Profile</span>
-    </button>
-    <button *ngIf="numberOfDogs > 0 && !comingFromCreateProfile" ion-button margin-top (click)="createDogsProfile(dogs)">
-      <span>Add My Dog{{numberOfDogs > 1 ? 's' : ''}}</span>
+    <button ion-button margin-top (click)="createProfile(dogs)">
+      <span>All Done</span>
     </button>
   </ion-grid>
 
