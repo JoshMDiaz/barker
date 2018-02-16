@@ -9,5 +9,6 @@ export interface DogModel {
   registered: boolean;
   description: string;
   birthdate: string;
+  ownerId: string;
   photos: Array<string>;
 }

@@ -10,7 +10,8 @@ import { AuthData } from "../../providers/auth-data";
 
 import {
   AngularFireDatabase,
-  FirebaseObjectObservable
+  FirebaseObjectObservable,
+  FirebaseListObservable
 } from "angularfire2/database-deprecated";
 import { AngularFireAuth } from "angularfire2/auth";
 
@@ -24,6 +25,7 @@ import md5 from "crypto-md5"; // dependencies:"crypto-md5"
 export class LookingForPage {
   profileArray: any = [];
   profile: FirebaseObjectObservable<any[]>;
+  dogs: any = [];
 
   whichDogScreen: boolean = false;
   choice: string = "to breed";
@@ -41,32 +43,45 @@ export class LookingForPage {
   ) {}
 
   ionViewDidLoad() {
+    // TODO: check all user dogs to make sure that they have checked available for breeding
+    // if they don't have any dogs available to breed and only have one dog, send them to the play date page
+    // if they have multiple dogs and all cannot breed, show the the list of their dogs to choose from
     this.afAuth.authState.subscribe(userAuth => {
       if (userAuth) {
         this.profile = this.afDb.object("/userProfiles/" + userAuth.uid);
         this.profile.subscribe(profile => {
           this.profileArray = profile;
         });
+        this.afDb
+          .list("/dogProfiles/", {query: {
+            orderByChild: "ownerId",
+            equalTo: userAuth.uid
+        }})
+          .subscribe(dogs => {
+            this.dogs = dogs;
+            console.log(this.dogs);
+          });
       } else {
-        this.navCtrl.setRoot("MainPage");
+        this.navCtrl.setRoot("FeedPage");
       }
     });
   }
 
   lookingFor(decision) {
     this.decision = decision;
-    if (this.profileArray.numberOfDogs > 1) {
+    console.log(this.profileArray.dogs);
+
+    if (this.profileArray.dogs.length > 1) {
       this.whichDogScreen = true;
       if (decision === "playDate") {
         this.choice = "for a play date";
       }
     } else {
-      this.goToFeed(this.profileArray.dogs[0], decision);
+      this.goToFeed(this.dogs[0], decision);
     }
   }
 
   goToFeed(dog, searchType) {
     this.navCtrl.push("FeedPage", { dog: dog, searchType: searchType });
   }
-
 }
