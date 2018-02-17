@@ -1,13 +1,13 @@
 <ion-header no-border>
   <ion-navbar transparent>
-    <button ion-button menuToggle *ngIf="!whichDogScreen">
+    <button ion-button menuToggle color="light" *ngIf="!whichDogScreen">
       <ion-icon name="menu"></ion-icon>
     </button>
-    <button ion-button icon-start clear *ngIf="whichDogScreen" (click)="whichDogScreen = !whichDogScreen">
+    <button ion-button icon-start clear color="light" *ngIf="whichDogScreen" (click)="whichDogScreen = !whichDogScreen">
       <ion-icon name="arrow-back"></ion-icon>
       Back
     </button>
-    <ion-title *ngIf="!whichDogScreen">Interested in...</ion-title>
+    <ion-title color="light" *ngIf="!whichDogScreen">Interested in...</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -15,35 +15,24 @@
   <!-- What are you looking for? -->
   <div *ngIf="!whichDogScreen">
     <ion-grid>
-      <ion-row text-center align-items-center class="breeding" (click)="lookingFor('breeding')">
-        <ion-col>
-          <div>
-            <h1>Breeding</h1>
-          </div>
-        </ion-col>
-      </ion-row>
-      <ion-row text-center align-items-center class="play-date" (click)="lookingFor('playDate')">
-        <ion-col>
-          <div>
-            <h1>Play Date</h1>
-          </div>
-        </ion-col>
-      </ion-row>
+      <ion-card text-center align-items-center class="breeding" (click)="lookingFor('breeding')">
+        <h3 class="card-title">Breeding</h3>
+      </ion-card>
+      <ion-card text-center align-items-center class="play-date" (click)="lookingFor('playDate')">
+        <h3 class="card-title">Play Date</h3>
+      </ion-card>
     </ion-grid>
   </div>
 
   <!-- Which dog? -->
   <div *ngIf="whichDogScreen">
-    <h3 text-center padding>Which dog is looking {{choice}}?</h3>
+    <h3 text-center padding *ngIf="decision === 'breeding'">Which dog do you want to breed?</h3>
+    <h3 text-center padding *ngIf="decision === 'playDate'">Pick the dogs for a play date.</h3>
     <ion-grid>
-      <ion-row text-center align-items-center *ngFor="let dog of filteredDogs" (click)="goToFeed(dog, decision)">
-        <ion-col>
-          <div>
-            <!-- TODO: dog name and image -->
-            <h4>{{dog.name}}</h4>
-          </div>
-        </ion-col>
-      </ion-row>
+      <ion-card *ngFor="let dog of filteredDogs" (click)="goToFeed(dog, decision)">
+        <img src="http://placehold.it/200x200" />
+        <h3 class="card-title">{{dog.name}}</h3>
+      </ion-card>
     </ion-grid>
   </div>
 

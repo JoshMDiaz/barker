@@ -1,12 +1,14 @@
 page-looking-for {
   ion-content {
     // TODO: figure out background -- Maybe a background image? Not sure yet
-    background-color: rgb(218, 218, 218) !important;
+    background-color: color($colors, lightblue) !important;
   }
-  ion-row {
+  ion-card {
     height: 200px;
     margin: 10px 0;
     border-radius: 4px;
+    position: relative;
+    text-align: center;
     &.breeding {
       background: linear-gradient(0deg, rgba(4, 21, 51, 0.6), rgba(4, 21, 51, 0.6)), url("../../assets/breeding.jpg");
       background-size: cover;
@@ -17,9 +19,14 @@ page-looking-for {
       background-size: cover;
       background-position: 50% 50%;
     }
-    h1 {
-      color: color($colors, white, base);
-      font-size: 48px;
-    }
+  }
+
+  .card-title {
+    position: absolute;
+    top: 36%;
+    font-size: 2.5em;
+    width: 100%;
+    font-weight: bold;
+    color: color($colors, white, base);;
   }
 }
