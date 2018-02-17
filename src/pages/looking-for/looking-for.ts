@@ -25,7 +25,8 @@ import md5 from "crypto-md5"; // dependencies:"crypto-md5"
 export class LookingForPage {
   profileArray: any = [];
   profile: FirebaseObjectObservable<any[]>;
-  dogs: any = [];
+  dogs: Array<any> = [];
+  filteredDogs: Array<any> = [];
 
   whichDogScreen: boolean = false;
   choice: string = "to breed";
@@ -53,13 +54,14 @@ export class LookingForPage {
           this.profileArray = profile;
         });
         this.afDb
-          .list("/dogProfiles/", {query: {
-            orderByChild: "ownerId",
-            equalTo: userAuth.uid
-        }})
+          .list("/dogProfiles/", {
+            query: {
+              orderByChild: "ownerId",
+              equalTo: userAuth.uid
+            }
+          })
           .subscribe(dogs => {
             this.dogs = dogs;
-            console.log(this.dogs);
           });
       } else {
         this.navCtrl.setRoot("FeedPage");
@@ -68,16 +70,22 @@ export class LookingForPage {
   }
 
   lookingFor(decision) {
+    this.filteredDogs = Array.from(this.dogs);
     this.decision = decision;
-    console.log(this.profileArray.dogs);
-
-    if (this.profileArray.dogs.length > 1) {
+    if (decision === 'breeding') {
+      for (let i = 0; i < this.filteredDogs.length; i++) {
+        if (this.filteredDogs[i].couldBreed === false) {
+          this.filteredDogs.splice(i, 1);
+        }
+      }
+    }
+    if (this.filteredDogs.length > 1) {
       this.whichDogScreen = true;
       if (decision === "playDate") {
         this.choice = "for a play date";
       }
     } else {
-      this.goToFeed(this.dogs[0], decision);
+      this.goToFeed(this.filteredDogs[0], decision);
     }
   }
 

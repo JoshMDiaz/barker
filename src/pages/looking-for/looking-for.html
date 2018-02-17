@@ -7,7 +7,7 @@
       <ion-icon name="arrow-back"></ion-icon>
       Back
     </button>
-    <ion-title>Interested in...</ion-title>
+    <ion-title *ngIf="!whichDogScreen">Interested in...</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -36,7 +36,7 @@
   <div *ngIf="whichDogScreen">
     <h3 text-center padding>Which dog is looking {{choice}}?</h3>
     <ion-grid>
-      <ion-row text-center align-items-center *ngFor="let dog of dogs" (click)="goToFeed(dog, this.decision)">
+      <ion-row text-center align-items-center *ngFor="let dog of filteredDogs" (click)="goToFeed(dog, decision)">
         <ion-col>
           <div>
             <!-- TODO: dog name and image -->

@@ -68,8 +68,8 @@ export class AuthData {
     photo,
     city,
     state,
-    dogs,
-    description
+    description,
+    numOfDogs
   ) {
     firebase
       .database()
@@ -89,8 +89,8 @@ export class AuthData {
               photo: photo,
               city: city,
               state: state,
-              dogs: dogs,
-              description: description
+              description: description,
+              numOfDogs: numOfDogs
             });
         } else {
           console.log("user " + uid + " does not exist!");
@@ -104,15 +104,14 @@ export class AuthData {
               photo: photo,
               city: city,
               state: state,
-              dogs: dogs,
-              description: description
+              description: description,
+              numOfDogs: numOfDogs
             });
         }
       });
   }
 
   updateDogsProfile(
-    uid,
     name,
     breed,
     gender,
@@ -123,21 +122,22 @@ export class AuthData {
     registered,
     description,
     birthdate,
+    ownerId,
     photos
   ) {
     firebase
       .database()
-      .ref("/dogProfiles")
-      .child(uid)
+      .ref("/")
+      .child('dogProfiles')
       .once("value", function(snapshot) {
         var exists = snapshot.val() !== null;
 
         if (exists) {
-          console.log("dog " + uid + " exists!");
           firebase
             .database()
-            .ref("dogProfiles/" + uid)
-            .update({
+            .ref("/")
+            .child("dogProfiles")
+            .push({
               name: name,
               breed: breed,
               gender: gender,
@@ -148,15 +148,15 @@ export class AuthData {
               registered: registered,
               description: description,
               birthdate: birthdate,
+              ownerId: ownerId,
               photos: photos
             });
         } else {
-          console.log("dog " + uid + " does not exist!");
           firebase
             .database()
-            .ref("/dogProfiles")
-            .child(uid)
-            .set({
+            .ref("/")
+            .child("dogProfiles")
+            .push({
               name: name,
               breed: breed,
               gender: gender,
@@ -167,6 +167,7 @@ export class AuthData {
               registered: registered,
               description: description,
               birthdate: birthdate,
+              ownerId: ownerId,
               photos: photos
             });
         }

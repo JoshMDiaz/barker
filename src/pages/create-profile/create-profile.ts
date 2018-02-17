@@ -31,8 +31,8 @@ export class CreateProfilePage {
     private camera: Camera
   ) {
     // TODO: remove the OR from the email and uid
-    this.email = this.navParams.data.email || "nodogs@test.com";
-    this.uid = this.navParams.data.uid || "CzEe3rEBlSSgooQR62ti6AJQUjm1";
+    this.email = this.navParams.data.email;
+    this.uid = this.navParams.data.uid;
   }
 
   addDogs(profileData) {

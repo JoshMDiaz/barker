@@ -13,6 +13,7 @@ import {
 } from "ion2-calendar";
 import { ModalController } from "ionic-angular/components/modal/modal-controller";
 import { AuthData } from "../../providers/auth-data";
+import { AngularFireDatabase } from "angularfire2/database-deprecated";
 
 @IonicPage()
 @Component({
@@ -22,6 +23,7 @@ import { AuthData } from "../../providers/auth-data";
 export class CreateDogsProfilePage {
   profile = {} as ProfileModel;
   dogs: Array<any>;
+  ownersDogIds: Array<any>;
   uid: string;
   email: string;
   comingFromCreateProfile: boolean = false;
@@ -34,6 +36,7 @@ export class CreateDogsProfilePage {
     public afAuth: AngularFireAuth,
     private http: Http,
     private authData: AuthData,
+    public afDb: AngularFireDatabase,
     public modalCtrl: ModalController
   ) {
     if (this.navParams.data.profileData) {
@@ -42,13 +45,8 @@ export class CreateDogsProfilePage {
   }
 
   createProfile(dogs) {
-    let dogIds = [];
-    for (let i = 0; i < dogs.length; i++) {
-      dogIds.push(this.uid + '-' + dogs[i].name);
-    }
     dogs.forEach(dog => {
       this.authData.updateDogsProfile(
-        this.uid + '-' + dog.name,
         dog.name,
         dog.breed,
         dog.gender,
@@ -57,11 +55,16 @@ export class CreateDogsProfilePage {
         dog.couldBreed,
         dog.papered,
         dog.registered,
-        dog.birthdate,
         dog.description || "",
+        dog.birthdate,
+        this.uid,
         dog.photos || [""]
       );
     });
+    this.createUserProfile(dogs);
+  }
+
+  createUserProfile(dogs) {
     this.authData.updateUserProfile(
       this.uid,
       this.profile.name,
@@ -69,8 +72,8 @@ export class CreateDogsProfilePage {
       this.profile.photo || "",
       this.profile.city,
       this.profile.state,
-      dogIds,
-      this.profile.description || ""
+      this.profile.description || "",
+      dogs.length
     );
   }
 

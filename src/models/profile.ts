@@ -1,9 +1,9 @@
 export interface ProfileModel {
   name: string;
-  description: string;
+  photo: string;
   city: string;
   state: string;
-  photo: string;
-  dogs: Array<string>;
+  description: string;
+  numOfDogs: number;
   introComplete: boolean;
 }
