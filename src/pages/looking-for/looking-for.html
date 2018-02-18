@@ -1,13 +1,13 @@
 <ion-header no-border>
   <ion-navbar transparent>
-    <button ion-button menuToggle color="light" *ngIf="!whichDogScreen">
+    <button ion-button menuToggle *ngIf="!whichDogScreen">
       <ion-icon name="menu"></ion-icon>
     </button>
-    <button ion-button icon-start clear color="light" *ngIf="whichDogScreen" (click)="whichDogScreen = !whichDogScreen">
+    <button ion-button icon-start clear *ngIf="whichDogScreen" (click)="whichDogScreen = !whichDogScreen">
       <ion-icon name="arrow-back"></ion-icon>
       Back
     </button>
-    <ion-title color="light" *ngIf="!whichDogScreen">Interested in...</ion-title>
+    <ion-title *ngIf="!whichDogScreen">Interested in...</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -24,13 +24,12 @@
     </ion-grid>
   </div>
 
-  <!-- Which dog? -->
+  <!-- Which dog do you want to breed? -->
   <div *ngIf="whichDogScreen">
-    <h3 text-center padding *ngIf="decision === 'breeding'">Which dog do you want to breed?</h3>
-    <h3 text-center padding *ngIf="decision === 'playDate'">Pick the dogs for a play date.</h3>
+    <h3 text-center padding>Which dog do you want to breed?</h3>
     <ion-grid>
-      <ion-card *ngFor="let dog of filteredDogs" (click)="goToFeed(dog, decision)">
-        <img src="http://placehold.it/200x200" />
+      <!-- TODO: dynamically insert url for background image -->
+      <ion-card *ngFor="let dog of filteredDogs" (click)="goToFeed(dog, decision)" [ngStyle]="{'background': 'linear-gradient(0deg, rgba(4, 21, 51, 0.6), rgba(4, 21, 51, 0.6)), url(../../assets/breeding.jpg)', 'background-size' : 'cover', 'background-position' : '50% 50%'}">
         <h3 class="card-title">{{dog.name}}</h3>
       </ion-card>
     </ion-grid>

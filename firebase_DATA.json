@@ -134,6 +134,73 @@
     "img" : "http://ionicframework.com/dist/preview-app/www/assets/img/avatar-ts-squeeze.png",
     "name" : "Elijah Delacruz"
   } ],
+  "dogProfiles" : {
+    "-L5WivjK_zt3Zwjantmr" : {
+      "birthdate" : "2017-10-04",
+      "breed" : [ "Aidi" ],
+      "couldBreed" : false,
+      "description" : "New puppy.",
+      "eyes" : "Brown",
+      "fixed" : false,
+      "gender" : "female",
+      "name" : "Leia",
+      "ownerId" : "s0XPHC517ONbDCaVqIu7DehI0Xb2",
+      "papered" : false,
+      "registered" : false
+    },
+    "-L5WivjP5AJeumDQo0AZ" : {
+      "birthdate" : "2017-09-14",
+      "breed" : [ "Aidi" ],
+      "couldBreed" : true,
+      "description" : "Cool dog.",
+      "eyes" : "Brown / Gold",
+      "fixed" : false,
+      "gender" : "male",
+      "name" : "Rafi",
+      "ownerId" : "s0XPHC517ONbDCaVqIu7DehI0Xb2",
+      "papered" : false,
+      "registered" : false
+    },
+    "-L5WivjP5AJeumDQ1234" : {
+      "birthdate" : "2017-09-15",
+      "breed" : [ "Siberian Husky" ],
+      "couldBreed" : true,
+      "description" : "True stud.",
+      "eyes" : "White / Blue",
+      "fixed" : false,
+      "gender" : "male",
+      "name" : "Steel",
+      "ownerId" : "s0XPHC517ONbDCaVqIu7DehI0Xb2",
+      "papered" : true,
+      "registered" : true
+    },
+    "-L5WqAJzxn8y0AV6iDIW" : {
+      "birthdate" : "2018-02-08",
+      "breed" : [ "Afghan Hound" ],
+      "couldBreed" : false,
+      "description" : "Puppy here...",
+      "eyes" : "Gold",
+      "fixed" : false,
+      "gender" : "female",
+      "name" : "Leia",
+      "ownerId" : "FUrsVpdicZTsd1KGxheEa0VE9rs2",
+      "papered" : false,
+      "registered" : false
+    },
+    "-L5WqAK5os5XyurvFYuJ" : {
+      "birthdate" : "1998-03-17",
+      "breed" : [ "Afghan Hound" ],
+      "couldBreed" : true,
+      "description" : "Cool dog",
+      "eyes" : "Brown",
+      "fixed" : false,
+      "gender" : "male",
+      "name" : "Rafi",
+      "ownerId" : "FUrsVpdicZTsd1KGxheEa0VE9rs2",
+      "papered" : false,
+      "registered" : false
+    }
+  },
   "feed" : [ {
     "comment" : 13,
     "description" : " Ultra Music Festival has consistently remained one of the premier electronic music festivals in the U.S",
@@ -1050,5 +1117,27 @@
     "date" : 1488331624
   }, {
     "date" : 1489195624
-  } ]
+  } ],
+  "userProfiles" : {
+    "FUrsVpdicZTsd1KGxheEa0VE9rs2" : {
+      "city" : "Lehi",
+      "description" : "Something",
+      "email" : "shy@test.com",
+      "introCompleted" : true,
+      "name" : "Shy",
+      "numOfDogs" : 2,
+      "photo" : "",
+      "state" : "AZ"
+    },
+    "s0XPHC517ONbDCaVqIu7DehI0Xb2" : {
+      "city" : "Lehi",
+      "description" : "Owner. Creator. The man.",
+      "email" : "iknowtennispro@gmail.com",
+      "introCompleted" : true,
+      "name" : "Josh",
+      "numOfDogs" : 2,
+      "photo" : "",
+      "state" : "UT"
+    }
+  }
 }

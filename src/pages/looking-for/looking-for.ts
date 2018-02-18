@@ -24,14 +24,11 @@ import md5 from "crypto-md5"; // dependencies:"crypto-md5"
 })
 export class LookingForPage {
   profileArray: any = [];
+  uid: string;
   profile: FirebaseObjectObservable<any[]>;
   dogs: Array<any> = [];
   filteredDogs: Array<any> = [];
-
   whichDogScreen: boolean = false;
-  choice: string = "to breed";
-  dog: {};
-  decision: string;
 
   constructor(
     public navCtrl: NavController,
@@ -49,7 +46,8 @@ export class LookingForPage {
     // if they have multiple dogs and all cannot breed, show the the list of their dogs to choose from
     this.afAuth.authState.subscribe(userAuth => {
       if (userAuth) {
-        this.profile = this.afDb.object("/userProfiles/" + userAuth.uid);
+        this.uid = userAuth.uid;
+        this.profile = this.afDb.object("/userProfiles/" + this.uid);
         this.profile.subscribe(profile => {
           this.profileArray = profile;
         });
@@ -57,39 +55,39 @@ export class LookingForPage {
           .list("/dogProfiles/", {
             query: {
               orderByChild: "ownerId",
-              equalTo: userAuth.uid
+              equalTo: this.uid
             }
           })
           .subscribe(dogs => {
             this.dogs = dogs;
           });
       } else {
-        this.navCtrl.setRoot("FeedPage");
+        this.navCtrl.setRoot("LoginPage");
       }
     });
   }
 
-  lookingFor(decision) {
-    this.filteredDogs = Array.from(this.dogs);
-    this.decision = decision;
-    if (decision === 'breeding') {
-      for (let i = 0; i < this.filteredDogs.length; i++) {
-        if (this.filteredDogs[i].couldBreed === false) {
-          this.filteredDogs.splice(i, 1);
-        }
+  filterDogs(dogs) {
+    var dogArr = [];
+    for (let i = 0; i < dogs.length; i++) {
+      if (dogs[i].couldBreed === true) {
+        dogArr.push(dogs[i]);
       }
     }
-    if (this.filteredDogs.length > 1) {
+    this.filteredDogs = dogArr;
+    return dogArr;
+  }
+
+  lookingFor(decision) {
+    this.filteredDogs = Array.from(this.dogs);
+    if (decision === 'breeding' && this.filterDogs(this.filteredDogs).length > 1) {
       this.whichDogScreen = true;
-      if (decision === "playDate") {
-        this.choice = "for a play date";
-      }
     } else {
       this.goToFeed(this.filteredDogs[0], decision);
     }
   }
 
   goToFeed(dog, searchType) {
-    this.navCtrl.push("FeedPage", { dog: dog, searchType: searchType });
+    this.navCtrl.push("FeedPage", { dog: dog, searchType: searchType, uid: this.uid });
   }
 }

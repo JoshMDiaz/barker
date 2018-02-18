@@ -20,30 +20,44 @@ import "rxjs/add/operator/map"; // you might need to import this, or not depends
 export class FeedPage {
   feeds: FirebaseListObservable<any[]>;
   feedView: string = "activity";
+  dogs: Array<any> = [];
 
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
     public modalCtrl: ModalController,
     public loadingCtrl: LoadingController,
-    public afDB: AngularFireDatabase
+    public afDb: AngularFireDatabase
   ) {
     let loadingPopup = this.loadingCtrl.create({
       spinner: "crescent",
       content: ""
     });
     loadingPopup.present();
-    this.feeds = <FirebaseListObservable<any[]>>afDB
+    this.feeds = <FirebaseListObservable<any[]>>afDb
       .list("/feed")
       .map(feeds => {
         return feeds.map(feeds => {
-          feeds.images = afDB.list("/feed/" + feeds.$key + "/images");
+          feeds.images = afDb.list("/feed/" + feeds.$key + "/images");
           loadingPopup
             .dismiss()
             .catch(() => console.log("ERROR CATCH: LoadingController dismiss"));
           return feeds;
         });
       });
+    // this.afDb
+    //   .list("/dogProfiles/", {
+    //     query: {
+    //       orderByChild: "ownerId",
+    //       equalTo: !this.navParams.data.uid
+    //     }
+    //   })
+    //   .subscribe(dogs => {
+    //     this.dogs = dogs;
+    //     loadingPopup
+    //       .dismiss()
+    //       .catch(() => console.log("ERROR CATCH: LoadingController dismiss"));
+    //   });
   }
 
   ionViewDidLoad() {
