@@ -15,7 +15,7 @@
 
 <ion-content fullscreen="" no-paddding shrink-header [headerToHide]="'dog-search-header'">
 
-  <ion-card *ngFor="let dog of dogs">
+  <ion-card *ngFor="let dog of dogs" (click)="seeProfile(dog)">
     <ion-slides pager>
       <ion-slide *ngFor="let photo of dog.photos" [ngStyle]="{'background' : 'url(' + photo.url + ')'}">
       </ion-slide>

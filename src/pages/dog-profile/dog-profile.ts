@@ -29,13 +29,16 @@ export class DogProfilePage {
     name: string;
     breed: string;
     gender: string;
-    fixed: boolean;
     eyes: string;
+    fixed: boolean;
+    couldBreed: boolean;
     papered: boolean;
     registered: boolean;
     description: string;
     birthdate: string;
+    ownerId: string;
     photos: Array<string>;
+    profileImg: string;
   };
 
   constructor(
@@ -45,20 +48,7 @@ export class DogProfilePage {
     private toastCtrl: ToastController,
     public afDB: AngularFireDatabase
   ) {
-    this.dogProfile = this.navParams.data.dog;
-    // let loadingPopup = this.loadingCtrl.create({
-    //   spinner: 'crescent',
-    //   content: ''
-    // });
-    // loadingPopup.present();
-
-    // this.profile = afDB.object('/profile/1');
-    // this.friends = afDB.list('/profile/1/friends');
-    // this.imgGallery = afDB.list('/gallery');
-    // this.imgGallery.subscribe(imgGallery => {
-    //     this.imgGalleryArray = imgGallery;
-    //     loadingPopup.dismiss()
-    // })
+    this.dogProfile = this.navParams.data.dogProfile;
   }
 
   toggleInterest() {
@@ -81,5 +71,9 @@ export class DogProfilePage {
       duration: 1000
     });
     toast.present();
+  }
+
+  ionViewDidLoad() {
+    console.log(this.navParams.data);
   }
 }

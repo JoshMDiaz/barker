@@ -17,15 +17,16 @@ export class DogSearchPage {
   uid: string;
   dogs: Array<any> = [];
 
+  seeProfile(dog) {
+    this.navCtrl.push('DogProfilePage', {searchingDog: this.navParams.data.dog, dogProfile: dog});
+  }
+
   ionViewDidLoad() {
     this.uid = this.navParams.data.uid;
 
-    this.afDb
-      .list("/dogProfiles/")
-      .subscribe(dogs => {
-        this.dogs = dogs;
-        console.log(this.dogs);
-
-      });
+    this.afDb.list("/dogProfiles/").subscribe(dogs => {
+      this.dogs = dogs;
+      console.log(this.dogs);
+    });
   }
 }

@@ -1,12 +1,13 @@
-<ion-header no-border>
-  <ion-navbar transparent>
+<ion-header no-border class="dog-profile-header">
+  <ion-navbar color="white" style="background: none; border-bottom: none">
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>{{dogProfile.name}}
+    <ion-title>
+      {{dogProfile.name}}
       <ion-icon [name]="dogProfile.gender === 'male' ? 'male' : 'female'" item-left class="gender-icon" [ngClass]="dogProfile.gender === 'male' ? 'male' : 'female'"></ion-icon>
     </ion-title>
-    <ion-buttons>
+    <ion-buttons right>
       <button ion-button (click)="toggleFavorite()" icon-only clear>
         <ion-icon name="star" [ngClass]="false ? 'checked' : ''" class="favorite-button"></ion-icon>
       </button>
@@ -18,7 +19,7 @@
   <div id="profile-info" padding>
     <img id="profile-image" class="pop-in" src="{{'http://placehold.it/200x200'}}" />
     <h3>{{dogProfile.breed | commaSpace}}</h3>
-    <p>{{dogProfile.age}} year{{dogProfile.age > 1 ? 's' : null}} old</p>
+    <p>{{dogProfile.birthdate | age}}</p>
     <button ion-button *ngIf="!messageSent" block color="green" (click)="message()">Message</button>
     <button ion-button icon-left *ngIf="messageSent" block color="gray" (click)="message()">
       <ion-icon name="checkmark"></ion-icon>
@@ -28,7 +29,7 @@
 
 
   <!-- About -->
-  <ion-list no-lines text-wrap>
+  <ion-list no-lines text-wrap padding>
     <ion-list-header>
       <h2>About</h2>
     </ion-list-header>
@@ -50,7 +51,7 @@
   <!--***********  Segement one ***********-->
   <ion-grid *ngIf="segmentView==='one'">
     <ion-row wrap color="gray">
-      <ion-col col-4 *ngFor="let image of imgGalleryArray, let i = index">
+      <ion-col col-4 *ngFor="let image of dogProfile.photos, let i = index">
         <img src={{image.url}} />
       </ion-col>
     </ion-row>
@@ -76,6 +77,11 @@
         <ion-icon [name]="dogProfile.fixed=== false ? 'happy' : 'sad'" item-left></ion-icon>
         <h4>Neutered / Spayed</h4>
         <p>{{dogProfile.fixed ? 'Yes' : 'No'}}</p>
+      </ion-item>
+      <ion-item *ngIf="!dogProfile.fixed">
+        <ion-icon name="flame" item-left></ion-icon>
+        <h4>Willing to Breed</h4>
+        <p>{{dogProfile.couldBreed ? 'Yes' : 'No'}}</p>
       </ion-item>
       <ion-item>
         <ion-icon name="paper" item-left></ion-icon>
