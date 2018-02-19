@@ -11,4 +11,5 @@ export interface DogModel {
   birthdate: string;
   ownerId: string;
   photos: Array<string>;
+  profileImg: string;
 }

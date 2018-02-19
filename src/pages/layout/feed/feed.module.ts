@@ -8,7 +8,7 @@ import { ShrinkHeaderModule } from '../../../components/shrink-header/shrink-hea
   ],
   imports: [
     IonicPageModule.forChild(FeedPage),
-    ShrinkHeaderModule 
+    ShrinkHeaderModule
   ],
   exports: [
     FeedPage

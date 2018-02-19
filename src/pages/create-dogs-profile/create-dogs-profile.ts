@@ -23,10 +23,8 @@ import { AngularFireDatabase } from "angularfire2/database-deprecated";
 export class CreateDogsProfilePage {
   profile = {} as ProfileModel;
   dogs: Array<any>;
-  ownersDogIds: Array<any>;
   uid: string;
   email: string;
-  comingFromCreateProfile: boolean = false;
   numberOfDogs: number;
   breeds: Array<string>;
 
@@ -38,11 +36,7 @@ export class CreateDogsProfilePage {
     private authData: AuthData,
     public afDb: AngularFireDatabase,
     public modalCtrl: ModalController
-  ) {
-    if (this.navParams.data.profileData) {
-      this.comingFromCreateProfile = true;
-    }
-  }
+  ) {}
 
   createProfile(dogs) {
     dogs.forEach(dog => {
@@ -58,7 +52,8 @@ export class CreateDogsProfilePage {
         dog.description || "",
         dog.birthdate,
         this.uid,
-        dog.photos || [""]
+        dog.photos || [""],
+        dog.profileImg || ""
       );
     });
     this.createUserProfile(dogs);

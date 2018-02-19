@@ -1,0 +1,46 @@
+<ion-header no-border class="dog-search-header">
+  <ion-navbar color="white" style="background: none; border-bottom: none">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Search</ion-title>
+    <ion-buttons right>
+      <button ion-button icon-only>
+        <ion-icon name="settings"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content fullscreen="" no-paddding shrink-header [headerToHide]="'dog-search-header'">
+
+  <ion-card *ngFor="let dog of dogs">
+    <ion-slides pager>
+      <ion-slide *ngFor="let photo of dog.photos" [ngStyle]="{'background' : 'url(' + photo.url + ')'}">
+      </ion-slide>
+    </ion-slides>
+
+    <ion-card-content>
+      <ion-card-title>
+        {{dog.name}}
+      </ion-card-title>
+      <ion-row justify-content-between>
+        <p>{{dog.birthdate | age}}</p>
+        <ion-icon [name]="dog.gender === 'male' ? 'male' : 'female'" item-left class="gender-icon" [ngClass]="dog.gender === 'male' ? 'male' : 'female'"></ion-icon>
+      </ion-row>
+      <p>{{dog.description}}</p>
+    </ion-card-content>
+
+    <ion-row justify-content-between>
+      <button ion-button icon-left clear [color]="!dog.liked ? 'gray' : 'red'">
+        <ion-icon name="heart"></ion-icon>
+      </button>
+      <button ion-button icon-left clear color="pink">
+        <div>MESSAGE</div>
+      </button>
+    </ion-row>
+
+  </ion-card>
+
+</ion-content>

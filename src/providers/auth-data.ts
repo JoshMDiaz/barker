@@ -123,7 +123,8 @@ export class AuthData {
     description,
     birthdate,
     ownerId,
-    photos
+    photos,
+    profileImg
   ) {
     firebase
       .database()
@@ -149,7 +150,8 @@ export class AuthData {
               description: description,
               birthdate: birthdate,
               ownerId: ownerId,
-              photos: photos
+              photos: photos,
+              profileImg: profileImg
             });
         } else {
           firebase
@@ -168,7 +170,8 @@ export class AuthData {
               description: description,
               birthdate: birthdate,
               ownerId: ownerId,
-              photos: photos
+              photos: photos,
+              profileImg: profileImg
             });
         }
       });

@@ -88,6 +88,6 @@ export class LookingForPage {
   }
 
   goToFeed(dog, searchType) {
-    this.navCtrl.push("FeedPage", { dog: dog, searchType: searchType, uid: this.uid });
+    this.navCtrl.push("DogSearchPage", { dog: dog, searchType: searchType, uid: this.uid });
   }
 }
