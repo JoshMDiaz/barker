@@ -47,9 +47,12 @@ export class LandingPage {
         this.profile = this.afDb.object("/userProfiles/" + userAuth.uid);
         this.profile.subscribe(profile => {
           this.profileArray = profile;
-          if (this.profileArray.introCompleted) {
+          if (this.profileArray.registered) {
             loadingPopup.dismiss();
             this.navCtrl.setRoot("LookingForPage");
+          } else if (this.profileArray.introCompleted) {
+            loadingPopup.dismiss();
+            this.navCtrl.setRoot("CreateProfilePage");
           } else {
             loadingPopup.dismiss();
             this.navCtrl.setRoot("IntroPage", {email: this.profileArray.email, uid: userAuth.uid});

@@ -30,7 +30,6 @@ export class CreateProfilePage {
     private alertCtrl: AlertController,
     private camera: Camera
   ) {
-    // TODO: remove the OR from the email and uid
     this.email = this.navParams.data.email;
     this.uid = this.navParams.data.uid;
   }

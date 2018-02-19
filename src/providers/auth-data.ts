@@ -69,7 +69,8 @@ export class AuthData {
     city,
     state,
     description,
-    numOfDogs
+    numOfDogs,
+    registered
   ) {
     firebase
       .database()
@@ -90,7 +91,8 @@ export class AuthData {
               city: city,
               state: state,
               description: description,
-              numOfDogs: numOfDogs
+              numOfDogs: numOfDogs,
+              registered: registered
             });
         } else {
           console.log("user " + uid + " does not exist!");
@@ -105,7 +107,8 @@ export class AuthData {
               city: city,
               state: state,
               description: description,
-              numOfDogs: numOfDogs
+              numOfDogs: numOfDogs,
+              registered: registered
             });
         }
       });

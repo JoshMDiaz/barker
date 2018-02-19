@@ -16,15 +16,35 @@ export class DogSearchPage {
 
   uid: string;
   dogs: Array<any> = [];
+  filter: any = {};
 
   seeProfile(dog) {
     this.navCtrl.push('DogProfilePage', {searchingDog: this.navParams.data.dog, dogProfile: dog});
   }
 
+  setFilterCriteria(dog) {
+    if (this.navParams.data.searchType === 'breeding') {
+      this.findGender(dog);
+    }
+  }
+
+  findGender(dog) {
+    let gender = 'male';
+    if (dog.gender === 'male' ) {
+      gender = 'female';
+    }
+    this.filter.gender = gender;
+  }
+
   ionViewDidLoad() {
     this.uid = this.navParams.data.uid;
 
-    this.afDb.list("/dogProfiles/").subscribe(dogs => {
+    this.afDb.list("/dogProfiles/", {
+      query: {
+        orderByChild: "gender",
+        equalTo: this.filter.gender
+      }
+    }).subscribe(dogs => {
       this.dogs = dogs;
       console.log(this.dogs);
     });

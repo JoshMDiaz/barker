@@ -15,7 +15,7 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content padding [headerToHide]="'dog-profile-header'">
   <div id="profile-info" padding>
     <img id="profile-image" class="pop-in" src="{{'http://placehold.it/200x200'}}" />
     <h3>{{dogProfile.breed | commaSpace}}</h3>

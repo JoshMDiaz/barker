@@ -6,4 +6,13 @@ page-create-dogs-profile {
     margin: 0 !important;
     width: 100% !important;
   }
+  .item {
+    padding-left: 0;
+  }
+  .item-divider {
+    margin: 20px -20px 0;
+    width: calc(100% + 40px);
+    padding-left: 20px;
+    font-size: 16px;
+  }
 }

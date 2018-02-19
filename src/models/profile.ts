@@ -6,4 +6,5 @@ export interface ProfileModel {
   description: string;
   numOfDogs: number;
   introComplete: boolean;
+  registered: boolean;
 }

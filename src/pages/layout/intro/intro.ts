@@ -45,15 +45,15 @@ export class IntroPage {
   ) {}
 
   goToCreateProfile() {
+    this.navCtrl.setRoot("CreateProfilePage", {
+      email: this.navParams.data.email,
+      uid: this.navParams.data.uid
+    });
     this.authData.setUserProfileField(
       this.navParams.data.uid,
       'introCompleted',
       true
     );
-    this.navCtrl.setRoot("CreateProfilePage", {
-      email: this.navParams.data.email,
-      uid: this.navParams.data.uid
-    });
   }
 
   ionViewDidLoad() {}
