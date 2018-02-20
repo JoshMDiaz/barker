@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 import { CreateDogsProfilePage } from './create-dogs-profile';
 import { PipesModule } from '../../pipes/pipes.module';
-import { ShrinkHeaderModule } from '../../components/shrink-header/shrink-header.module';
 
 @NgModule({
   declarations: [
@@ -10,8 +9,7 @@ import { ShrinkHeaderModule } from '../../components/shrink-header/shrink-header
   ],
   imports: [
     IonicPageModule.forChild(CreateDogsProfilePage),
-    PipesModule,
-    ShrinkHeaderModule
+    PipesModule
   ],
 })
 export class CreateDogsProfilePageModule {}

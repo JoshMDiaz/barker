@@ -1,4 +1,4 @@
-<ion-header no-border class="dog-profile-header">
+<ion-header no-border>
   <ion-navbar color="white" style="background: none; border-bottom: none">
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
@@ -8,14 +8,14 @@
       <ion-icon [name]="dogProfile.gender === 'male' ? 'male' : 'female'" item-left class="gender-icon" [ngClass]="dogProfile.gender === 'male' ? 'male' : 'female'"></ion-icon>
     </ion-title>
     <ion-buttons right>
-      <button ion-button (click)="toggleFavorite()" icon-only clear>
+      <button ion-button (click)="toggleFavorite()" icon-only clear [color]="true ? 'gray' : 'red'">
         <ion-icon name="star" [ngClass]="false ? 'checked' : ''" class="favorite-button"></ion-icon>
       </button>
     </ion-buttons>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding [headerToHide]="'dog-profile-header'">
+<ion-content padding>
   <div id="profile-info" padding>
     <img id="profile-image" class="pop-in" src="{{'http://placehold.it/200x200'}}" />
     <h3>{{dogProfile.breed | commaSpace}}</h3>
@@ -88,7 +88,7 @@
         <h4>Papered</h4>
         <p>{{dogProfile.papered ? 'Yes' : 'No'}}</p>
       </ion-item>
-      <ion-item>
+      <ion-item *ngIf="dogProfile.papered">
         <ion-icon name="clipboard" item-left></ion-icon>
         <h4>AKC Registered</h4>
         <p>{{dogProfile.registered ? 'Yes' : 'No'}}</p>

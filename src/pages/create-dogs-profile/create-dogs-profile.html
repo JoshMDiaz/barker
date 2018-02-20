@@ -31,57 +31,61 @@
         <ion-label floating>Eye Color</ion-label>
         <ion-input name="eyes" [(ngModel)]="dog.eyes"></ion-input>
       </ion-item>
-      <ion-item-divider color="light">Birthday</ion-item-divider>
       <ion-item>
-        <ion-label floating>Month</ion-label>
-        <ion-select name="month" [(ngModel)]="dog.month" (ionChange)="createDays(dog.month)">
-          <ion-option value="{{month.number}}" *ngFor="let month of months">{{month.name}}</ion-option>
+        <ion-label floating>Birthday</ion-label>
+        <ion-datetime [(ngModel)]="dog.birthdate"></ion-datetime>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Gender</ion-label>
+        <ion-select [(ngModel)]="dog.gender">
+          <ion-option value="female">Female</ion-option>
+          <ion-option value="male">Male</ion-option>
         </ion-select>
       </ion-item>
       <ion-item>
-        <ion-label floating>Day</ion-label>
-        <ion-select name="day" [(ngModel)]="dog.day">
-          <ion-option value="{{day}}" *ngFor="let day of days">{{day}}</ion-option>
+        <ion-label floating>Neutered / Spayed</ion-label>
+        <ion-select [(ngModel)]="dog.fixed">
+          <ion-option value="true">Neutered / Spayed</ion-option>
+          <ion-option value="false">Intact</ion-option>
         </ion-select>
-      </ion-item>
-      <ion-item>
-        <ion-label floating>Year</ion-label>
-        <ion-select name="year" [(ngModel)]="dog.year" (ionChange)="createDays(dog.month, dog.year)">
-          <ion-option value="{{year}}" *ngFor="let year of years">{{year}}</ion-option>
-        </ion-select>
-      </ion-item>
-      <ion-item>
-        <ion-label>Neutered / Spayed</ion-label>
-        <ion-toggle [(ngModel)]="dog.fixed"></ion-toggle>
       </ion-item>
       <ion-item *ngIf="dog.fixed !== true">
-        <ion-label>Willing to breed?</ion-label>
-        <ion-toggle [(ngModel)]="dog.couldBreed"></ion-toggle>
+        <ion-label floating>Willing to breed?</ion-label>
+        <ion-select [(ngModel)]="dog.couldBreed">
+          <ion-option value="true">Yes</ion-option>
+          <ion-option value="false">No</ion-option>
+        </ion-select>
       </ion-item>
       <ion-item>
-        <ion-label>Papered</ion-label>
-        <ion-toggle [(ngModel)]="dog.papered"></ion-toggle>
+        <ion-label floating>Papered</ion-label>
+        <ion-select [(ngModel)]="dog.papered">
+          <ion-option value="true">Yes</ion-option>
+          <ion-option value="false">No</ion-option>
+        </ion-select>
       </ion-item>
       <ion-item *ngIf="dog.papered">
+        <ion-label floating>AKC Registered</ion-label>
+        <ion-select [(ngModel)]="dog.registered">
+          <ion-option value="true">Yes</ion-option>
+          <ion-option value="false">No</ion-option>
+        </ion-select>
+      </ion-item>
+      <!-- <ion-item>
+        <ion-label>Neutered / Spayed</ion-label>
+        <ion-toggle [(ngModel)]="dog.fixed"></ion-toggle>
+      </ion-item> -->
+      <!-- <ion-item *ngIf="dog.fixed !== true">
+        <ion-label>Willing to breed?</ion-label>
+        <ion-toggle [(ngModel)]="dog.couldBreed"></ion-toggle>
+      </ion-item> -->
+      <!-- <ion-item>
+        <ion-label>Papered</ion-label>
+        <ion-toggle [(ngModel)]="dog.papered"></ion-toggle>
+      </ion-item> -->
+      <!-- <ion-item *ngIf="dog.papered">
         <ion-label>AKC Registered</ion-label>
         <ion-toggle [(ngModel)]="dog.registered"></ion-toggle>
-      </ion-item>
-      <ion-list radio-group [(ngModel)]="dog.gender">
-        <ion-item>
-          <ion-label>
-            Male
-            <ion-icon name="male" class="male"></ion-icon>
-          </ion-label>
-          <ion-radio value="male" checked></ion-radio>
-        </ion-item>
-        <ion-item>
-          <ion-label>
-            Female
-            <ion-icon name="female" class="female"></ion-icon>
-          </ion-label>
-          <ion-radio value="female"></ion-radio>
-        </ion-item>
-      </ion-list>
+      </ion-item> -->
       <ion-item>
         <ion-label floating>About {{dog.name || 'Dog'}}</ion-label>
         <ion-textarea name="dogDescription" [(ngModel)]="dog.description"></ion-textarea>

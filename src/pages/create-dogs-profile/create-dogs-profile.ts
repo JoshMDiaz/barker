@@ -33,13 +33,8 @@ export class CreateDogsProfilePage {
     public afDb: AngularFireDatabase
   ) {}
 
-  convertBirthday(dog) {
-    dog.birthdate = `${dog.year}-${dog.month}-${dog.day}`;
-  }
-
   createProfile(dogs) {
     dogs.forEach(dog => {
-      this.convertBirthday(dog);
       this.authData.updateDogsProfile(
         dog.name,
         dog.breed,
@@ -81,10 +76,10 @@ export class CreateDogsProfilePage {
         breed: "",
         gender: "",
         eyes: "",
-        fixed: false,
-        couldBreed: false,
-        papered: false,
-        registered: false,
+        fixed: null,
+        couldBreed: null,
+        papered: null,
+        registered: null,
         description: "",
         birthdate: "",
         photos: []
@@ -92,42 +87,7 @@ export class CreateDogsProfilePage {
     }
   }
 
-  createDays(monthNum?, year?) {
-    this.days = [];
-    var limit = 31;
-    if (monthNum) {
-      monthNum = parseInt(monthNum);
-      switch (monthNum) {
-        case 2:
-          if ((0 === year % 4 && 0 !== year % 100) || 0 === year % 400) {
-            limit = 29;
-          } else {
-            limit = 28;
-          }
-          break;
-        case 4 || 6 || 9 || 11:
-          limit = 30;
-        default:
-          break;
-      }
-    }
-    for (let i = 1; i <= limit; i++) {
-      this.days.push(i);
-    }
-  }
-
-  setYears() {
-    let today = new Date();
-    let currentYear = today.getFullYear();
-    let startYear = currentYear - 25;
-    for (let i = startYear; i <= currentYear; i++) {
-      this.years.push(i);
-    }
-  }
-
   ionViewDidLoad() {
-    this.createDays();
-    this.setYears();
     if (this.navParams.data && this.navParams.data.profileData) {
       this.profile = this.navParams.data.profileData;
     }
@@ -143,13 +103,6 @@ export class CreateDogsProfilePage {
       .map(data => data.json())
       .subscribe(data => {
         this.breeds = data;
-      });
-
-    this.http
-      .get("/assets/data/months.json")
-      .map(data => data.json())
-      .subscribe(data => {
-        this.months = data;
       });
   }
 }

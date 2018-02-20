@@ -26,10 +26,11 @@
         {{dog.name}}
       </ion-card-title>
       <ion-row justify-content-between>
-        <p>{{dog.birthdate | age}}</p>
+        <p class="age">{{dog.birthdate | age}}</p>
         <ion-icon [name]="dog.gender === 'male' ? 'male' : 'female'" item-left class="gender-icon" [ngClass]="dog.gender === 'male' ? 'male' : 'female'"></ion-icon>
       </ion-row>
-      <p>{{dog.description}}</p>
+      <p *ngIf="dog.description">{{dog.description}}</p>
+      <p *ngIf="!dog.description">No description available</p>
     </ion-card-content>
 
     <ion-row justify-content-between>

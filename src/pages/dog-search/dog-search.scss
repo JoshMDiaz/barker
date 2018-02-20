@@ -28,4 +28,9 @@ page-dog-search {
     max-width:100%;
     max-height:100%;
   }
+  p {
+    &.age {
+      font-weight: 500;
+    }
+  }
 }

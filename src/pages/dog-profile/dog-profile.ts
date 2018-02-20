@@ -11,6 +11,7 @@ import {
   FirebaseListObservable,
   FirebaseObjectObservable
 } from "angularfire2/database-deprecated";
+import { ModalController } from "ionic-angular/components/modal/modal-controller";
 
 @IonicPage()
 @Component({
@@ -46,17 +47,18 @@ export class DogProfilePage {
     public navParams: NavParams,
     public loadingCtrl: LoadingController,
     private toastCtrl: ToastController,
-    public afDB: AngularFireDatabase
+    public afDB: AngularFireDatabase,
+    public modalCtrl: ModalController
   ) {
     this.dogProfile = this.navParams.data.dogProfile;
   }
 
-  toggleInterest() {
-    console.log("interested");
-  }
-
   toggleFavorite() {
     console.log("favorited");
+  }
+
+  openGalleryModal() {
+    
   }
 
   message() {
