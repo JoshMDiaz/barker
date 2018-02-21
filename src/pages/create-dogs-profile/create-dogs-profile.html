@@ -50,29 +50,29 @@
           <ion-item>
             <ion-label floating>Neutered / Spayed</ion-label>
             <ion-select [(ngModel)]="dog.fixed">
-              <ion-option value="true">Neutered / Spayed</ion-option>
-              <ion-option value="false">Intact</ion-option>
+              <ion-option [value]="true">Neutered / Spayed</ion-option>
+              <ion-option [value]="false">Intact</ion-option>
             </ion-select>
           </ion-item>
           <ion-item *ngIf="dog.fixed !== true">
             <ion-label floating>Willing to breed?</ion-label>
             <ion-select [(ngModel)]="dog.couldBreed">
-              <ion-option value="true">Yes</ion-option>
-              <ion-option value="false">No</ion-option>
+              <ion-option [value]="true">Yes</ion-option>
+              <ion-option [value]="false">No</ion-option>
             </ion-select>
           </ion-item>
           <ion-item>
             <ion-label floating>Papered</ion-label>
             <ion-select [(ngModel)]="dog.papered">
-              <ion-option value="true">Yes</ion-option>
-              <ion-option value="false">No</ion-option>
+              <ion-option [value]="true">Yes</ion-option>
+              <ion-option [value]="false">No</ion-option>
             </ion-select>
           </ion-item>
-          <ion-item *ngIf="dog.papered">
+          <ion-item *ngIf="dog.papered === true">
             <ion-label floating>AKC Registered</ion-label>
             <ion-select [(ngModel)]="dog.registered">
-              <ion-option value="true">Yes</ion-option>
-              <ion-option value="false">No</ion-option>
+              <ion-option [value]="true">Yes</ion-option>
+              <ion-option [value]="false">No</ion-option>
             </ion-select>
           </ion-item>
           <ion-item>
