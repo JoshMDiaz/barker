@@ -1,6 +1,20 @@
 page-create-dogs-profile {
-  .dog-info {
-    margin-top: 50px;
+  .gray-background {
+    margin: 20px -20px 0 -20px;
+    padding: 20px;
+    background: color($colors, light);
+  }
+  .card {
+    margin: 0;
+    width: 100%;
+    border-radius: 4px;
+    padding-bottom: 20px;
+    &:first-child {
+      margin-bottom: 30px;
+    }
+    ion-input, ion-datetime, ion-select, ion-textarea {
+      border-bottom: 1px solid color($colors, gray);
+    }
   }
   .list {
     margin: 0 !important;
