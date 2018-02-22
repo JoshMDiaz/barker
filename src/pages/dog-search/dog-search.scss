@@ -33,4 +33,13 @@ page-dog-search {
       font-weight: 500;
     }
   }
+  .no-data-card {
+    ion-icon {
+      font-size: 5em;
+      color: color($colors, danger);
+    }
+    h2 {
+      font-size: 1.5em;
+    }
+  }
 }

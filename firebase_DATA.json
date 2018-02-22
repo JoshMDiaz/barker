@@ -159,7 +159,7 @@
       "birthdate" : "2017-09-15",
       "breed" : [ "Siberian Husky" ],
       "couldBreed" : true,
-      "description" : "True stud.",
+      "description" : "",
       "eyes" : "White / Blue",
       "fixed" : false,
       "gender" : "male",
@@ -206,15 +206,57 @@
       "name" : "Rocket",
       "ownerId" : "66ihWQRfoXNqLOwwGWsiLhwulmK2",
       "papered" : false,
-      "profileImg" : "",
-      "registered" : false,
       "photos" : [ {
         "url" : "https://placehold.it/500x500"
       }, {
         "url" : "https://placehold.it/500x500"
       }, {
         "url" : "https://placehold.it/500x500"
-      } ]
+      } ],
+      "profileImg" : "https://unsplash.it/450/350?image=200",
+      "registered" : false
+    },
+    "-L5qaRg12WuYu3ve170n" : {
+      "birthdate" : "2017-12-21",
+      "breed" : [ "American Bulldog" ],
+      "couldBreed" : false,
+      "description" : "Dog 3 description would be this sentence that I am writing right now. The description would be moving and insightful. Or maybe it wouldn't be.",
+      "eyes" : "White",
+      "fixed" : false,
+      "gender" : "male",
+      "name" : "Dog 3",
+      "ownerId" : "CzEe3rEBlSSgooQR62ti6AJQUjm1",
+      "papered" : false,
+      "profileImg" : "https://unsplash.it/450/350?image=837",
+      "registered" : false
+    },
+    "-L5qaRg6ebf75uXGHlDq" : {
+      "birthdate" : "2015-03-22",
+      "breed" : [ "Affenpinscher" ],
+      "couldBreed" : true,
+      "description" : "Dog 2 description would be this sentence that I am writing right now. The description would be moving and insightful. Or maybe it wouldn't be.",
+      "eyes" : "Brown",
+      "fixed" : false,
+      "gender" : "female",
+      "name" : "Dog 2",
+      "ownerId" : "CzEe3rEBlSSgooQR62ti6AJQUjm1",
+      "papered" : false,
+      "profileImg" : "https://unsplash.it/450/350?image=1062",
+      "registered" : false
+    },
+    "-L5qaRg9y4fR4i-U18Cz" : {
+      "birthdate" : "2016-01-19",
+      "breed" : [ "Airedale Terrier" ],
+      "couldBreed" : true,
+      "description" : "Dog 1 description would be this sentence that I am writing right now. The description would be moving and insightful. Or maybe it wouldn't be.",
+      "eyes" : "Green",
+      "fixed" : false,
+      "gender" : "male",
+      "name" : "Dog 1",
+      "ownerId" : "CzEe3rEBlSSgooQR62ti6AJQUjm1",
+      "papered" : false,
+      "profileImg" : "https://unsplash.it/450/350?image=106",
+      "registered" : false
     }
   },
   "feed" : [ {
@@ -1145,6 +1187,17 @@
       "photo" : "",
       "registered" : true,
       "state" : "ID"
+    },
+    "CzEe3rEBlSSgooQR62ti6AJQUjm1" : {
+      "city" : "Oakley",
+      "description" : "",
+      "email" : "nodogs@test.com",
+      "introCompleted" : true,
+      "name" : "No Dogs",
+      "numOfDogs" : 3,
+      "photo" : "",
+      "registered" : true,
+      "state" : "CA"
     },
     "s0XPHC517ONbDCaVqIu7DehI0Xb2" : {
       "city" : "Lehi",

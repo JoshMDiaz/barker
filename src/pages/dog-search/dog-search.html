@@ -20,7 +20,6 @@
       <ion-slide *ngFor="let photo of dog.photos" [ngStyle]="{'background' : 'url(' + photo.url + ')'}">
       </ion-slide>
     </ion-slides>
-
     <ion-card-content>
       <ion-card-title>
         {{dog.name}}
@@ -32,7 +31,6 @@
       <p *ngIf="dog.description">{{dog.description}}</p>
       <p *ngIf="!dog.description">No description available</p>
     </ion-card-content>
-
     <ion-row justify-content-between>
       <button ion-button icon-left clear [color]="!dog.liked ? 'gray' : 'red'">
         <ion-icon name="heart"></ion-icon>
@@ -41,7 +39,13 @@
         <div>MESSAGE</div>
       </button>
     </ion-row>
+  </ion-card>
 
+  <ion-card *ngIf="noDogsFound" class="no-data-card" padding>
+    <ion-card-content text-center>
+      <ion-icon name="alert"></ion-icon>
+      <h2>Sorry! There are no dogs that match your decision.</h2>
+    </ion-card-content>
   </ion-card>
 
 </ion-content>

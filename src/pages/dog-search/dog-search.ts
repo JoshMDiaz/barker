@@ -19,18 +19,13 @@ export class DogSearchPage {
   uid: string;
   dogs: Array<any> = [];
   filter: any = {};
+  noDogsFound: boolean = false;
 
   seeProfile(dog) {
     this.navCtrl.push("DogProfilePage", {
       searchingDog: this.navParams.data.dog,
       dogProfile: dog
     });
-  }
-
-  setFilterCriteria(dog) {
-    if (this.navParams.data.searchType === "breeding") {
-      this.findGender(dog);
-    }
   }
 
   findGender(dog) {
@@ -41,9 +36,19 @@ export class DogSearchPage {
     this.filter.gender = gender;
   }
 
+  keepDogsCouldBreed(dogs) {
+    for (let i = 0; i < dogs.length; i++) {
+      if (!dogs[i].couldBreed) {
+        dogs.splice(i, 1);
+      }
+    }
+  }
+
   ionViewDidLoad() {
     this.uid = this.navParams.data.uid;
-    this.setFilterCriteria(this.navParams.data.dog);
+    if (this.navParams.data.searchType === "breeding") {
+      this.findGender(this.navParams.data.dog);
+    }
     let loadingPopup = this.loadingCtrl.create({
       spinner: 'crescent',
       content: ''
@@ -62,6 +67,12 @@ export class DogSearchPage {
             this.dogs.push(dog);
           }
         });
+        if (this.navParams.data.searchType === "breeding") {
+         this.keepDogsCouldBreed(this.dogs);
+        }
+        if (this.dogs.length === 0) {
+          this.noDogsFound = true;
+        }
         loadingPopup.dismiss();
       });
   }
