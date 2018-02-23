@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="266px" height="59px" viewBox="0 0 266 59" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 47.1 (45422) - http://www.bohemiancoding.com/sketch -->
+    <title>logo copy 9</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="26.2181713%" y1="59.4220633%" x2="80.9751157%" y2="59.4220638%" id="linearGradient-1">
+            <stop stop-color="#FF7400" offset="0%"></stop>
+            <stop stop-color="#FF3B87" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="0%" y1="50%" x2="100%" y2="50%" id="linearGradient-2">
+            <stop stop-color="#FF4B5F" offset="0%"></stop>
+            <stop stop-color="#FF3C85" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="logo-copy-9">
+            <g id="Group-2" transform="translate(-2.000000, -13.000000)">
+                <text id="bark-r" fill="url(#linearGradient-1)" font-family="TitanOne, Titan One" font-size="72" font-weight="normal">
+                    <tspan x="0" y="70">bark</tspan>
+                    <tspan x="183.888" y="70" letter-spacing="5.3">  </tspan>
+                    <tspan x="226.888" y="70">r</tspan>
+                </text>
+                <path d="M212.126503,46.9949319 C211.541583,46.0155002 211.206897,44.8788657 211.206897,43.6666667 C211.206897,39.9847683 214.294588,37 218.103448,37 C221.912309,37 225,39.9847683 225,43.6666667 C225,45.8474653 223.916768,47.7836949 222.242052,49 C223.916768,50.2163051 225,52.1525347 225,54.3333333 C225,58.0152317 221.912309,61 218.103448,61 C214.760533,61 211.973135,58.7008288 211.341187,55.6490878 C207.555425,56.2864927 203.332425,56.2643773 198.672189,55.5827414 C198.067164,58.6674441 195.26365,61 191.896552,61 C188.087691,61 185,58.0152317 185,54.3333333 C185,52.1525347 186.083232,50.2163051 187.757948,49 C186.083232,47.7836949 185,45.8474653 185,43.6666667 C185,39.9847683 188.087691,37 191.896552,37 C195.705412,37 198.793103,39.9847683 198.793103,43.6666667 C198.793103,44.4359906 198.658298,45.1748785 198.410274,45.8624614 C203.082228,47.5115207 207.654304,47.8890108 212.126503,46.9949319 Z" id="Combined-Shape" stroke="url(#linearGradient-2)" stroke-width="2.5" fill="#FFFFFF"></path>
+            </g>
+        </g>
+    </g>
+</svg>

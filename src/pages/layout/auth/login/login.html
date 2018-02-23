@@ -8,9 +8,9 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content [ngStyle]="{'background-image': 'url(' + backgroundImage +')'}">
+<ion-content>
   <div class="login-container">
-    <img class="logo" src="./assets/ionic.png" />
+    <img class="logo pop-in" src="./assets/logo_color.svg" />
 
     <!--*********** Form ***********-->
     <form [formGroup]="loginForm" (submit)="login()" novalidate>
@@ -35,7 +35,7 @@
 
       <div class="submit-box">
         <button ion-button mode="ios" block type="submit" color="blue2">Log in</button>
-        <button ion-button type="button" mode="ios" block icon-left color="light" outline (click)="createAccount()" margin-top>
+        <button ion-button type="button" mode="ios" block icon-left outline (click)="createAccount()" margin-top>
           <ion-icon name="ios-create"></ion-icon> Create new account
         </button>
       </div>
@@ -45,5 +45,5 @@
 
 </ion-content>
 <ion-footer>
-  <button class="bottom" ion-button mode="ios" type="button" clear full color="light" (click)="forgot()">Forgot your password? </button>
+  <button class="bottom" ion-button mode="ios" type="button" clear full (click)="forgot()">Forgot your password? </button>
 </ion-footer>

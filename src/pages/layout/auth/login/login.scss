@@ -1,5 +1,4 @@
 page-login {
-
   ion-content {
     background-size: cover;
     background-repeat: no-repeat;
@@ -8,16 +7,9 @@ page-login {
   .scroll-content {
     margin-top: 0 !important;
   }
-
   .logo {
-    width: 110px;
-    height: 120px;
-   // -webkit-transform: scale(0.5); /* Saf3.1+, Chrome */
-    padding-top: 2vh;
-    margin-bottom: 8vh;
-  }
-  span {
-    color: white;
+    width: 250px;
+    margin: 15vh 0 7vh;
   }
   .submit-box{
     margin-top: 10px;
@@ -30,24 +22,16 @@ page-login {
   }
 	.error-message p{
 		text-align: right;
-		color:white;
 	}
   ion-item {
-    color: white !important;
     padding-left: 0px !important;
-    // margin-bottom: 10px;
     background-color: transparent !important;
     font-size: 0.9em;
   }
 	.item-inner{
-		border-bottom: 1px solid white !important;
-    box-shadow: inset 0 -1px 0 transparent; 
+    box-shadow: inset 0 -1px 0 transparent;
 	}
-  ::-webkit-input-placeholder {
-    color: white !important;
-  }
   .login-container {
-    color: white;
     position: absolute;
     top: 0;
     padding: 10vw;
@@ -55,9 +39,6 @@ page-login {
     width: 100%;
     margin: 0 auto;
     z-index: 2;
-  }
-  ion-button {
-    opacity: 0.8;
   }
 
 }

@@ -1,7 +1,7 @@
 <ion-header no-border>
-  <ion-navbar transparent color="light">
+  <ion-navbar transparent>
     <button ion-button menuToggle>
-      <ion-icon name="menu" color="light"></ion-icon>
+      <ion-icon name="menu"></ion-icon>
     </button>
     <ion-buttons end padding>
       <button ion-button mode="ios" clear (click)="facebookLogin()" icon-only>
@@ -11,9 +11,9 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content [ngStyle]="{'background-image': 'url(' + backgroundImage +')'}">
+<ion-content>
   <div class="login-container">
-    <img class="logo" src="./assets/ionic.png" />
+    <img class="logo pop-in" src="./assets/logo_color.svg" />
 
     <form [formGroup]="registerForm" (submit)="registerUser()" novalidate>
 
