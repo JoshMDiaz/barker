@@ -1,8 +1,5 @@
 page-create-profile {
-  .dog-info {
-    padding: 30px 0;
-  }
-  .item {
-    padding-left: 0;
+  .toolbar-background, ion-content {
+    background: color($colors, light) !important;
   }
 }

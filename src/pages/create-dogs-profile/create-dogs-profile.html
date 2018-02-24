@@ -1,4 +1,4 @@
-<ion-header no-border class="create-dog-header">
+<ion-header no-border>
   <ion-navbar color="white" style="background: none; border-bottom: none">
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
@@ -11,78 +11,80 @@
 
 <ion-content padding>
   <ion-grid>
-    <ion-item>
-      <ion-label floating>How Many Dogs?</ion-label>
-      <ion-input name="numberOfDogs" type="number" [(ngModel)]="numberOfDogs" (ionChange)="addEmptyDogs(numberOfDogs)"></ion-input>
-    </ion-item>
+    <ion-card>
+      <ion-card-content>
+        <ion-item>
+          <ion-label floating>How Many Dogs?</ion-label>
+          <ion-input name="numberOfDogs" type="number" [(ngModel)]="numberOfDogs" (ionChange)="addEmptyDogs(numberOfDogs)"></ion-input>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
 
-    <ion-row class="gray-background" *ngIf="numberOfDogs !== null && numberOfDogs !== undefined && numberOfDogs > 0">
-      <ion-card *ngFor="let dog of dogs; let i = index">
-        <ion-card-header *ngIf="numberOfDogs > 1">
-          {{i + 1 | countingConverter}} Dog
-        </ion-card-header>
-        <ion-card-content>
-          <ion-item>
-            <ion-label floating>Name</ion-label>
-            <ion-input name="dogName" [(ngModel)]="dog.name"></ion-input>
-          </ion-item>
-          <ion-item>
-            <ion-label floating>Breed</ion-label>
-            <ion-select name="breed" [(ngModel)]="dog.breed" multiple="true">
-              <ion-option [value]="breed" *ngFor="let breed of breeds">{{breed}}</ion-option>
-            </ion-select>
-          </ion-item>
-          <ion-item>
-            <ion-label floating>Eye Color</ion-label>
-            <ion-input name="eyes" [(ngModel)]="dog.eyes"></ion-input>
-          </ion-item>
-          <ion-item>
-            <ion-label floating>Birthday</ion-label>
-            <ion-datetime [(ngModel)]="dog.birthdate"></ion-datetime>
-          </ion-item>
-          <ion-item>
-            <ion-label floating>Gender</ion-label>
-            <ion-select [(ngModel)]="dog.gender">
-              <ion-option value="female">Female</ion-option>
-              <ion-option value="male">Male</ion-option>
-            </ion-select>
-          </ion-item>
-          <ion-item>
-            <ion-label floating>Neutered / Spayed</ion-label>
-            <ion-select [(ngModel)]="dog.fixed">
-              <ion-option [value]="true">Neutered / Spayed</ion-option>
-              <ion-option [value]="false">Intact</ion-option>
-            </ion-select>
-          </ion-item>
-          <ion-item *ngIf="dog.fixed !== true">
-            <ion-label floating>Willing to breed?</ion-label>
-            <ion-select [(ngModel)]="dog.couldBreed">
-              <ion-option [value]="true">Yes</ion-option>
-              <ion-option [value]="false">No</ion-option>
-            </ion-select>
-          </ion-item>
-          <ion-item>
-            <ion-label floating>Papered</ion-label>
-            <ion-select [(ngModel)]="dog.papered">
-              <ion-option [value]="true">Yes</ion-option>
-              <ion-option [value]="false">No</ion-option>
-            </ion-select>
-          </ion-item>
-          <ion-item *ngIf="dog.papered === true">
-            <ion-label floating>AKC Registered</ion-label>
-            <ion-select [(ngModel)]="dog.registered">
-              <ion-option [value]="true">Yes</ion-option>
-              <ion-option [value]="false">No</ion-option>
-            </ion-select>
-          </ion-item>
-          <ion-item>
-            <ion-label floating>About {{dog.name || 'Dog'}}</ion-label>
-            <ion-textarea name="dogDescription" [(ngModel)]="dog.description"></ion-textarea>
-          </ion-item>
-        </ion-card-content>
-      </ion-card>
-    </ion-row>
-    <button ion-button margin-top (click)="createProfile(dogs)" *ngIf="dogs.length >= 1">
+    <ion-card *ngFor="let dog of dogs; let i = index">
+      <ion-card-header *ngIf="numberOfDogs > 1">
+        {{i + 1 | countingConverter}} Dog
+      </ion-card-header>
+      <ion-card-content>
+        <ion-item>
+          <ion-label floating>Name</ion-label>
+          <ion-input name="dogName" [(ngModel)]="dog.name"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label floating>Breed</ion-label>
+          <ion-select name="breed" [(ngModel)]="dog.breed" multiple="true">
+            <ion-option [value]="breed" *ngFor="let breed of breeds">{{breed}}</ion-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-label floating>Eye Color</ion-label>
+          <ion-input name="eyes" [(ngModel)]="dog.eyes"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label floating>Birthday</ion-label>
+          <ion-datetime [(ngModel)]="dog.birthdate"></ion-datetime>
+        </ion-item>
+        <ion-item>
+          <ion-label floating>Gender</ion-label>
+          <ion-select [(ngModel)]="dog.gender">
+            <ion-option value="female">Female</ion-option>
+            <ion-option value="male">Male</ion-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-label floating>Neutered / Spayed</ion-label>
+          <ion-select [(ngModel)]="dog.fixed">
+            <ion-option [value]="true">Neutered / Spayed</ion-option>
+            <ion-option [value]="false">Intact</ion-option>
+          </ion-select>
+        </ion-item>
+        <ion-item *ngIf="dog.fixed !== true">
+          <ion-label floating>Willing to breed?</ion-label>
+          <ion-select [(ngModel)]="dog.couldBreed">
+            <ion-option [value]="true">Yes</ion-option>
+            <ion-option [value]="false">No</ion-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-label floating>Papered</ion-label>
+          <ion-select [(ngModel)]="dog.papered">
+            <ion-option [value]="true">Yes</ion-option>
+            <ion-option [value]="false">No</ion-option>
+          </ion-select>
+        </ion-item>
+        <ion-item *ngIf="dog.papered === true">
+          <ion-label floating>AKC Registered</ion-label>
+          <ion-select [(ngModel)]="dog.registered">
+            <ion-option [value]="true">Yes</ion-option>
+            <ion-option [value]="false">No</ion-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-label floating>About {{dog.name || 'Dog'}}</ion-label>
+          <ion-textarea name="dogDescription" [(ngModel)]="dog.description"></ion-textarea>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
+    <button ion-button class="primary" (click)="createProfile(dogs)" *ngIf="dogs.length >= 1">
       <span>All Done</span>
     </button>
   </ion-grid>

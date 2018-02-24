@@ -1,37 +1,40 @@
 <ion-header no-border>
-  <ion-navbar transparent>
+  <ion-navbar color="white" style="background: none; border-bottom: none">
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
+    <ion-title>
+      About You
+    </ion-title>
   </ion-navbar>
 </ion-header>
+
 <ion-content padding>
   <ion-grid>
-    <h2>About You</h2>
-    <ion-item>
-      <ion-label floating>Name</ion-label>
-      <ion-input name="name" [(ngModel)]="profile.name"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label floating>City</ion-label>
-      <ion-input name="city" [(ngModel)]="profile.city"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label floating>State</ion-label>
-      <ion-select name="state" [(ngModel)]="profile.state">
-        <ion-option value="{{state.abbreviation}}" *ngFor="let state of usStates">{{state.name}}</ion-option>
-      </ion-select>
-    </ion-item>
-    <ion-item>
-      <ion-label floating>Description
-        <small>(Not Required)</small>
-      </ion-label>
-      <ion-textarea [(ngModel)]="profile.description"></ion-textarea>
-    </ion-item>
-    <ion-row margin-top>
-      <ion-col>
-        <button ion-button block color="primary" (click)="addDogs(profile)">Add Dogs</button>
-      </ion-col>
-    </ion-row>
+    <ion-card>
+      <ion-card-content>
+        <ion-item>
+          <ion-label floating>Name</ion-label>
+          <ion-input name="name" [(ngModel)]="profile.name"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label floating>City</ion-label>
+          <ion-input name="city" [(ngModel)]="profile.city"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label floating>State</ion-label>
+          <ion-select name="state" [(ngModel)]="profile.state">
+            <ion-option value="{{state.abbreviation}}" *ngFor="let state of usStates">{{state.name}}</ion-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-label floating>Description
+            <small>(Not Required)</small>
+          </ion-label>
+          <ion-textarea [(ngModel)]="profile.description"></ion-textarea>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
+    <button ion-button block class="primary" (click)="addDogs(profile)">Add Dogs</button>
   </ion-grid>
 </ion-content>

@@ -17,10 +17,10 @@
       </ion-item>
 
       <ion-item class="error-message">
-        <p  *ngIf="!resetPasswordForm.controls.email.valid  && resetPasswordForm.controls.email.dirty">Please enter a valid email.</p>
+        <p *ngIf="!resetPasswordForm.controls.email.valid  && resetPasswordForm.controls.email.dirty">Please enter a valid email.</p>
       </ion-item>
 
-      <button ion-button block type="submit" mode="ios" color="blue2">
+      <button ion-button block type="submit" mode="ios" class="primary">
         Reset your Password
       </button>
 

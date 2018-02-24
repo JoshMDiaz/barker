@@ -4,7 +4,7 @@
       <ion-icon name="menu"></ion-icon>
     </button>
     <ion-buttons end padding>
-      <button ion-button mode="ios" clear (click)="facebookLogin()" icon-only>
+      <button ion-button mode="ios" clear (click)="facebookLogin()" color="darkGray" icon-only>
         <ion-icon name="logo-facebook"></ion-icon>
       </button>
     </ion-buttons>
@@ -34,7 +34,7 @@
         registerForm.controls.password.dirty">*Password needs more than 6 characters.</p>
       </ion-item>
 
-      <button ion-button full type="submit" mode="ios" color="blue2">
+      <button ion-button full type="submit" mode="ios" class="primary">
         Create an Account
       </button>
 

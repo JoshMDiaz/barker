@@ -132,12 +132,75 @@
 }
 ion-icon {
   &.male {
-    color: map-get($colors, male)
+    color: map-get($colors, male);
   }
   &.female {
-    color: map-get($colors, female)
+    color: map-get($colors, pink);
   }
 }
 .full-height {
   height: 100%;
+}
+
+button {
+  &.primary {
+    background: linear-gradient(to right, color($colors, pink), color($colors, orange));
+  }
+  &.primary-outline {
+    background: none;
+    border: 2px solid transparent;
+    border-image: linear-gradient(to right, color($colors, pink), color($colors, orange));
+    border-image-slice: 1;
+    background: -webkit-linear-gradient(right, color($colors, pink), color($colors, orange));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  &.primary-clear {
+    background: none;
+    border: none;
+    background: -webkit-linear-gradient(right, color($colors, pink), color($colors, orange));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  &.alert-button {
+    color: color($colors, pink) !important;
+  }
+}
+.alert-radio-icon {
+  border-color: color($colors, pink) !important;
+}
+[aria-checked="true"] {
+  .alert-radio-label {
+    color: color($colors, pink) !important;
+  }
+  .alert-checkbox-icon {
+    border-color: color($colors, pink) !important;
+    background-color: color($colors, pink) !important;
+  }
+}
+.alert-radio-inner {
+  background-color: color($colors, pink) !important;
+}
+
+ion-footer.footer {
+  &::before {
+    background-image: none;
+  }
+}
+
+.item-input-has-focus ion-label.label[floating], .input-has-focus ion-label.label[floating] {
+  color: color($colors, pink);
+}
+
+ion-card.card {
+  margin: 0 0 20px 0;
+  width: 100%;
+  border-radius: 4px;
+  padding-bottom: 20px;
+  ion-input, ion-datetime, ion-select, ion-textarea {
+    border-bottom: 1px solid color($colors, medium);
+  }
+  .item {
+    padding-left: 0;
+  }
 }
