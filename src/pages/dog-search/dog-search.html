@@ -15,12 +15,12 @@
 
 <ion-content fullscreen="" no-paddding shrink-header [headerToHide]="'dog-search-header'">
 
-  <ion-card *ngFor="let dog of dogs" (click)="seeProfile(dog)">
-    <ion-slides pager>
+  <ion-card *ngFor="let dog of dogs">
+    <ion-slides pager (click)="seeProfile(dog)">
       <ion-slide *ngFor="let photo of dog.photos" [ngStyle]="{'background' : 'url(' + photo.url + ')'}">
       </ion-slide>
     </ion-slides>
-    <ion-card-content>
+    <ion-card-content (click)="seeProfile(dog)">
       <ion-card-title>
         {{dog.name}}
       </ion-card-title>
@@ -35,7 +35,7 @@
       <button ion-button icon-left clear [color]="!dog.liked ? 'gray' : 'red'">
         <ion-icon name="heart"></ion-icon>
       </button>
-      <button ion-button icon-left clear color="pink">
+      <button ion-button icon-left clear class="primary-clear">
         <div>MESSAGE</div>
       </button>
     </ion-row>

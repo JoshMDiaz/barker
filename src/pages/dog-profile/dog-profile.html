@@ -20,7 +20,7 @@
     <img id="profile-image" class="pop-in" src="{{'http://placehold.it/200x200'}}" />
     <h3>{{dogProfile.breed | commaSpace}}</h3>
     <p>{{dogProfile.birthdate | age}}</p>
-    <button ion-button *ngIf="!messageSent" block color="green" (click)="message()">Message</button>
+    <button ion-button *ngIf="!messageSent" block class="primary" (click)="message()">Message</button>
     <button ion-button icon-left *ngIf="messageSent" block color="gray" (click)="message()">
       <ion-icon name="checkmark"></ion-icon>
       Message Sent
@@ -38,21 +38,21 @@
     </ion-item>
   </ion-list>
 
-  <!--***********  Segement tab ***********-->
+  <!--***********  Segement tabs ***********-->
   <ion-segment mode="md" [(ngModel)]="segmentView" color="blue2">
     <ion-segment-button value="one">
-      <ion-icon name="ios-apps"></ion-icon>
+      <ion-icon name="images"></ion-icon>
     </ion-segment-button>
     <ion-segment-button value="two">
-      <ion-icon name="md-list" md="md-bookmark"></ion-icon>
+      <ion-icon name="paw"></ion-icon>
     </ion-segment-button>
   </ion-segment>
 
   <!--***********  Segement one ***********-->
   <ion-grid *ngIf="segmentView==='one'">
     <ion-row wrap color="gray">
-      <ion-col col-4 *ngFor="let image of dogProfile.photos, let i = index">
-        <img src={{image.url}} />
+      <ion-col col-6 *ngFor="let image of dogProfile.photos, let i = index">
+        <img tappable class="expanded-image" src={{image.url}} (click)="fullscreenImage(i)" />
       </ion-col>
     </ion-row>
   </ion-grid>

@@ -45,7 +45,7 @@
     <ion-row wrap color="gray">
       <ion-col col-4 *ngFor="let image of imgGalleryArray , let i = index  " >
         <img tappable class="expanded-image"  [src]="image.url"   (click)="fullscreenImage(i)" />
-      
+
       </ion-col>
     </ion-row>
 </ion-grid>

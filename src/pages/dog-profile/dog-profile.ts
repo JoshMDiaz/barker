@@ -4,14 +4,15 @@ import {
   NavController,
   NavParams,
   LoadingController,
-  ToastController
+  ToastController,
+  ModalController
 } from "ionic-angular";
 import {
   AngularFireDatabase,
   FirebaseListObservable,
   FirebaseObjectObservable
 } from "angularfire2/database-deprecated";
-import { ModalController } from "ionic-angular/components/modal/modal-controller";
+import { GalleryModal } from "ionic-gallery-modal";
 
 @IonicPage()
 @Component({
@@ -57,8 +58,13 @@ export class DogProfilePage {
     console.log("favorited");
   }
 
-  openGalleryModal() {
-    
+  fullscreenImage(getIndex) {
+    let modal = this.modalCtrl.create(GalleryModal, {
+      photos: this.dogProfile.photos,
+      closeIcon: "close-circle",
+      initialSlide: getIndex
+    });
+    modal.present();
   }
 
   message() {

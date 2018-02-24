@@ -14,7 +14,7 @@ import { GalleryModal } from 'ionic-gallery-modal';
 export class GalleryPage {
   loaded: boolean ;
   imgGallery: FirebaseListObservable<any[]>;
-  imgGalleryArray : any=[]; 
+  imgGalleryArray : any=[];
 
   photos: any[] = [];
   getIndex:number;
@@ -24,7 +24,7 @@ export class GalleryPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams,public loadingCtrl: LoadingController,  public modalCtrl: ModalController, public afDB: AngularFireDatabase) {
     let loadingPopup = this.loadingCtrl.create({
-      spinner: 'crescent', 
+      spinner: 'crescent',
       content: ''
     });
     loadingPopup.present();
@@ -41,9 +41,9 @@ export class GalleryPage {
         // For multiple images //
         photos:   this.imgGalleryArray ,
         // For single image //
-        // photos: [{url:getImage}], 
+        // photos: [{url:getImage}],
       closeIcon: 'close-circle',
-      initialSlide: getIndex 
+      initialSlide: getIndex
       });
       // console.log("getIndex="+getIndex);
     modal.present();
