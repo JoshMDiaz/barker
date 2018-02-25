@@ -49,4 +49,45 @@ page-profile {
   .gender-icon {
     width: 12px;
   }
+  ion-slides,
+  .swiper-container {
+    height: 300px;
+    width: auto;
+  }
+  .swiper-slide {
+    background-size: cover !important;
+    background-position: center !important;
+  }
+  .list-of-dogs {
+    margin: 0 -20px;
+    width: calc(100% + 40px);
+    background-color: color($colors,light) !important;
+  }
+  .swiper-pagination-bullet-active {
+    background: color($colors, pink);
+  }
+  ion-card {
+    margin: 0px 0px 30px 0px !important;
+    width: 100% !important;
+    border-radius: 0 !important;
+    &:last-child {
+      margin-bottom: 0 !important;
+    }
+  }
+  .fit-screen {
+    max-width: 100%;
+    max-height: 100%;
+  }
+  p {
+    &.age {
+      font-weight: 500;
+    }
+  }
+  .list-header {
+    border: none;
+    margin: 0;
+  }
+  .item {
+    padding-left: 0;
+  }
 }

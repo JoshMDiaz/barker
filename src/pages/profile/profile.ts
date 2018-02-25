@@ -21,6 +21,7 @@ export class ProfilePage {
   messageSent: boolean = false;
   profileArray: any = [];
   profile: FirebaseObjectObservable<any[]>;
+  dogs: Array<any> = [];
 
   constructor(
     public navCtrl: NavController,
@@ -37,7 +38,7 @@ export class ProfilePage {
   }
 
   editProfile() {
-    console.log('editing profile');
+    console.log("editing profile");
   }
 
   presentToast(position: string, message: string) {
@@ -49,8 +50,11 @@ export class ProfilePage {
     toast.present();
   }
 
-  goToDogProfile(dog, i) {
-    this.navCtrl.push('DogProfilePage', {dog: dog})
+  seeProfile(dog) {
+    this.navCtrl.push("DogProfilePage", {
+      searchingDog: this.navParams.data.dog,
+      dogProfile: dog
+    });
   }
 
   ionViewDidLoad() {
@@ -63,7 +67,17 @@ export class ProfilePage {
       this.profile = this.afDb.object("/userProfiles/" + userAuth.uid);
       this.profile.subscribe(profile => {
         this.profileArray = profile;
-        loadingPopup.dismiss();
+        this.afDb
+          .list("/dogProfiles/", {
+            query: {
+              orderByChild: "ownerId",
+              equalTo: userAuth.uid
+            }
+          })
+          .subscribe(dogs => {
+            this.dogs = dogs;
+            loadingPopup.dismiss();
+          });
       });
     });
   }

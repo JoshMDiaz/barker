@@ -21,13 +21,6 @@ export class DogSearchPage {
   filter: any = {};
   noDogsFound: boolean = false;
 
-  seeProfile(dog) {
-    this.navCtrl.push("DogProfilePage", {
-      searchingDog: this.navParams.data.dog,
-      dogProfile: dog
-    });
-  }
-
   findGender(dog) {
     let gender = "male";
     if (dog.gender === "male") {

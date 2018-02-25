@@ -1,0 +1,25 @@
+<ion-card>
+  <ion-slides pager (click)="seeProfile(dog)">
+    <ion-slide *ngFor="let photo of dog.photos" [ngStyle]="{'background' : 'url(' + photo.url + ')'}">
+    </ion-slide>
+  </ion-slides>
+  <ion-card-content (click)="seeProfile(dog)">
+    <ion-card-title>
+      {{dog.name}}
+    </ion-card-title>
+    <ion-row justify-content-between>
+      <p class="age">{{dog.birthdate | age}}</p>
+      <ion-icon [name]="dog.gender === 'male' ? 'male' : 'female'" item-left class="gender-icon" [ngClass]="dog.gender === 'male' ? 'male' : 'female'"></ion-icon>
+    </ion-row>
+    <p *ngIf="dog.description">{{dog.description}}</p>
+    <p *ngIf="!dog.description">No description available</p>
+  </ion-card-content>
+  <ion-row justify-content-between>
+    <button ion-button icon-left clear [color]="!dog.liked ? 'gray' : 'red'">
+      <ion-icon name="heart"></ion-icon>
+    </button>
+    <button ion-button icon-left clear *ngIf="showMessage" class="primary-clear">
+      <div>MESSAGE</div>
+    </button>
+  </ion-row>
+</ion-card>

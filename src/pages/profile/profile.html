@@ -1,15 +1,11 @@
 <ion-header no-border>
-  <ion-navbar transparent>
-    <ion-buttons start>
-      <button ion-button menuToggle *ngIf="true">
-        <ion-icon name="menu"></ion-icon>
-      </button>
-    </ion-buttons>
-    <ion-buttons end>
-      <button ion-button icon-only clear (click)="editProfile()">
-        <ion-icon name="build"></ion-icon>
-      </button>
-    </ion-buttons>
+  <ion-navbar color="white" style="background: none; border-bottom: none">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      Dog Owner
+    </ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -20,7 +16,7 @@
     <img id="profile-image" class="pop-in" src="{{(profile | async)?.photo || 'http://placehold.it/200x200'}}" />
     <h3 id="profile-name">{{(profile | async)?.name}}</h3>
     <p>{{(profile | async)?.city}}, {{(profile | async)?.state}}</p>
-    <button ion-button *ngIf="!messageSent" block color="green" (click)="message()">Message</button>
+    <button ion-button *ngIf="!messageSent" block class="primary" (click)="message()">Message</button>
     <button ion-button icon-left *ngIf="messageSent" block color="gray" (click)="message()">
       <ion-icon name="checkmark"></ion-icon>
       Message Sent
@@ -29,27 +25,40 @@
 
 
   <!--***********  About  ***********-->
-  <ion-list no-lines text-wrap>
+  <ion-list no-lines text-wrap padding *ngIf="profileArray.description">
     <ion-list-header>
       <h2>About</h2>
     </ion-list-header>
     <ion-item>
-      <p>{{(profile | async)?.description}}</p>
+      <p>{{profileArray.description}}</p>
     </ion-item>
   </ion-list>
 
   <!--***********  Dogs  ***********-->
-  <ion-list>
-    <ion-item *ngFor="let dog of profileArray.dogs; let i = index" (click)="goToDogProfile(dog, i)">
-      <ion-avatar item-start>
-        <img src="http://placehold.it/50x50">
-      </ion-avatar>
-      <h2>{{dog.name}}
-        <ion-icon [name]="dog.gender === 'male' ? 'male' : 'female'" item-left class="gender-icon" [ngClass]="dog.gender === 'male' ? 'male' : 'female'"></ion-icon>
-      </h2>
-      <h3>{{dog.breed | commaSpace}}</h3>
-      <p>{{dog.age}} year{{dog.age > 1 ? 's' : null}} old</p>
-    </ion-item>
-  </ion-list>
+  <ion-row class="list-of-dogs">
+    <!-- <dog-card *ngFor="let dog of dogs" [dog]="dog"></dog-card> -->
+    <ion-card *ngFor="let dog of dogs">
+      <ion-slides pager (click)="seeProfile(dog)">
+        <ion-slide *ngFor="let photo of dog.photos" [ngStyle]="{'background' : 'url(' + photo.url + ')'}">
+        </ion-slide>
+      </ion-slides>
+      <ion-card-content (click)="seeProfile(dog)">
+        <ion-card-title>
+          {{dog.name}}
+        </ion-card-title>
+        <ion-row justify-content-between>
+          <p class="age">{{dog.birthdate | age}}</p>
+          <ion-icon [name]="dog.gender === 'male' ? 'male' : 'female'" item-left class="gender-icon" [ngClass]="dog.gender === 'male' ? 'male' : 'female'"></ion-icon>
+        </ion-row>
+        <p *ngIf="dog.description">{{dog.description}}</p>
+        <p *ngIf="!dog.description">No description available</p>
+      </ion-card-content>
+      <ion-row justify-content-between>
+        <button ion-button icon-left clear [color]="!dog.liked ? 'gray' : 'red'">
+          <ion-icon name="heart"></ion-icon>
+        </button>
+      </ion-row>
+    </ion-card>
+  </ion-row>
 
 </ion-content>
