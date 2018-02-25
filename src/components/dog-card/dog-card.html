@@ -14,11 +14,11 @@
     <p *ngIf="dog.description">{{dog.description}}</p>
     <p *ngIf="!dog.description">No description available</p>
   </ion-card-content>
-  <ion-row justify-content-between>
-    <button ion-button icon-left clear [color]="!dog.liked ? 'gray' : 'red'">
+  <ion-row justify-content-between *ngIf="uid !== dog.ownerId">
+    <button ion-button icon-left clear [color]="!dog.liked ? 'gray' : 'red'" (click)="favorite(dog)">
       <ion-icon name="heart"></ion-icon>
     </button>
-    <button ion-button icon-left clear *ngIf="showMessage === true" class="primary-clear">
+    <button ion-button icon-left clear *ngIf="showMessage === true" class="primary-clear" (click)="message(dog)">
       <div>MESSAGE</div>
     </button>
   </ion-row>

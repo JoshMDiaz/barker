@@ -7,6 +7,7 @@ import { NavController, NavParams } from "ionic-angular";
 })
 export class DogCardComponent {
   @Input() dog: any;
+  @Input() uid: string;
   @Input('show-message') showMessage?: boolean = true;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {}
@@ -16,5 +17,13 @@ export class DogCardComponent {
       searchingDog: this.navParams.data.dog,
       dogProfile: dog
     });
+  }
+
+  message(dog) {
+    console.log(`message to ${dog.name} owner`);
+  }
+
+  favorite(dog) {
+    console.log(`${dog.name} is a favorite`);
   }
 }

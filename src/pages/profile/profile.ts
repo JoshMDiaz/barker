@@ -22,6 +22,7 @@ export class ProfilePage {
   profileArray: any = [];
   profile: FirebaseObjectObservable<any[]>;
   dogs: Array<any> = [];
+  uid: string;
 
   constructor(
     public navCtrl: NavController,
@@ -64,14 +65,15 @@ export class ProfilePage {
     });
     loadingPopup.present();
     this.afAuth.authState.subscribe(userAuth => {
-      this.profile = this.afDb.object("/userProfiles/" + userAuth.uid);
+      this.uid = userAuth.uid;
+      this.profile = this.afDb.object("/userProfiles/" + this.uid);
       this.profile.subscribe(profile => {
         this.profileArray = profile;
         this.afDb
           .list("/dogProfiles/", {
             query: {
               orderByChild: "ownerId",
-              equalTo: userAuth.uid
+              equalTo: this.uid
             }
           })
           .subscribe(dogs => {
