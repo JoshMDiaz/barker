@@ -5,7 +5,6 @@ page-profile {
   }
   #profile-image {
     display: block;
-    // border-radius: 50%;
     border-radius: 50%;
     width: auto;
     height: 110px;
@@ -14,11 +13,11 @@ page-profile {
     border-style: solid;
     border-color: rgba(255, 255, 255, 0.1);
     border-image: initial;
-    // box-shadow: 0px 11px 20px -3px rgba(142, 136, 146, 0.75);
   }
   #profile-info {
     width: 100%;
     text-align: center;
+    padding: 16px 32px;
   }
   #profile-name {
     color: #444;
@@ -49,45 +48,16 @@ page-profile {
   .gender-icon {
     width: 12px;
   }
-  ion-slides,
-  .swiper-container {
-    height: 300px;
-    width: auto;
-  }
-  .swiper-slide {
-    background-size: cover !important;
-    background-position: center !important;
+  .list-header {
+    margin: 0;
+    border: none;
   }
   .list-of-dogs {
-    margin: 0 -20px;
-    width: calc(100% + 40px);
-    background-color: color($colors,light) !important;
+    background-color: color($colors, light) !important;
   }
-  .swiper-pagination-bullet-active {
-    background: color($colors, pink);
-  }
-  ion-card {
-    margin: 0px 0px 30px 0px !important;
-    width: 100% !important;
-    border-radius: 0 !important;
+  dog-card {
     &:last-child {
       margin-bottom: 0 !important;
     }
-  }
-  .fit-screen {
-    max-width: 100%;
-    max-height: 100%;
-  }
-  p {
-    &.age {
-      font-weight: 500;
-    }
-  }
-  .list-header {
-    border: none;
-    margin: 0;
-  }
-  .item {
-    padding-left: 0;
   }
 }

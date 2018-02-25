@@ -10,9 +10,9 @@
 </ion-header>
 
 
-<ion-content padding>
+<ion-content>
 
-  <div id="profile-info" padding>
+  <div id="profile-info">
     <img id="profile-image" class="pop-in" src="{{(profile | async)?.photo || 'http://placehold.it/200x200'}}" />
     <h3 id="profile-name">{{(profile | async)?.name}}</h3>
     <p>{{(profile | async)?.city}}, {{(profile | async)?.state}}</p>
@@ -36,29 +36,7 @@
 
   <!--***********  Dogs  ***********-->
   <ion-row class="list-of-dogs">
-    <!-- <dog-card *ngFor="let dog of dogs" [dog]="dog"></dog-card> -->
-    <ion-card *ngFor="let dog of dogs">
-      <ion-slides pager (click)="seeProfile(dog)">
-        <ion-slide *ngFor="let photo of dog.photos" [ngStyle]="{'background' : 'url(' + photo.url + ')'}">
-        </ion-slide>
-      </ion-slides>
-      <ion-card-content (click)="seeProfile(dog)">
-        <ion-card-title>
-          {{dog.name}}
-        </ion-card-title>
-        <ion-row justify-content-between>
-          <p class="age">{{dog.birthdate | age}}</p>
-          <ion-icon [name]="dog.gender === 'male' ? 'male' : 'female'" item-left class="gender-icon" [ngClass]="dog.gender === 'male' ? 'male' : 'female'"></ion-icon>
-        </ion-row>
-        <p *ngIf="dog.description">{{dog.description}}</p>
-        <p *ngIf="!dog.description">No description available</p>
-      </ion-card-content>
-      <ion-row justify-content-between>
-        <button ion-button icon-left clear [color]="!dog.liked ? 'gray' : 'red'">
-          <ion-icon name="heart"></ion-icon>
-        </button>
-      </ion-row>
-    </ion-card>
+    <dog-card *ngFor="let dog of dogs" [dog]="dog" [show-message]="false"></dog-card>
   </ion-row>
 
 </ion-content>

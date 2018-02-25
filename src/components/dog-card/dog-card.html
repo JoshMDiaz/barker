@@ -18,7 +18,7 @@
     <button ion-button icon-left clear [color]="!dog.liked ? 'gray' : 'red'">
       <ion-icon name="heart"></ion-icon>
     </button>
-    <button ion-button icon-left clear *ngIf="showMessage" class="primary-clear">
+    <button ion-button icon-left clear *ngIf="showMessage === true" class="primary-clear">
       <div>MESSAGE</div>
     </button>
   </ion-row>
