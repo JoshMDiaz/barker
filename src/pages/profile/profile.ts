@@ -18,7 +18,6 @@ import { AngularFireAuth } from "angularfire2/auth";
   templateUrl: "profile.html"
 })
 export class ProfilePage {
-  messageSent: boolean = false;
   profileArray: any = [];
   profile: FirebaseObjectObservable<any[]>;
   dogs: Array<any> = [];
@@ -34,7 +33,6 @@ export class ProfilePage {
   ) {}
 
   message() {
-    this.messageSent = !this.messageSent;
     this.presentToast("bottom", "message user clicked");
   }
 
@@ -58,12 +56,7 @@ export class ProfilePage {
     });
   }
 
-  ionViewDidLoad() {
-    let loadingPopup = this.loadingCtrl.create({
-      spinner: "crescent",
-      content: ""
-    });
-    loadingPopup.present();
+  getCurrentUser(loadingPopup) {
     this.afAuth.authState.subscribe(userAuth => {
       this.uid = userAuth.uid;
       this.profile = this.afDb.object("/userProfiles/" + this.uid);
@@ -82,5 +75,23 @@ export class ProfilePage {
           });
       });
     });
+  }
+
+  getOtherUser(userId, loadingPopup) {
+    console.log(userId);
+
+  }
+
+  ionViewDidLoad() {
+    let loadingPopup = this.loadingCtrl.create({
+      spinner: "crescent",
+      content: ""
+    });
+    loadingPopup.present();
+    if (this.navParams.data.userId) {
+      this.getOtherUser(this.navParams.data.userId, loadingPopup);
+    } else {
+      this.getCurrentUser(loadingPopup);
+    }
   }
 }

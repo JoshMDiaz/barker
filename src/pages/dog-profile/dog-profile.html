@@ -64,6 +64,14 @@
         <h2>Info</h2>
       </ion-list-header>
       <ion-item>
+        <ion-icon name="person" item-left></ion-icon>
+        <h4>Owner</h4>
+        <p>
+          <p>{{owner.name}}</p>
+          <button ion-button class="primary-clear" clear (click)="seeProfile()">see profile</button>
+        </p>
+      </ion-item>
+      <ion-item>
         <ion-icon [name]="dogProfile.gender === 'male' ? 'male' : 'female'" item-left></ion-icon>
         <h4>Gender</h4>
         <p>{{dogProfile.gender | capitalize}}</p>

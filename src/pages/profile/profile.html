@@ -16,11 +16,7 @@
     <img id="profile-image" class="pop-in" src="{{(profile | async)?.photo || 'http://placehold.it/200x200'}}" />
     <h3 id="profile-name">{{(profile | async)?.name}}</h3>
     <p>{{(profile | async)?.city}}, {{(profile | async)?.state}}</p>
-    <button ion-button *ngIf="!messageSent" block class="primary" (click)="message()">Message</button>
-    <button ion-button icon-left *ngIf="messageSent" block color="gray" (click)="message()">
-      <ion-icon name="checkmark"></ion-icon>
-      Message Sent
-    </button>
+    <button ion-button block class="primary" (click)="message()">Message</button>
   </div>
 
 

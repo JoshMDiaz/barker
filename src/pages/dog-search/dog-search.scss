@@ -1,4 +1,7 @@
 page-dog-search {
+  .content {
+    background: color($colors, light);
+  }
   .no-data-card {
     ion-icon {
       font-size: 5em;

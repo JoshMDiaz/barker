@@ -13,6 +13,7 @@ import {
   FirebaseObjectObservable
 } from "angularfire2/database-deprecated";
 import { GalleryModal } from "ionic-gallery-modal";
+import { AngularFireAuth } from "angularfire2/auth";
 
 @IonicPage()
 @Component({
@@ -27,6 +28,8 @@ export class DogProfilePage {
 
   segmentView: string = "one";
   messageSent: boolean = false;
+  owner: any = [];
+  profile: FirebaseObjectObservable<any[]>;
   dogProfile: {
     name: string;
     breed: string;
@@ -48,14 +51,21 @@ export class DogProfilePage {
     public navParams: NavParams,
     public loadingCtrl: LoadingController,
     private toastCtrl: ToastController,
-    public afDB: AngularFireDatabase,
-    public modalCtrl: ModalController
+    public modalCtrl: ModalController,
+    public afAuth: AngularFireAuth,
+    public afDb: AngularFireDatabase
   ) {
     this.dogProfile = this.navParams.data.dogProfile;
   }
 
   toggleFavorite() {
     console.log("favorited");
+  }
+
+  seeProfile() {
+    this.navCtrl.push("ProfilePage", {
+      userId: this.navParams.data.dogProfile.ownerId
+    });
   }
 
   fullscreenImage(getIndex) {
@@ -82,6 +92,16 @@ export class DogProfilePage {
   }
 
   ionViewDidLoad() {
-    console.log(this.navParams.data);
+    let loadingPopup = this.loadingCtrl.create({
+      spinner: "crescent",
+      content: ""
+    });
+    loadingPopup.present();
+    this.afDb
+      .object(`/userProfiles/${this.navParams.data.dogProfile.ownerId}`)
+      .subscribe(owner => {
+        this.owner = owner;
+        loadingPopup.dismiss();
+      });
   }
 }
