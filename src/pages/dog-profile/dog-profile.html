@@ -66,10 +66,8 @@
       <ion-item>
         <ion-icon name="person" item-left></ion-icon>
         <h4>Owner</h4>
-        <p>
-          <p>{{owner.name}}</p>
-          <button ion-button class="primary-clear" clear (click)="seeProfile()">see profile</button>
-        </p>
+        <p>{{owner.name}}</p>
+        <button ion-button class="primary-outline" outline (click)="seeProfile()">see profile</button>
       </ion-item>
       <ion-item>
         <ion-icon [name]="dogProfile.gender === 'male' ? 'male' : 'female'" item-left></ion-icon>

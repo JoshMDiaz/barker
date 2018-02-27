@@ -13,9 +13,9 @@
 <ion-content>
 
   <div id="profile-info">
-    <img id="profile-image" class="pop-in" src="{{(profile | async)?.photo || 'http://placehold.it/200x200'}}" />
-    <h3 id="profile-name">{{(profile | async)?.name}}</h3>
-    <p>{{(profile | async)?.city}}, {{(profile | async)?.state}}</p>
+    <img id="profile-image" class="pop-in" src="{{profileArray.photo || 'http://placehold.it/200x200'}}" />
+    <h3 id="profile-name">{{profileArray.name}}</h3>
+    <p>{{profileArray.city}}, {{profileArray.state}}</p>
     <button ion-button block class="primary" (click)="message()">Message</button>
   </div>
 
@@ -32,7 +32,7 @@
 
   <!--***********  Dogs  ***********-->
   <ion-row class="list-of-dogs">
-    <dog-card *ngFor="let dog of dogs" [dog]="dog" [uid]="uid" [show-message]="false"></dog-card>
+    <dog-card *ngFor="let dog of dogs" [dog]="dog" [uid]="currentUserUid" [show-message]="false"></dog-card>
   </ion-row>
 
 </ion-content>

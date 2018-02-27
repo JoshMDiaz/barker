@@ -21,7 +21,7 @@ export class ProfilePage {
   profileArray: any = [];
   profile: FirebaseObjectObservable<any[]>;
   dogs: Array<any> = [];
-  uid: string;
+  currentUserUid: string;
 
   constructor(
     public navCtrl: NavController,
@@ -56,30 +56,32 @@ export class ProfilePage {
     });
   }
 
-  getCurrentUser(loadingPopup) {
-    this.afAuth.authState.subscribe(userAuth => {
-      this.uid = userAuth.uid;
-      this.profile = this.afDb.object("/userProfiles/" + this.uid);
-      this.profile.subscribe(profile => {
-        this.profileArray = profile;
-        this.afDb
-          .list("/dogProfiles/", {
-            query: {
-              orderByChild: "ownerId",
-              equalTo: this.uid
-            }
-          })
-          .subscribe(dogs => {
-            this.dogs = dogs;
-            loadingPopup.dismiss();
-          });
-      });
+  getCurrentUser(currentUserUid, loadingPopup) {
+    this.profile = this.afDb.object("/userProfiles/" + currentUserUid);
+    this.profile.subscribe(profile => {
+      this.setProfile(profile, currentUserUid, loadingPopup);
     });
   }
 
   getOtherUser(userId, loadingPopup) {
-    console.log(userId);
+    this.afDb.object(`/userProfiles/${userId}`).subscribe(profile => {
+      this.setProfile(profile, userId, loadingPopup);
+    });
+  }
 
+  setProfile(profile, uid, loadingPopup) {
+    this.profileArray = profile;
+    this.afDb
+      .list("/dogProfiles/", {
+        query: {
+          orderByChild: "ownerId",
+          equalTo: uid
+        }
+      })
+      .subscribe(dogs => {
+        this.dogs = dogs;
+        loadingPopup.dismiss();
+      });
   }
 
   ionViewDidLoad() {
@@ -88,10 +90,13 @@ export class ProfilePage {
       content: ""
     });
     loadingPopup.present();
-    if (this.navParams.data.userId) {
-      this.getOtherUser(this.navParams.data.userId, loadingPopup);
-    } else {
-      this.getCurrentUser(loadingPopup);
-    }
+    this.afAuth.authState.subscribe(userAuth => {
+      this.currentUserUid = userAuth.uid;
+      if (this.navParams.data.userId) {
+        this.getOtherUser(this.navParams.data.userId, loadingPopup);
+      } else {
+        this.getCurrentUser(this.currentUserUid, loadingPopup);
+      }
+    });
   }
 }
