@@ -11,28 +11,34 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content>
   <!-- What are you looking for? -->
-  <div *ngIf="!whichDogScreen">
+  <div *ngIf="!whichDogScreen" padding>
     <ion-grid>
-      <ion-card text-center align-items-center class="breeding" (click)="lookingFor('breeding')">
-        <h3 class="card-title">Breeding</h3>
-      </ion-card>
-      <ion-card text-center align-items-center class="play-date" (click)="lookingFor('playDate')">
-        <h3 class="card-title">Play Date</h3>
-      </ion-card>
+      <button ion-button block class="primary-outline" (click)="lookingFor('breeding')">Breeding</button>
+      <button ion-button block class="primary-outline" (click)="lookingFor('playDate')">Play Date</button>
     </ion-grid>
   </div>
 
   <!-- Which dog do you want to breed? -->
   <div *ngIf="whichDogScreen">
     <h3 text-center padding>Which dog do you want to breed?</h3>
-    <ion-grid>
-      <!-- TODO: dynamically insert url for background image -->
-      <ion-card *ngFor="let dog of filteredDogs" (click)="goToFeed(dog, 'breeding')" [ngStyle]="{'background': 'linear-gradient(0deg, rgba(4, 21, 51, 0.6), rgba(4, 21, 51, 0.6)), url(' + dog.profileImg + ')', 'background-size' : 'cover', 'background-position' : '50% 50%'}">
-        <h3 class="card-title">{{dog.name}}</h3>
+    <div class="gray-background">
+      <ion-card *ngFor="let dog of filteredDogs">
+        <ion-slides pager (click)="goToFeed(dog, 'breeding')">
+          <ion-slide *ngFor="let photo of dog.photos" [ngStyle]="{'background' : 'url(' + photo.url + ')'}">
+          </ion-slide>
+        </ion-slides>
+        <ion-card-content (click)="goToFeed(dog, 'breeding')">
+          <ion-card-title>
+            {{dog.name}}
+          </ion-card-title>
+          <ion-row justify-content-between>
+            <p class="age">{{dog.birthdate | age}}</p>
+            <ion-icon [name]="dog.gender === 'male' ? 'male' : 'female'" item-left class="gender-icon" [ngClass]="dog.gender === 'male' ? 'male' : 'female'"></ion-icon>
+          </ion-row>
+        </ion-card-content>
       </ion-card>
-    </ion-grid>
+    </div>
   </div>
-
 </ion-content>

@@ -29,6 +29,7 @@ export class LookingForPage {
   dogs: Array<any> = [];
   filteredDogs: Array<any> = [];
   whichDogScreen: boolean = false;
+  lookingForTitle: string;
 
   constructor(
     public navCtrl: NavController,
@@ -41,9 +42,7 @@ export class LookingForPage {
   ) {}
 
   ionViewDidLoad() {
-    // TODO: check all user dogs to make sure that they have checked available for breeding
-    // if they don't have any dogs available to breed and only have one dog, send them to the play date page
-    // if they have multiple dogs and all cannot breed, show the the list of their dogs to choose from
+    this.lookingForTitle = 'Interested in...';
     this.afAuth.authState.subscribe(userAuth => {
       if (userAuth) {
         this.uid = userAuth.uid;
@@ -82,6 +81,7 @@ export class LookingForPage {
     this.filteredDogs = Array.from(this.dogs);
     if (decision === 'breeding' && this.filterDogs(this.filteredDogs).length > 1) {
       this.whichDogScreen = true;
+      this.lookingForTitle = 'Which dog?';
     } else {
       this.goToFeed(this.filteredDogs[0], decision);
     }

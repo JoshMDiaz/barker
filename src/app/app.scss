@@ -213,3 +213,7 @@ ion-card.card {
 p {
   line-height: 1.75rem !important;
 }
+
+.gray-background {
+  background: color($colors, light);
+}
