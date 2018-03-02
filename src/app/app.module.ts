@@ -34,11 +34,12 @@ import { AuthData } from "../providers/auth-data";
 import * as ionicGalleryModal from "ionic-gallery-modal";
 import { HAMMER_GESTURE_CONFIG } from "@angular/platform-browser";
 
-import { CalendarModule } from "ion2-calendar";
-
-// My Custom Components
 import { ComponentsModule } from "../components/components.module";
 import { PipesModule } from "../pipes/pipes.module";
+import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
+import { File } from '@ionic-native/file';
+
+// My Custom Components
 
 //********** firebase configuration  ************ */
 export const firebaseConfig = {
@@ -62,8 +63,7 @@ export const firebaseConfig = {
     ComponentsModule,
     PipesModule,
     HttpModule,
-    HttpClientModule,
-    CalendarModule
+    HttpClientModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [MyApp],
@@ -78,9 +78,11 @@ export const firebaseConfig = {
     { provide: ErrorHandler, useClass: IonicErrorHandler },
     AuthData,
     Facebook,
-    Facebook,
     GooglePlus,
+    FileTransfer,
+    FileTransferObject,
+    File,
     Camera
   ]
 })
-export class AppModule {}
+export class AppModule { }
