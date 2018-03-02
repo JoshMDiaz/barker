@@ -132,7 +132,7 @@
 }
 ion-icon {
   &.male {
-    color: map-get($colors, male);
+    color: map-get($colors, blue);
   }
   &.female {
     color: map-get($colors, pink);
@@ -152,6 +152,16 @@ button {
     border-image: linear-gradient(to right, color($colors, pink), color($colors, orange));
     border-image-slice: 1;
     background: -webkit-linear-gradient(right, color($colors, pink), color($colors, orange));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  &.secondary-outline {
+    background: none;
+    border: 2px solid transparent;
+    border-image: linear-gradient(to right, color($colors, purple1), color($colors, purple2));
+    border-image-slice: 1;
+    background: -webkit-linear-gradient(right, color($colors, purple1), color($colors, purple2));
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;

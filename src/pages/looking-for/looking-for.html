@@ -1,44 +1,15 @@
 <ion-header no-border>
   <ion-navbar transparent>
-    <button ion-button menuToggle *ngIf="!whichDogScreen">
+    <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <button ion-button icon-start clear *ngIf="whichDogScreen" (click)="whichDogScreen = !whichDogScreen">
-      <ion-icon name="arrow-back"></ion-icon>
-      Back
-    </button>
-    <ion-title *ngIf="!whichDogScreen">Interested in...</ion-title>
+    <ion-title>Interested in...</ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content>
-  <!-- What are you looking for? -->
-  <div *ngIf="!whichDogScreen" padding>
-    <ion-grid>
-      <button ion-button block class="primary-outline" (click)="lookingFor('breeding')">Breeding</button>
-      <button ion-button block class="primary-outline" (click)="lookingFor('playDate')">Play Date</button>
-    </ion-grid>
-  </div>
-
-  <!-- Which dog do you want to breed? -->
-  <div *ngIf="whichDogScreen">
-    <h3 text-center padding>Which dog do you want to breed?</h3>
-    <div class="gray-background">
-      <ion-card *ngFor="let dog of filteredDogs">
-        <ion-slides pager (click)="goToFeed(dog, 'breeding')">
-          <ion-slide *ngFor="let photo of dog.photos" [ngStyle]="{'background' : 'url(' + photo.url + ')'}">
-          </ion-slide>
-        </ion-slides>
-        <ion-card-content (click)="goToFeed(dog, 'breeding')">
-          <ion-card-title>
-            {{dog.name}}
-          </ion-card-title>
-          <ion-row justify-content-between>
-            <p class="age">{{dog.birthdate | age}}</p>
-            <ion-icon [name]="dog.gender === 'male' ? 'male' : 'female'" item-left class="gender-icon" [ngClass]="dog.gender === 'male' ? 'male' : 'female'"></ion-icon>
-          </ion-row>
-        </ion-card-content>
-      </ion-card>
-    </div>
-  </div>
+<ion-content padding>
+  <ion-grid>
+    <button ion-button block class="primary" (click)="lookingFor('breeding')">Breeding</button>
+    <button ion-button block class="primary-outline" (click)="lookingFor('playDate')">Play Date</button>
+  </ion-grid>
 </ion-content>

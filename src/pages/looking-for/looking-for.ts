@@ -23,26 +23,22 @@ import md5 from "crypto-md5"; // dependencies:"crypto-md5"
   templateUrl: "looking-for.html"
 })
 export class LookingForPage {
-  profileArray: any = [];
-  uid: string;
-  profile: FirebaseObjectObservable<any[]>;
   dogs: Array<any> = [];
   filteredDogs: Array<any> = [];
-  whichDogScreen: boolean = false;
-  lookingForTitle: string;
+  uid: string;
+  profileArray: any = [];
+  profile: FirebaseObjectObservable<any[]>;
 
   constructor(
     public navCtrl: NavController,
     public authData: AuthData,
-    public alertCtrl: AlertController,
     public loadingCtrl: LoadingController,
     private toastCtrl: ToastController,
     public afAuth: AngularFireAuth,
     public afDb: AngularFireDatabase
-  ) {}
+  ) { }
 
   ionViewDidLoad() {
-    this.lookingForTitle = 'Interested in...';
     this.afAuth.authState.subscribe(userAuth => {
       if (userAuth) {
         this.uid = userAuth.uid;
@@ -80,8 +76,7 @@ export class LookingForPage {
   lookingFor(decision) {
     this.filteredDogs = Array.from(this.dogs);
     if (decision === 'breeding' && this.filterDogs(this.filteredDogs).length > 1) {
-      this.whichDogScreen = true;
-      this.lookingForTitle = 'Which dog?';
+      this.navCtrl.push("LookingForBreedingPage", { uid: this.uid, dogs: this.filterDogs(this.filteredDogs) })
     } else {
       this.goToFeed(this.filteredDogs[0], decision);
     }

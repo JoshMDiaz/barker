@@ -1,0 +1,28 @@
+<ion-header no-border>
+  <ion-navbar transparent>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Which dog?</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <div class="gray-background">
+    <ion-card *ngFor="let dog of dogs">
+      <ion-slides pager (click)="goToFeed(dog, 'breeding')">
+        <ion-slide *ngFor="let photo of dog.photos" [ngStyle]="{'background' : 'url(' + photo.url + ')'}">
+        </ion-slide>
+      </ion-slides>
+      <ion-card-content (click)="goToFeed(dog, 'breeding')">
+        <ion-card-title>
+          {{dog.name}}
+        </ion-card-title>
+        <ion-row justify-content-between>
+          <p class="age">{{dog.birthdate | age}}</p>
+          <ion-icon [name]="dog.gender === 'male' ? 'male' : 'female'" item-left class="gender-icon" [ngClass]="dog.gender === 'male' ? 'male' : 'female'"></ion-icon>
+        </ion-row>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>

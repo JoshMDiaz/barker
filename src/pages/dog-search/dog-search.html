@@ -1,9 +1,9 @@
-<ion-header no-border class="dog-search-header">
+<ion-header no-border>
   <ion-navbar color="white" style="background: none; border-bottom: none">
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Search</ion-title>
+    <ion-title>Results</ion-title>
     <ion-buttons right>
       <button ion-button icon-only>
         <ion-icon name="settings"></ion-icon>
@@ -13,7 +13,7 @@
 </ion-header>
 
 
-<ion-content no-paddding shrink-header [headerToHide]="'dog-search-header'">
+<ion-content no-paddding>
 
   <dog-card *ngFor="let dog of dogs" [uid]="uid" [dog]="dog"></dog-card>
 
