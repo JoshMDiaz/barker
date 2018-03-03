@@ -1,13 +1,5 @@
-<ion-header no-border>
-  <ion-navbar transparent>
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
-    <ion-title>Which dog?</ion-title>
-  </ion-navbar>
-</ion-header>
-
-<ion-content>
+<header-bar [title]="'Which dog?'"></header-bar>
+<ion-content class="header-margin">
   <div class="gray-background">
     <ion-card *ngFor="let dog of dogs">
       <ion-slides pager (click)="goToFeed(dog, 'breeding')">

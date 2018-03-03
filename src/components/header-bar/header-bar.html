@@ -1,0 +1,16 @@
+<ion-header no-border>
+  <ion-navbar color="white" style="background: none; border-bottom: none">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      {{title}}
+      <ion-icon [name]="gender === 'male' ? 'male' : 'female'" item-left class="gender-icon" [ngClass]="gender === 'male' ? 'male' : 'female'" *ngIf="dogProfile"></ion-icon>
+    </ion-title>
+    <ion-buttons right>
+      <button ion-button (click)="toggleActionSheet()" icon-only clear>
+        <ion-icon name="more"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>

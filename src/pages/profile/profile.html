@@ -1,16 +1,5 @@
-<ion-header no-border>
-  <ion-navbar color="white" style="background: none; border-bottom: none">
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
-    <ion-title>
-      Dog Owner
-    </ion-title>
-  </ion-navbar>
-</ion-header>
-
-
-<ion-content>
+<header-bar [title]="'Dog Owner'"></header-bar>
+<ion-content class="header-margin">
 
   <div id="profile-info">
     <img id="profile-image" class="pop-in" src="{{profileArray.photo || 'http://placehold.it/200x200'}}" />

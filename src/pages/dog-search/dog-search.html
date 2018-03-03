@@ -1,27 +1,10 @@
-<ion-header no-border>
-  <ion-navbar color="white" style="background: none; border-bottom: none">
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
-    <ion-title>Results</ion-title>
-    <ion-buttons right>
-      <button ion-button icon-only>
-        <ion-icon name="settings"></ion-icon>
-      </button>
-    </ion-buttons>
-  </ion-navbar>
-</ion-header>
-
-
-<ion-content no-paddding>
-
+<header-bar [title]="'Results'"></header-bar>
+<ion-content no-padding class="header-margin">
   <dog-card *ngFor="let dog of dogs" [uid]="uid" [dog]="dog"></dog-card>
-
   <ion-card *ngIf="noDogsFound" class="no-data-card" padding>
     <ion-card-content text-center>
       <ion-icon name="alert"></ion-icon>
       <h2>Sorry! There are no dogs that match your decision.</h2>
     </ion-card-content>
   </ion-card>
-
 </ion-content>

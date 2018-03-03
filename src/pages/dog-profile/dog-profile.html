@@ -1,21 +1,5 @@
-<ion-header no-border>
-  <ion-navbar color="white" style="background: none; border-bottom: none">
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
-    <ion-title>
-      {{dogProfile.name}}
-      <ion-icon [name]="dogProfile.gender === 'male' ? 'male' : 'female'" item-left class="gender-icon" [ngClass]="dogProfile.gender === 'male' ? 'male' : 'female'"></ion-icon>
-    </ion-title>
-    <ion-buttons right>
-      <button ion-button (click)="toggleFavorite()" icon-only clear [color]="true ? 'gray' : 'red'">
-        <ion-icon name="star" [ngClass]="false ? 'checked' : ''" class="favorite-button"></ion-icon>
-      </button>
-    </ion-buttons>
-  </ion-navbar>
-</ion-header>
-
-<ion-content padding>
+<header-bar [title]="dogProfile.name" [dog-profile]="true" [gender]="dogProfile.gender"></header-bar>
+<ion-content padding class="header-margin">
   <div id="profile-info" padding>
     <img id="profile-image" class="pop-in" src="{{'http://placehold.it/200x200'}}" />
     <h3>{{dogProfile.breed | commaSpace}}</h3>

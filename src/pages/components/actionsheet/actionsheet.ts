@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+f22qimport { Component } from '@angular/core';
 import { IonicPage, Platform, ActionSheetController } from 'ionic-angular';
 
 @IonicPage()
@@ -9,7 +9,7 @@ import { IonicPage, Platform, ActionSheetController } from 'ionic-angular';
 export class ActionsheetPage {
 
     constructor(public platform: Platform, public actionsheetCtrl: ActionSheetController ) {
-  
+
     }
 openMenu() {
     let actionSheet = this.actionsheetCtrl.create({
@@ -57,5 +57,5 @@ openMenu() {
     });
     actionSheet.present();
   }
-  
+
 }
