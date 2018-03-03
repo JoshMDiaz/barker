@@ -1,4 +1,4 @@
-f22qimport { Component } from '@angular/core';
+import { Component } from '@angular/core';
 import { IonicPage, Platform, ActionSheetController } from 'ionic-angular';
 
 @IonicPage()

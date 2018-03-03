@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { ActionSheetController, NavController } from 'ionic-angular';
+import { AuthData } from '../../providers/auth-data';
 
 @Component({
   selector: 'header-bar',
@@ -12,31 +13,18 @@ export class HeaderBarComponent {
   profilePage: boolean = false;
   searchPage: boolean = false;
 
-  constructor(public actionsheetCtrl: ActionSheetController, public navCtrl: NavController) {}
+  constructor(public actionsheetCtrl: ActionSheetController, public navCtrl: NavController, private authData: AuthData) { }
 
-  determineProfilePage() {
-    if (this.navCtrl.getActive().name === 'ProfilePage') {
-      return true;
+  determineCurrentPage(arr) {
+    let currentPage = false
+    for (let i = 0; i < arr.length; i++) {
+      switch (this.navCtrl.getActive().name) {
+        case arr[i]:
+          currentPage = true;
+          break;
+      }
     }
-  }
-
-  determineSearchPage() {
-    let profilePage = false
-    switch (this.navCtrl.getActive().name) {
-      case 'LookingForPage':
-        profilePage = true;
-        break;
-      case 'LookingForBreedingPage':
-        profilePage = true;
-        break;
-      case 'DogSearchPage':
-        profilePage = true;
-        break;
-      default:
-        profilePage = false;
-        break;
-    }
-    return profilePage;
+    return currentPage;
   }
 
   toggleActionSheet() {
@@ -48,7 +36,7 @@ export class HeaderBarComponent {
           text: 'Profile',
           icon: 'person',
           handler: () => {
-            if (this.determineProfilePage()) {
+            if (this.determineCurrentPage(['ProfilePage'])) {
               return;
             } else {
               this.navCtrl.push('ProfilePage');
@@ -59,7 +47,7 @@ export class HeaderBarComponent {
           text: 'Find Dogs',
           icon: 'search',
           handler: () => {
-            if (this.determineSearchPage()) {
+            if (this.determineCurrentPage(['LookingForPage', 'LookingForBreedingPage', 'DogSearchPage'])) {
               return;
             } else {
               this.navCtrl.push('LookingForPage');
@@ -67,21 +55,39 @@ export class HeaderBarComponent {
           }
         },
         {
-          text: 'Logout',
-          icon: 'heart-outline',
+          text: 'Messages',
+          icon: 'chatbubbles',
           handler: () => {
-            console.log('logout clicked');
+            if (this.determineCurrentPage(['MessagesPage', 'MessagePage'])) {
+              return;
+            } else {
+              this.navCtrl.push('MessagesPage');
+            }
+          }
+        },
+        {
+          text: 'Logout',
+          icon: 'log-out',
+          handler: () => {
+            this.logout();
           }
         },
         {
           text: 'Close',
           role: 'cancel',
           icon: 'close',
-          handler: () => {}
+          handler: () => { }
         }
       ]
     });
     actionSheet.present();
+  }
+
+  logout() {
+    this.authData.logoutUser()
+      .then(authData => {
+        this.navCtrl.setRoot('LoginPage');
+      });
   }
 
 }
