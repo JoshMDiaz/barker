@@ -11,7 +11,6 @@ import { Platform } from 'ionic-angular';
 })
 export class RegisterPage {
   public registerForm;
-  public backgroundImage: any = "./assets/j_bg11.jpg";
   private platform: Platform;
 
   constructor(public nav: NavController, public authData: AuthData, public fb: FormBuilder, public loadingCtrl: LoadingController, public alertCtrl: AlertController) {
@@ -27,9 +26,7 @@ export class RegisterPage {
   }
 
   registerUser(){
-    console.log("call signopUser");
     if (!this.registerForm.valid){
-      console.log(this.registerForm.value);
       this.presentAlert("invalid form");
     } else {
 
@@ -61,37 +58,37 @@ export class RegisterPage {
     alert.present();
   }
 
-  facebookLogin() {
-    let loadingPopup = this.loadingCtrl.create({
-      spinner: "crescent",
-      content: "",
-      duration: 15000
-    });
-    loadingPopup.present();
-    // call signInWithFacebook in authData provider.
-    if (this.platform.is("cordova")) {
-      this.authData.signInWithFacebook().then(
-        authData => {
-          var resJSON = JSON.stringify(authData);
-          this.authData.updateUserProfileFB(
-            authData.uid,
-            authData.displayName,
-            authData.email,
-            authData.photoURL
-          );
-          loadingPopup.dismiss();
-          this.nav.setRoot("AfterLoginPage");
-        },
-        error => {
-          var errorMessage: string = error.message;
-          loadingPopup.dismiss().then(() => {
-            alert("Error:" + errorMessage);
-          });
-        }
-      );
-    } else {
-      alert("Please install app in device.");
-      loadingPopup.dismiss();
-    }
-  }
+  // facebookLogin() {
+  //   let loadingPopup = this.loadingCtrl.create({
+  //     spinner: "crescent",
+  //     content: "",
+  //     duration: 15000
+  //   });
+  //   loadingPopup.present();
+  //   // call signInWithFacebook in authData provider.
+  //   if (this.platform.is("cordova")) {
+  //     this.authData.signInWithFacebook().then(
+  //       authData => {
+  //         var resJSON = JSON.stringify(authData);
+  //         this.authData.updateUserProfileFB(
+  //           authData.uid,
+  //           authData.displayName,
+  //           authData.email,
+  //           authData.photoURL
+  //         );
+  //         loadingPopup.dismiss();
+  //         this.nav.setRoot("AfterLoginPage");
+  //       },
+  //       error => {
+  //         var errorMessage: string = error.message;
+  //         loadingPopup.dismiss().then(() => {
+  //           alert("Error:" + errorMessage);
+  //         });
+  //       }
+  //     );
+  //   } else {
+  //     alert("Please install app in device.");
+  //     loadingPopup.dismiss();
+  //   }
+  // }
 }

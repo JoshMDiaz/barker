@@ -9,7 +9,6 @@ import { HttpClientModule } from "@angular/common/http";
 //*********** ionic Native **************/
 import { StatusBar } from "@ionic-native/status-bar";
 import { SplashScreen } from "@ionic-native/splash-screen";
-import { Geolocation } from "@ionic-native/geolocation";
 import { Camera } from "@ionic-native/camera";
 
 import { MyApp } from "./app.component";
@@ -38,8 +37,6 @@ import { ComponentsModule } from "../components/components.module";
 import { PipesModule } from "../pipes/pipes.module";
 import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
 import { File } from '@ionic-native/file';
-
-// My Custom Components
 
 //********** firebase configuration  ************ */
 export const firebaseConfig = {
@@ -70,7 +67,6 @@ export const firebaseConfig = {
   providers: [
     StatusBar,
     SplashScreen,
-    Geolocation,
     {
       provide: HAMMER_GESTURE_CONFIG,
       useClass: ionicGalleryModal.GalleryModalHammerConfig
