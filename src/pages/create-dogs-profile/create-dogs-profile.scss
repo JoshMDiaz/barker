@@ -1,5 +1,5 @@
 page-create-dogs-profile {
-  .toolbar-background, ion-content {
+  ion-content {
     background-color: color($colors, light) !important;
   }
   .item-divider {
@@ -7,5 +7,10 @@ page-create-dogs-profile {
     width: calc(100% + 40px);
     padding-left: 20px;
     font-size: 16px;
+  }
+  ion-card.card {
+    &:last-of-type {
+      margin: 0;
+    }
   }
 }

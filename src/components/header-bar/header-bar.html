@@ -7,7 +7,7 @@
       {{title}}
       <ion-icon [name]="gender === 'male' ? 'male' : 'female'" item-left class="gender-icon" [ngClass]="gender === 'male' ? 'male' : 'female'" *ngIf="dogProfile"></ion-icon>
     </ion-title>
-    <ion-buttons right>
+    <ion-buttons right *ngIf="!hideButton">
       <button ion-button (click)="toggleActionSheet()" icon-only clear>
         <ion-icon name="more"></ion-icon>
       </button>

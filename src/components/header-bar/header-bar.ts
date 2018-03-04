@@ -9,6 +9,7 @@ import { AuthData } from '../../providers/auth-data';
 export class HeaderBarComponent {
   @Input() title: string;
   @Input() gender?: string;
+  @Input('hide-button') hideButton?: boolean;
   @Input('dog-profile') dogProfile?: boolean;
   profilePage: boolean = false;
   searchPage: boolean = false;

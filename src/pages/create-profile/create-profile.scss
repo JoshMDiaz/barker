@@ -1,5 +1,8 @@
 page-create-profile {
-  .toolbar-background, ion-content {
+  ion-content {
     background: color($colors, light) !important;
+  }
+  ion-card.card {
+    margin: 0;
   }
 }
