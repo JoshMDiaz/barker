@@ -28,7 +28,8 @@ export class MyApp {
       { name: "Profile", component: "ProfilePage" },
       { name: "Dog Profile", component: "DogProfilePage" },
       { name: "Looking For", component: "LookingForPage" },
-      { name: "Create Profile", component: "CreateProfilePage" }
+      { name: "Create Profile", component: "CreateProfilePage" },
+      { name: "Messages", component: "MessagesPage" }
     ];
 
   }

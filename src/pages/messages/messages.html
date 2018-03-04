@@ -1,5 +1,32 @@
 <header-bar [title]="'Messages'"></header-bar>
-<ion-content padding class="header-margin">
+<ion-content no-padding class="header-margin">
+  <ion-list class="message-sliding-demo">
 
+    <ion-item-sliding *ngFor="let message of messages" #item (click)="goToConversation(message)">
+      <ion-item>
+        <ion-avatar item-left>
+          <img [src]="message.profileImg || './assets/default_profile.png'">
+        </ion-avatar>
+        <h2>{{message.name}}</h2>
+        <ion-note item-right>
+          {{message.time | date:'shortTime'}}
+        </ion-note>
+      </ion-item>
+
+      <ion-item-options (ionSwipe)="delete(message)">
+        <button ion-button expandable color="danger" (click)="delete(message)">
+          <ion-icon name="trash"></ion-icon>
+          <!-- <ion-spinner></ion-spinner> -->
+        </button>
+      </ion-item-options>
+
+      <ion-item-options side="left" (ionSwipe)="readStatus(message)">
+        <button ion-button color="primary" expandable (click)="readStatus(message)">
+          <ion-icon [name]="message.hasRead === true ? 'mail-open' : 'mail'"></ion-icon>
+          <!-- <ion-spinner></ion-spinner> -->
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
 
 </ion-content>
