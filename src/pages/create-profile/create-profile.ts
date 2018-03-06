@@ -7,6 +7,8 @@ import "rxjs/add/operator/map";
 import { AlertController } from "ionic-angular/components/alert/alert-controller";
 import { Camera, CameraOptions } from "@ionic-native/camera";
 import { storage } from "firebase";
+import { FileTransfer } from "@ionic-native/file-transfer";
+import { DomSanitizer } from "@angular/platform-browser";
 
 @IonicPage()
 @Component({
@@ -21,6 +23,8 @@ export class CreateProfilePage {
     name: string;
     abbreviation: string;
   }>;
+  imageURI: any;
+  imageFileName: any;
 
   constructor(
     public navCtrl: NavController,
@@ -28,14 +32,29 @@ export class CreateProfilePage {
     private http: Http,
     private authData: AuthData,
     private alertCtrl: AlertController,
-    private camera: Camera
+    private camera: Camera,
+    private transfer: FileTransfer,
+    private DomSanitizer: DomSanitizer
   ) {
     this.email = this.navParams.data.email;
     this.uid = this.navParams.data.uid;
   }
 
   addDogs(profileData) {
-    this.navCtrl.push("CreateDogsProfilePage", { profileData: profileData });
+    this.navCtrl.push("CreateDogsProfilePage", { profileData: profileData, imgURI: this.imageURI });
+  }
+
+  getImage() {
+    const options: CameraOptions = {
+      quality: 100,
+      destinationType: this.camera.DestinationType.FILE_URI,
+      sourceType: this.camera.PictureSourceType.PHOTOLIBRARY
+    }
+    this.camera.getPicture(options).then((imageData) => {
+      this.imageFileName = imageData;
+    }, (err) => {
+      console.log(err);
+    });
   }
 
   // takePhoto() {

@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import { IonicPage, NavController, NavParams } from "ionic-angular";
+import { IonicPage, NavController, NavParams, LoadingController } from "ionic-angular";
 import { ProfileModel } from "../../models/profile";
 import { DogModel } from "../../models/dog";
 import { AngularFireAuth } from "angularfire2/auth";
@@ -7,6 +7,7 @@ import { Http, Response } from "@angular/http";
 import "rxjs/add/operator/map";
 import { AuthData } from "../../providers/auth-data";
 import { AngularFireDatabase } from "angularfire2/database-deprecated";
+import { FileTransfer, FileTransferObject, FileUploadOptions } from "@ionic-native/file-transfer";
 
 @IonicPage()
 @Component({
@@ -23,6 +24,7 @@ export class CreateDogsProfilePage {
   months: Array<string>;
   days: Array<number> = [];
   years: Array<number> = [];
+  imageFileName: any;
 
   constructor(
     public navCtrl: NavController,
@@ -30,7 +32,9 @@ export class CreateDogsProfilePage {
     public afAuth: AngularFireAuth,
     private http: Http,
     private authData: AuthData,
-    public afDb: AngularFireDatabase
+    public afDb: AngularFireDatabase,
+    private transfer: FileTransfer,
+    public loadingCtrl: LoadingController
   ) {}
 
   createProfile(dogs) {
@@ -66,6 +70,7 @@ export class CreateDogsProfilePage {
       dogs.length,
       true
     );
+    this.uploadFile(this.navParams.data.imageURI, 'user-profile');
   }
 
   addEmptyDogs(num) {
@@ -84,7 +89,33 @@ export class CreateDogsProfilePage {
         birthdate: "",
         photos: []
       });
+    this.uploadFile(this.navParams.data.imageURI, `dog-profile-${{i}}`);
     }
+  }
+
+  uploadFile(imageURI, name) {
+    let loader = this.loadingCtrl.create({
+      content: "Uploading..."
+    });
+    loader.present();
+    const fileTransfer: FileTransferObject = this.transfer.create();
+
+    let options: FileUploadOptions = {
+      fileKey: 'ionicfile',
+      fileName: 'ionicfile',
+      chunkedMode: false,
+      mimeType: "image/jpeg",
+      headers: {}
+    }
+
+    fileTransfer.upload(imageURI, 'http://192.168.0.7:8080/api/uploadImage', options)
+      .then((data) => {
+      this.imageFileName = `http://192.168.0.7:8080/static/images/${{name}}.jpg`
+      loader.dismiss();
+    }, (err) => {
+      console.log(err);
+      loader.dismiss();
+    });
   }
 
   ionViewDidLoad() {
