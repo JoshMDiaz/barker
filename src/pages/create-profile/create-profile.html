@@ -22,11 +22,13 @@
         </ion-label>
         <ion-textarea [(ngModel)]="profile.description"></ion-textarea>
       </ion-item>
-      <button ion-button block class="primary-outline" (click)="getImage()">Upload Photo</button>
-      <img [src]="DomSanitizer.bypassSecurityTrustUrl(imageFileName)" *ngIf="imageFileName" alt="Profile picture" width="300" />
+      <br/>
+      <button ion-button block class="primary-outline" (click)="getImage()">Choose Photo</button>
+      <img [src]="imageUrl" *ngIf="imageFileName" alt="Profile picture" width="300" />
+      test: {{imageUrl}}
     </ion-card-content>
   </ion-card>
   <div padding>
-    <button ion-button block class="primary" (click)="addDogs(profile)">Add Dogs</button>
+    <button ion-button block class="primary" (click)="addDogs(profile)" [disabled]="disabled" >Add Dogs</button>
   </div>
 </ion-content>

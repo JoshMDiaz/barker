@@ -142,7 +142,7 @@ ion-icon {
   height: 100%;
 }
 .header-margin {
-  margin-top: 56px;
+  margin-top: 36px;
   .scroll-content {
     height: calc(100% - 56px);
   }
@@ -154,31 +154,23 @@ button {
   }
   &.primary-outline {
     background: none;
-    border: 2px solid transparent;
-    border-image: linear-gradient(to right, color($colors, pink), color($colors, orange));
-    border-image-slice: 1;
-    background: -webkit-linear-gradient(right, color($colors, pink), color($colors, orange));
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    border: 2px solid color($colors, pink);
+    color: color($colors, pink);
   }
   &.secondary-outline {
     background: none;
-    border: 2px solid transparent;
-    border-image: linear-gradient(to right, color($colors, purple1), color($colors, purple2));
-    border-image-slice: 1;
-    background: -webkit-linear-gradient(right, color($colors, purple1), color($colors, purple2));
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    border: 2px solid color($colors, purple1);
+    color: color($colors, purple1);
   }
   &.primary-clear {
     background: none;
     border: none;
-    background: -webkit-linear-gradient(right, color($colors, pink), color($colors, orange));
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: color($colors, pink);
+  }
+  &.primary-outline, &.secondary-outline, &.primary-clear {
+    &:hover {
+      background: none !important;
+    }
   }
   &.alert-button {
     color: color($colors, pink) !important;

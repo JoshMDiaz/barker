@@ -12,8 +12,8 @@
     <form [formGroup]="resetPasswordForm" (submit)="resetPassword()" novalidate>
 
       <ion-item>
-        <ion-label stacked>Email</ion-label>
-        <ion-input tappable formControlName="email" type="email" placeholder="Your email address" [class.invalid]="!resetPasswordForm.controls.email.valid && resetPasswordForm.controls.email.dirty"></ion-input>
+        <ion-label floating>Email</ion-label>
+        <ion-input tappable formControlName="email" type="email" [class.invalid]="!resetPasswordForm.controls.email.valid && resetPasswordForm.controls.email.dirty"></ion-input>
       </ion-item>
 
       <ion-item class="error-message">

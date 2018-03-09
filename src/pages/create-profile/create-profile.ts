@@ -4,11 +4,9 @@ import { AuthData } from "../../providers/auth-data";
 import { Http, Response } from "@angular/http";
 import { ProfileModel } from "../../models/profile";
 import "rxjs/add/operator/map";
-import { AlertController } from "ionic-angular/components/alert/alert-controller";
 import { Camera, CameraOptions } from "@ionic-native/camera";
-import { storage } from "firebase";
 import { FileTransfer } from "@ionic-native/file-transfer";
-import { DomSanitizer } from "@angular/platform-browser";
+import firebase from 'firebase';
 
 @IonicPage()
 @Component({
@@ -23,38 +21,56 @@ export class CreateProfilePage {
     name: string;
     abbreviation: string;
   }>;
-  imageURI: any;
-  imageFileName: any;
+  disabled: boolean = true;
+  profileImg: any;
+  imgRef: any;
+  imageUrl: any;
 
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
     private http: Http,
     private authData: AuthData,
-    private alertCtrl: AlertController,
     private camera: Camera,
-    private transfer: FileTransfer,
-    private DomSanitizer: DomSanitizer
+    private transfer: FileTransfer
   ) {
     this.email = this.navParams.data.email;
     this.uid = this.navParams.data.uid;
+    this.imgRef = firebase.storage().ref('/');
   }
 
   addDogs(profileData) {
-    this.navCtrl.push("CreateDogsProfilePage", { profileData: profileData, imgURI: this.imageURI });
+    this.navCtrl.push("CreateDogsProfilePage", { profileData: profileData });
   }
 
   getImage() {
     const options: CameraOptions = {
+      // Gallery options
+      // quality: 100,
+      // destinationType: this.camera.DestinationType.FILE_URI,
+      // sourceType: this.camera.PictureSourceType.PHOTOLIBRARY
+      // Take picture options
       quality: 100,
-      destinationType: this.camera.DestinationType.FILE_URI,
-      sourceType: this.camera.PictureSourceType.PHOTOLIBRARY
+      destinationType: this.camera.DestinationType.DATA_URL,
+      encodingType: this.camera.EncodingType.JPEG,
+      // mediaType: this.camera.MediaType.PICTURE,
+      sourceType: this.camera.PictureSourceType.CAMERA,
+      saveToPhotoAlbum: true
     }
     this.camera.getPicture(options).then((imageData) => {
-      this.imageFileName = imageData;
+      // this.profileImg = 'data:image/jpeg;base64,' + imageData;
+      this.profileImg = imageData;
+      this.uploadImage();
     }, (err) => {
       console.log(err);
     });
+  }
+
+  uploadImage() {
+    this.imgRef.child(this.uid).child('profile-image.jpg').putString(this.profileImg, 'base64', {contentType: 'image/jpg'})
+    .then(savedPic => {
+      this.imageUrl = savedPic.downloadUrl;
+    })
   }
 
   // takePhoto() {
