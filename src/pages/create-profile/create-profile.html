@@ -1,34 +1,35 @@
 <header-bar [title]="'About You'" [hide-button]="true"></header-bar>
-<ion-content no-padding class="header-margin">
+<ion-content no-padding>
   <ion-card>
     <ion-card-content>
-      <ion-item>
-        <ion-label floating>Name</ion-label>
-        <ion-input name="name" [(ngModel)]="profile.name"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label floating>City</ion-label>
-        <ion-input name="city" [(ngModel)]="profile.city"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label floating>State</ion-label>
-        <ion-select name="state" [(ngModel)]="profile.state">
-          <ion-option value="{{state.abbreviation}}" *ngFor="let state of usStates">{{state.name}}</ion-option>
-        </ion-select>
-      </ion-item>
-      <ion-item>
-        <ion-label floating>Description
-          <small>(Not Required)</small>
-        </ion-label>
-        <ion-textarea [(ngModel)]="profile.description"></ion-textarea>
-      </ion-item>
-      <br/>
-      <button ion-button block class="primary-outline" (click)="getImage()">Choose Photo</button>
-      <img [src]="imageUrl" *ngIf="imageFileName" alt="Profile picture" width="300" />
-      test: {{imageUrl}}
+      <form [formGroup]="userForm">
+        <ion-item>
+          <ion-label floating>Name</ion-label>
+          <ion-input formControlName="name" name="name" ></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label floating>City</ion-label>
+          <ion-input formControlName="city" name="city"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label floating>State</ion-label>
+          <ion-select formControlName="state" name="state">
+            <ion-option value="{{state.abbreviation}}" *ngFor="let state of usStates">{{state.name}}</ion-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-label floating>Description
+            <small>(Not Required)</small>
+          </ion-label>
+          <ion-textarea  formControlName="description"></ion-textarea>
+        </ion-item>
+        <br/>
+        <button ion-button block class="primary-outline" (click)="selectPhotoOption()">Choose Photo</button>
+        <img [src]="imageUrl" *ngIf="imageFileName" alt="Profile picture" width="300" />
+      </form>
     </ion-card-content>
   </ion-card>
   <div padding>
-    <button ion-button block class="primary" (click)="addDogs(profile)" [disabled]="disabled" >Add Dogs</button>
+    <button ion-button block class="primary" (click)="addDogs(profile)" [disabled]="!userForm.controls.name.valid || !userForm.controls.city.valid || !userForm.controls.state.valid">Add Dogs</button>
   </div>
 </ion-content>

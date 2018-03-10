@@ -1,5 +1,5 @@
 <header-bar [title]="'Which dog?'"></header-bar>
-<ion-content class="header-margin">
+<ion-content>
   <div class="gray-background">
     <ion-card *ngFor="let dog of dogs">
       <ion-slides pager (click)="goToFeed(dog, 'breeding')">

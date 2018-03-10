@@ -1,7 +1,8 @@
 import { Component } from "@angular/core";
-import { IonicPage, NavController, NavParams } from "ionic-angular";
+import { IonicPage, NavController, NavParams, ActionSheetController } from "ionic-angular";
 import { AuthData } from "../../providers/auth-data";
 import { Http, Response } from "@angular/http";
+import { ReactiveFormsModule, FormGroup, FormControl, Validators } from '@angular/forms';
 import { ProfileModel } from "../../models/profile";
 import "rxjs/add/operator/map";
 import { Camera, CameraOptions } from "@ionic-native/camera";
@@ -14,6 +15,7 @@ import firebase from 'firebase';
   templateUrl: "create-profile.html"
 })
 export class CreateProfilePage {
+  userForm: FormGroup;
   profile = {} as ProfileModel;
   email: string;
   uid: string;
@@ -32,15 +34,60 @@ export class CreateProfilePage {
     private http: Http,
     private authData: AuthData,
     private camera: Camera,
-    private transfer: FileTransfer
+    private transfer: FileTransfer,
+    public actionsheetCtrl: ActionSheetController
   ) {
     this.email = this.navParams.data.email;
     this.uid = this.navParams.data.uid;
     this.imgRef = firebase.storage().ref('/');
+    this.userForm = new FormGroup({
+      name: new FormControl('', Validators.required),
+      city: new FormControl('', Validators.required),
+      state: new FormControl('', Validators.required),
+      description: new FormControl(),
+    });
   }
 
   addDogs(profileData) {
-    this.navCtrl.push("CreateDogsProfilePage", { profileData: profileData });
+    this.navCtrl.push("CreateDogsProfilePage", { profileData: this.userForm.value });
+  }
+
+  selectPhotoOption() {
+    let actionSheet = this.actionsheetCtrl.create({
+      title: 'Upload Photo',
+      cssClass: 'action-sheets',
+      buttons: [
+        {
+          text: 'Take Photo',
+          icon: 'camera',
+          handler: () => {
+            this.takePhoto();
+          }
+        },
+        {
+          text: 'Photo Library',
+          icon: 'images',
+          handler: () => {
+            this.usePhotoLibrary();
+          }
+        },
+        {
+          text: 'Close',
+          role: 'cancel',
+          icon: 'close',
+          handler: () => { }
+        }
+      ]
+    });
+    actionSheet.present();
+  }
+
+  takePhoto() {
+    console.log('take photo');
+  }
+
+  usePhotoLibrary() {
+    console.log('photo library');
   }
 
   getImage() {
@@ -67,10 +114,10 @@ export class CreateProfilePage {
   }
 
   uploadImage() {
-    this.imgRef.child(this.uid).child('profile-image.jpg').putString(this.profileImg, 'base64', {contentType: 'image/jpg'})
-    .then(savedPic => {
-      this.imageUrl = savedPic.downloadUrl;
-    })
+    this.imgRef.child(this.uid).child('profile-image.jpg').putString(this.profileImg, 'base64', { contentType: 'image/jpg' })
+      .then(savedPic => {
+        this.imageUrl = savedPic.downloadUrl;
+      })
   }
 
   // takePhoto() {

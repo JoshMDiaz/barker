@@ -1,5 +1,5 @@
 <header-bar [title]="'Messages'"></header-bar>
-<ion-content no-padding class="header-margin">
+<ion-content no-padding>
   <ion-list class="message-sliding-demo">
 
     <ion-item-sliding *ngFor="let message of messages" #item (click)="goToConversation(message)">

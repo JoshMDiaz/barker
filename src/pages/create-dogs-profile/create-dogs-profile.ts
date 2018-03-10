@@ -4,6 +4,7 @@ import { ProfileModel } from "../../models/profile";
 import { DogModel } from "../../models/dog";
 import { AngularFireAuth } from "angularfire2/auth";
 import { Http, Response } from "@angular/http";
+import { ReactiveFormsModule, FormGroup, FormControl, Validators } from '@angular/forms';
 import "rxjs/add/operator/map";
 import { AuthData } from "../../providers/auth-data";
 import { AngularFireDatabase } from "angularfire2/database-deprecated";
@@ -15,6 +16,7 @@ import { FileTransfer, FileTransferObject, FileUploadOptions } from "@ionic-nati
   templateUrl: "create-dogs-profile.html"
 })
 export class CreateDogsProfilePage {
+  dogForm: FormGroup;
   profile = {} as ProfileModel;
   dogs: Array<any> = [];
   uid: string;
@@ -35,7 +37,22 @@ export class CreateDogsProfilePage {
     public afDb: AngularFireDatabase,
     private transfer: FileTransfer,
     public loadingCtrl: LoadingController
-  ) {}
+  ) {
+    this.dogForm = new FormGroup({
+      name: new FormControl('', Validators.required),
+      breed: new FormControl('', Validators.required),
+      eyes: new FormControl('', Validators.required),
+      birthdate: new FormControl('', Validators.required),
+      gender: new FormControl('', Validators.required),
+      fixed: new FormControl('', Validators.required),
+      // TODO: check if fixed first before making this required
+      couldBreed: new FormControl('', Validators.required),
+      registered: new FormControl('', Validators.required),
+      // TODO: check if papered first before making this required
+      papered: new FormControl('', Validators.required),
+      description: new FormControl(),
+    });
+  }
 
   createProfile(dogs) {
     dogs.forEach(dog => {
@@ -70,7 +87,7 @@ export class CreateDogsProfilePage {
       dogs.length,
       true
     );
-    this.uploadFile(this.navParams.data.imageURI, 'user-profile');
+    // this.uploadFile(this.navParams.data.imageURI, 'user-profile');
   }
 
   addEmptyDogs(num) {
@@ -89,7 +106,6 @@ export class CreateDogsProfilePage {
         birthdate: "",
         photos: []
       });
-    this.uploadFile(this.navParams.data.imageURI, `dog-profile-${{i}}`);
     }
   }
 
@@ -119,6 +135,8 @@ export class CreateDogsProfilePage {
   }
 
   ionViewDidLoad() {
+    console.log(this.navParams.data);
+
     if (this.navParams.data && this.navParams.data.profileData) {
       this.profile = this.navParams.data.profileData;
     }

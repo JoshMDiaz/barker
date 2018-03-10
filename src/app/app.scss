@@ -1,5 +1,4 @@
 // http://ionicframework.com/docs/v2/theming/
-
 // App Global Sass
 // --------------------------------------------------
 // Put style rules here that you want to apply globally. These
@@ -13,11 +12,9 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
-
 //*************** for sidemenu  ***************//
 // Material Design Sidemenu
 @import "../theme/animations";
-
 #menu-material {
   .list-box {
     margin-top: 190px;
@@ -41,8 +38,7 @@
     .user-avatar {
       padding: 0.5em;
       height: 12vh;
-      margin-top: 15px;
-      // border: 3px solid #fff;
+      margin-top: 15px; // border: 3px solid #fff;
     }
   }
   h3,
@@ -54,11 +50,11 @@
     color: #616161;
   }
 }
+
 #menu-ios {
   .menu-header {
     text-align: center;
-    margin: auto;
-    // width: 50%;
+    margin: auto; // width: 50%;
     // margin-top: 10px;
     margin-bottom: 20px;
     padding: 5px 15px;
@@ -77,8 +73,7 @@
     .user-avatar {
       padding: 0.5em;
       height: 15vh;
-      margin-top: 15px;
-      // border: 3px solid #fff;
+      margin-top: 15px; // border: 3px solid #fff;
     }
   }
 }
@@ -89,8 +84,7 @@
   }
   .menu-header {
     text-align: center;
-    margin: auto;
-    // width: 50%;
+    margin: auto; // width: 50%;
     // margin-top: 10px;
     margin-bottom: 20px;
     padding: 5px 15px;
@@ -110,11 +104,9 @@
     .user-avatar {
       padding: 0.5em;
       height: 15vh;
-      margin-top: 15px;
-      // border: 3px solid #fff;
+      margin-top: 15px; // border: 3px solid #fff;
     }
   }
-
   h3,
   .label {
     color: #616161;
@@ -124,12 +116,15 @@
     color: #616161;
   }
 }
+
 .sub-menu .item-inner {
   padding-left: 56px;
 }
+
 .round {
   border-radius: 50%;
 }
+
 ion-icon {
   &.male {
     color: map-get($colors, blue);
@@ -138,14 +133,13 @@ ion-icon {
     color: map-get($colors, pink);
   }
 }
+
 .full-height {
   height: 100%;
 }
-.header-margin {
-  margin-top: 36px;
-  .scroll-content {
-    height: calc(100% - 56px);
-  }
+
+.scroll-content {
+  height: calc(100% - 56px);
 }
 
 button {
@@ -167,21 +161,26 @@ button {
     border: none;
     color: color($colors, pink);
   }
-  &.primary-outline, &.secondary-outline, &.primary-clear {
-    &:hover {
+  &.primary-outline,
+  &.secondary-outline,
+  &.primary-clear {
+    &:hover, &:active {
       background: none !important;
     }
   }
   &.alert-button {
     color: color($colors, pink) !important;
   }
-  &[menuToggle], &.back-button {
+  &[menuToggle],
+  &.back-button {
     margin: 0 !important;
   }
 }
+
 .alert-radio-icon {
   border-color: color($colors, pink) !important;
 }
+
 [aria-checked="true"] {
   .alert-radio-label {
     color: color($colors, pink) !important;
@@ -191,6 +190,7 @@ button {
     background-color: color($colors, pink) !important;
   }
 }
+
 .alert-radio-inner {
   background-color: color($colors, pink) !important;
 }
@@ -201,7 +201,13 @@ ion-footer.footer {
   }
 }
 
-.item-input-has-focus ion-label.label[floating], .input-has-focus ion-label.label[floating] {
+ion-content,
+ion-header.header {
+  position: relative !important;
+}
+
+.item-input-has-focus ion-label.label[floating],
+.input-has-focus ion-label.label[floating] {
   color: color($colors, pink);
 }
 
@@ -210,7 +216,10 @@ ion-card.card {
   width: 100%;
   border-radius: 0;
   padding-bottom: 20px;
-  ion-input, ion-datetime, ion-select, ion-textarea {
+  ion-input,
+  ion-datetime,
+  ion-select,
+  ion-textarea {
     border-bottom: 1px solid color($colors, medium);
   }
   .item {
