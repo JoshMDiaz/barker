@@ -4,7 +4,7 @@ import { ProfileModel } from "../../models/profile";
 import { DogModel } from "../../models/dog";
 import { AngularFireAuth } from "angularfire2/auth";
 import { Http, Response } from "@angular/http";
-import { ReactiveFormsModule, FormGroup, FormControl, Validators } from '@angular/forms';
+import { ReactiveFormsModule, FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
 import "rxjs/add/operator/map";
 import { AuthData } from "../../providers/auth-data";
 import { AngularFireDatabase } from "angularfire2/database-deprecated";
@@ -16,17 +16,15 @@ import { FileTransfer, FileTransferObject, FileUploadOptions } from "@ionic-nati
   templateUrl: "create-dogs-profile.html"
 })
 export class CreateDogsProfilePage {
-  dogForm: FormGroup;
   profile = {} as ProfileModel;
   dogs: Array<any> = [];
   uid: string;
   email: string;
   numberOfDogs: number;
   breeds: Array<string>;
-  months: Array<string>;
-  days: Array<number> = [];
-  years: Array<number> = [];
+  eyeColors: Array<string>;
   imageFileName: any;
+  invalidForm: boolean = false;
 
   constructor(
     public navCtrl: NavController,
@@ -38,41 +36,51 @@ export class CreateDogsProfilePage {
     private transfer: FileTransfer,
     public loadingCtrl: LoadingController
   ) {
-    this.dogForm = new FormGroup({
-      name: new FormControl('', Validators.required),
-      breed: new FormControl('', Validators.required),
-      eyes: new FormControl('', Validators.required),
-      birthdate: new FormControl('', Validators.required),
-      gender: new FormControl('', Validators.required),
-      fixed: new FormControl('', Validators.required),
-      // TODO: check if fixed first before making this required
-      couldBreed: new FormControl('', Validators.required),
-      registered: new FormControl('', Validators.required),
-      // TODO: check if papered first before making this required
-      papered: new FormControl('', Validators.required),
-      description: new FormControl(),
-    });
+    // this.dogForm = new FormGroup({
+    //   name: new FormControl('', Validators.required),
+    //   breed: new FormControl('', Validators.required),
+    //   eyes: new FormControl('', Validators.required),
+    //   birthdate: new FormControl('', Validators.required),
+    //   gender: new FormControl('male', Validators.required),
+    //   fixed: new FormControl(false, Validators.required),
+    //   couldBreed: new FormControl(false, Validators.required),
+    //   papered: new FormControl(false, Validators.required),
+    //   registered: new FormControl(false, Validators.required),
+    //   description: new FormControl(),
+    // });
   }
 
+  // test(dogs) {
+  //   console.log(dogs);
+
+  // }
+
   createProfile(dogs) {
-    dogs.forEach(dog => {
-      this.authData.updateDogsProfile(
-        dog.name,
-        dog.breed,
-        dog.gender,
-        dog.eyes,
-        dog.fixed,
-        dog.couldBreed,
-        dog.papered,
-        dog.registered,
-        dog.description || "",
-        dog.birthdate,
-        this.uid,
-        dog.photos || [""],
-        dog.profileImg || ""
-      );
-    });
-    this.createUserProfile(dogs);
+    this.invalidForm = this.checkForm(dogs) || false;
+    if (this.invalidForm === false) {
+      console.log('made it');
+    } else {
+      console.log('uh oh');
+
+    }
+    // dogs.forEach(dog => {
+    //   this.authData.updateDogsProfile(
+    //     dog.name,
+    //     dog.breed,
+    //     dog.gender,
+    //     dog.eyes,
+    //     dog.fixed,
+    //     dog.couldBreed,
+    //     dog.papered,
+    //     dog.registered,
+    //     dog.description || "",
+    //     dog.birthdate,
+    //     this.uid,
+    //     dog.photos || [""],
+    //     dog.profileImg || ""
+    //   );
+    // });
+    // this.createUserProfile(dogs);
   }
 
   createUserProfile(dogs) {
@@ -90,18 +98,36 @@ export class CreateDogsProfilePage {
     // this.uploadFile(this.navParams.data.imageURI, 'user-profile');
   }
 
+  checkForm(dogs) {
+    let invalidForm = false;
+    dogs.forEach(dog => {
+      for (const key in dog) {
+        if (dog.hasOwnProperty(key)) {
+          const d = dog[key];
+          if (d === null || d === "") {
+            console.log(dog, d);
+
+            invalidForm = true;
+            return;
+          }
+        }
+      }
+    });
+    return invalidForm;
+  }
+
   addEmptyDogs(num) {
     this.dogs = [];
     for (let i = 0; i < num; i++) {
       this.dogs.push({
         name: "",
         breed: "",
-        gender: "",
+        gender: "male",
         eyes: "",
-        fixed: null,
-        couldBreed: null,
-        papered: null,
-        registered: null,
+        fixed: false,
+        couldBreed: false,
+        papered: false,
+        registered: false,
         description: "",
         birthdate: "",
         photos: []
@@ -152,6 +178,13 @@ export class CreateDogsProfilePage {
       .map(data => data.json())
       .subscribe(data => {
         this.breeds = data;
+      });
+
+    this.http
+      .get("/assets/data/eye-colors.json")
+      .map(data => data.json())
+      .subscribe(data => {
+        this.eyeColors = data;
       });
   }
 }
