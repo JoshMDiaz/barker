@@ -24,7 +24,7 @@ export class CreateDogsProfilePage {
   breeds: Array<string>;
   eyeColors: Array<string>;
   imageFileName: any;
-  invalidForm: boolean = false;
+  invalidForm: boolean = true;
 
   constructor(
     public navCtrl: NavController,
@@ -36,50 +36,38 @@ export class CreateDogsProfilePage {
     private transfer: FileTransfer,
     public loadingCtrl: LoadingController
   ) {
-    // this.dogForm = new FormGroup({
-    //   name: new FormControl('', Validators.required),
-    //   breed: new FormControl('', Validators.required),
-    //   eyes: new FormControl('', Validators.required),
-    //   birthdate: new FormControl('', Validators.required),
-    //   gender: new FormControl('male', Validators.required),
-    //   fixed: new FormControl(false, Validators.required),
-    //   couldBreed: new FormControl(false, Validators.required),
-    //   papered: new FormControl(false, Validators.required),
-    //   registered: new FormControl(false, Validators.required),
-    //   description: new FormControl(),
-    // });
   }
 
-  // test(dogs) {
-  //   console.log(dogs);
-
-  // }
-
   createProfile(dogs) {
-    this.invalidForm = this.checkForm(dogs) || false;
-    if (this.invalidForm === false) {
-      console.log('made it');
-    } else {
-      console.log('uh oh');
+    dogs.forEach(dog => {
+      for (const key in dog) {
+        if (dog.hasOwnProperty(key)) {
+          let d = dog[key];
+          if (d === 'true') {
+            dog[key] = true;
+          } else if(d === 'false') {
+            dog[key] = false;
+          }
+        }
+      }
+      this.authData.updateDogsProfile(
+        dog.name,
+        dog.breed,
+        dog.gender,
+        dog.eyes,
+        dog.fixed,
+        dog.couldBreed,
+        dog.papered,
+        dog.registered,
+        dog.description || "",
+        dog.birthdate,
+        this.uid,
+        dog.photos || [""],
+        dog.profileImg || ""
+      );
+    });
+    console.log(dogs);
 
-    }
-    // dogs.forEach(dog => {
-    //   this.authData.updateDogsProfile(
-    //     dog.name,
-    //     dog.breed,
-    //     dog.gender,
-    //     dog.eyes,
-    //     dog.fixed,
-    //     dog.couldBreed,
-    //     dog.papered,
-    //     dog.registered,
-    //     dog.description || "",
-    //     dog.birthdate,
-    //     this.uid,
-    //     dog.photos || [""],
-    //     dog.profileImg || ""
-    //   );
-    // });
     // this.createUserProfile(dogs);
   }
 
@@ -95,7 +83,6 @@ export class CreateDogsProfilePage {
       dogs.length,
       true
     );
-    // this.uploadFile(this.navParams.data.imageURI, 'user-profile');
   }
 
   checkForm(dogs) {
@@ -105,15 +92,13 @@ export class CreateDogsProfilePage {
         if (dog.hasOwnProperty(key)) {
           const d = dog[key];
           if (d === null || d === "") {
-            console.log(dog, d);
-
             invalidForm = true;
             return;
           }
         }
       }
     });
-    return invalidForm;
+    this.invalidForm = invalidForm;
   }
 
   addEmptyDogs(num) {
@@ -161,8 +146,6 @@ export class CreateDogsProfilePage {
   }
 
   ionViewDidLoad() {
-    console.log(this.navParams.data);
-
     if (this.navParams.data && this.navParams.data.profileData) {
       this.profile = this.navParams.data.profileData;
     }
