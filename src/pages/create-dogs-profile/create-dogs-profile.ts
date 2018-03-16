@@ -45,7 +45,7 @@ export class CreateDogsProfilePage {
           let d = dog[key];
           if (d === 'true') {
             dog[key] = true;
-          } else if(d === 'false') {
+          } else if (d === 'false') {
             dog[key] = false;
           }
         }
@@ -66,9 +66,7 @@ export class CreateDogsProfilePage {
         dog.profileImg || ""
       );
     });
-    console.log(dogs);
-
-    // this.createUserProfile(dogs);
+    this.createUserProfile(dogs);
   }
 
   createUserProfile(dogs) {
@@ -83,6 +81,7 @@ export class CreateDogsProfilePage {
       dogs.length,
       true
     );
+    this.navCtrl.setRoot('LookingForPage');
   }
 
   checkForm(dogs) {
@@ -137,12 +136,12 @@ export class CreateDogsProfilePage {
 
     fileTransfer.upload(imageURI, 'http://192.168.0.7:8080/api/uploadImage', options)
       .then((data) => {
-      this.imageFileName = `http://192.168.0.7:8080/static/images/${{name}}.jpg`
-      loader.dismiss();
-    }, (err) => {
-      console.log(err);
-      loader.dismiss();
-    });
+        this.imageFileName = `http://192.168.0.7:8080/static/images/${{ name }}.jpg`
+        loader.dismiss();
+      }, (err) => {
+        console.log(err);
+        loader.dismiss();
+      });
   }
 
   ionViewDidLoad() {
