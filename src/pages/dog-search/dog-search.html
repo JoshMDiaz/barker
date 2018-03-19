@@ -1,4 +1,4 @@
-<header-bar [title]="'Results'"></header-bar>
+<header-bar [title]="'Results'" [dog-search]="true" [dogs]="dogs"></header-bar>
 <ion-content no-padding>
   <dog-card *ngFor="let dog of dogs" [uid]="uid" [dog]="dog"></dog-card>
   <ion-card *ngIf="noDogsFound" class="no-data-card" padding>

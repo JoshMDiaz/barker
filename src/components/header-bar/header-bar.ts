@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { ActionSheetController, NavController } from 'ionic-angular';
+import { ActionSheetController, NavController, ModalController } from 'ionic-angular';
 import { AuthData } from '../../providers/auth-data';
 
 @Component({
@@ -9,12 +9,12 @@ import { AuthData } from '../../providers/auth-data';
 export class HeaderBarComponent {
   @Input() title: string;
   @Input() gender?: string;
+  @Input() dogs?: Array<any>;
   @Input('hide-button') hideButton?: boolean;
   @Input('dog-profile') dogProfile?: boolean;
-  profilePage: boolean = false;
-  searchPage: boolean = false;
+  @Input('dog-search') dogSearch?: boolean;
 
-  constructor(public actionsheetCtrl: ActionSheetController, public navCtrl: NavController, private authData: AuthData) { }
+  constructor(public actionsheetCtrl: ActionSheetController, public navCtrl: NavController, private authData: AuthData, public modalCtrl: ModalController) { }
 
   determineCurrentPage(arr) {
     let currentPage = false
@@ -82,6 +82,11 @@ export class HeaderBarComponent {
       ]
     });
     actionSheet.present();
+  }
+
+  openFilter() {
+    let profileModal = this.modalCtrl.create('DogSearchModalPage', { dogs: this.dogs });
+    profileModal.present();
   }
 
   logout() {
