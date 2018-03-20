@@ -1,13 +1,45 @@
-<ion-content padding>
-  <ion-grid>
-    <ion-row justify-content-between>
-      <h3>Filter Dogs</h3>
+<ion-header no-border>
+  <ion-navbar color="white" style="background: none; border-bottom: none">
+    <ion-title>
+      Filter Dogs
+    </ion-title>
+    <ion-buttons right *ngIf="!hideButton">
       <button ion-button icon-only clear (click)="close()">
         <ion-icon name="close"></ion-icon>
       </button>
-    </ion-row>
-    <ion-row>
-      
-    </ion-row>
-  </ion-grid>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content no-padding>
+  <ion-card>
+    <ion-card-content>
+      <ion-item>
+        <ion-label floating>Breed</ion-label>
+        <ion-select name="breed" (ionChange)="filterDogs(filter)" [(ngModel)]="filter.breed" multiple="true">
+          <ion-option [value]="breed" *ngFor="let breed of breeds">{{breed}}</ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Eye Color</ion-label>
+        <ion-select name="eyes" (ionChange)="filterDogs(filter)" [(ngModel)]="filter.eyes" multiple="true">
+          <ion-option [value]="eyes" *ngFor="let color of eyeColors">{{color}}</ion-option>
+        </ion-select>
+      </ion-item>
+      <!-- Only show when Play Date is selected -->
+      <ion-item>
+        <ion-label floating>Gender</ion-label>
+        <ion-select (ionChange)="filterDogs(filter)" [(ngModel)]="filter.gender">
+          <ion-option value="female">Female</ion-option>
+          <ion-option value="male">Male</ion-option>
+        </ion-select>
+      </ion-item>
+      <!-- Age, State (Location), Neutered (if Play Date), Papered (if Breeding), Registered (if Breeding) -->
+    </ion-card-content>
+  </ion-card>
+  <div padding>
+    <button ion-button block class="primary" (click)="close()">
+      <span>Apply Filters</span>
+    </button>
+  </div>
 </ion-content>
