@@ -12,17 +12,25 @@ export class DogSearchModalPage {
   dogs: Array<any>;
   breeds: Array<string>;
   eyeColors: Array<string>;
+  ages: Array<number>;
+  searchType: string;
+  usStates: Array<{
+    name: string;
+    abbreviation: string;
+  }>;
   filter: {
-    breed: string,
-    eyes: string,
-    gender?: string
+    state?: string,
+    breed?: string,
+    eyes?: string,
+    age?: number,
+    gender?: string,
+    fixed?: string,
+    registered?: string,
+    papered?: string,
   };
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private viewCtrl: ViewController, private http: Http) {
-    this.filter = {
-      breed: '',
-      eyes: '',
-    };
+    this.filter = {};
   }
 
   close() {
@@ -32,11 +40,19 @@ export class DogSearchModalPage {
 
   filterDogs(filter) {
     console.log(filter);
+  }
 
+  populateAges() {
+    this.ages = [];
+    for (let i = 1; i <= 30; i++) {
+      this.ages.push(i);
+    }
   }
 
   ionViewDidLoad() {
     this.dogs = this.navParams.data.dogs;
+    this.searchType = this.navParams.data.searchType;
+    this.populateAges();
     this.http
       .get("/assets/data/breeds.json")
       .map(data => data.json())
@@ -49,6 +65,13 @@ export class DogSearchModalPage {
       .map(data => data.json())
       .subscribe(data => {
         this.eyeColors = data;
+      });
+
+    this.http
+      .get("/assets/data/states.json")
+      .map(data => data.json())
+      .subscribe(data => {
+        this.usStates = data;
       });
   }
 

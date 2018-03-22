@@ -1,7 +1,7 @@
 <ion-header no-border>
   <ion-navbar color="white" style="background: none; border-bottom: none">
     <ion-title>
-      Filter Dogs
+      Filter Options
     </ion-title>
     <ion-buttons right *ngIf="!hideButton">
       <button ion-button icon-only clear (click)="close()">
@@ -15,6 +15,12 @@
   <ion-card>
     <ion-card-content>
       <ion-item>
+        <ion-label floating>State</ion-label>
+        <ion-select name="state" (ionChange)="filterDogs(filter)" [(ngModel)]="filter.state">
+          <ion-option value="{{state.abbreviation}}" *ngFor="let state of usStates">{{state.name}}</ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
         <ion-label floating>Breed</ion-label>
         <ion-select name="breed" (ionChange)="filterDogs(filter)" [(ngModel)]="filter.breed" multiple="true">
           <ion-option [value]="breed" *ngFor="let breed of breeds">{{breed}}</ion-option>
@@ -27,14 +33,43 @@
         </ion-select>
       </ion-item>
       <!-- Only show when Play Date is selected -->
-      <ion-item>
+      <ion-item *ngIf="searchType === 'playDate'">
         <ion-label floating>Gender</ion-label>
         <ion-select (ionChange)="filterDogs(filter)" [(ngModel)]="filter.gender">
           <ion-option value="female">Female</ion-option>
           <ion-option value="male">Male</ion-option>
         </ion-select>
       </ion-item>
-      <!-- Age, State (Location), Neutered (if Play Date), Papered (if Breeding), Registered (if Breeding) -->
+      <ion-item>
+        <ion-label floating>Age</ion-label>
+        <ion-select (ionChange)="filterDogs(filter)" [(ngModel)]="filter.age">
+          <ion-option [value]="age" *ngFor="let age of ages">{{age}}</ion-option>
+        </ion-select>
+      </ion-item>
+      <!-- Only show when Play Date is selected -->
+      <ion-item *ngIf="searchType === 'playDate'">
+        <ion-label floating>Neutered / Spayed</ion-label>
+        <ion-select (ionChange)="filterDogs(filter)"[(ngModel)]="filter.fixed">
+          <ion-option [value]="'true'">Neutered / Spayed</ion-option>
+          <ion-option [value]="'false'">Intact</ion-option>
+        </ion-select>
+      </ion-item>
+      <!-- Only show when Breeding is selected -->
+      <ion-item *ngIf="searchType === 'breeding'">
+        <ion-label floating>Papered</ion-label>
+        <ion-select (ionChange)="filterDogs(filter)"[(ngModel)]="filter.fixed">
+          <ion-option [value]="'true'">Yes</ion-option>
+          <ion-option [value]="'false'">No</ion-option>
+        </ion-select>
+      </ion-item>
+      <!-- Only show when Breeding is selected -->
+      <ion-item *ngIf="searchType === 'breeding'">
+        <ion-label floating>AKC Registered</ion-label>
+        <ion-select (ionChange)="filterDogs(filter)"[(ngModel)]="filter.registered">
+          <ion-option [value]="'true'">Yes</ion-option>
+          <ion-option [value]="'false'">No</ion-option>
+        </ion-select>
+      </ion-item>
     </ion-card-content>
   </ion-card>
   <div padding>

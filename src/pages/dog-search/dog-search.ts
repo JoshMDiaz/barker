@@ -20,6 +20,7 @@ export class DogSearchPage {
   dogs: Array<any> = [];
   filter: any = {};
   noDogsFound: boolean = false;
+  searchType: string;
 
   findGender(dog) {
     let gender = "male";
@@ -39,7 +40,8 @@ export class DogSearchPage {
 
   ionViewDidLoad() {
     this.uid = this.navParams.data.uid;
-    if (this.navParams.data.searchType === "breeding") {
+    this.searchType = this.navParams.data.searchType;
+    if (this.searchType === "breeding") {
       this.findGender(this.navParams.data.dog);
     }
     let loadingPopup = this.loadingCtrl.create({
@@ -60,7 +62,7 @@ export class DogSearchPage {
             this.dogs.push(dog);
           }
         });
-        if (this.navParams.data.searchType === "breeding") {
+        if (this.searchType === "breeding") {
          this.keepDogsCouldBreed(this.dogs);
         }
         if (this.dogs.length === 0) {
