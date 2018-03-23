@@ -42,7 +42,11 @@ export class DogProfilePage {
     description: string;
     birthdate: string;
     ownerId: string;
-    photos: Array<string>;
+    photos: Array<
+      {
+        url: string
+      }
+    >;
     profileImg: string;
   };
 
@@ -78,8 +82,7 @@ export class DogProfilePage {
   }
 
   message() {
-    this.messageSent = !this.messageSent;
-    this.presentToast("bottom", "message user clicked");
+    console.log(`Message ${this.owner.name}`);
   }
 
   presentToast(position: string, message: string) {

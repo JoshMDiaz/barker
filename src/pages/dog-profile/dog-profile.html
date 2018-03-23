@@ -4,11 +4,7 @@
     <img id="profile-image" class="pop-in" src="{{'http://placehold.it/200x200'}}" />
     <h3>{{dogProfile.breed | commaSpace}}</h3>
     <p>{{dogProfile.birthdate | age}}</p>
-    <button ion-button *ngIf="!messageSent" block class="primary" (click)="message()">Message</button>
-    <button ion-button icon-left *ngIf="messageSent" block color="gray" (click)="message()">
-      <ion-icon name="checkmark"></ion-icon>
-      Message Sent
-    </button>
+    <button ion-button block class="primary" (click)="message()">Message</button>
   </div>
 
 
