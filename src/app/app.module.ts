@@ -37,6 +37,11 @@ import { ComponentsModule } from "../components/components.module";
 import { PipesModule } from "../pipes/pipes.module";
 import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
 import { File } from '@ionic-native/file';
+import { FilePath } from '@ionic-native/file-path';
+import { FileChooser } from '@ionic-native/file-chooser';
+import { Crop } from '@ionic-native/crop';
+import { ChatProvider } from '../providers/chat/chat';
+import { ImagehandlerProvider } from '../providers/imagehandler/imagehandler';
 
 //********** firebase configuration  ************ */
 export const firebaseConfig = {

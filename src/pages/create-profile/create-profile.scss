@@ -5,4 +5,10 @@ page-create-profile {
   ion-card.card {
     margin: 0;
   }
+  img {
+    &.user-avatar {
+      width: 200px;
+      margin: 0 auto 10px;
+    }
+  }
 }

@@ -50,12 +50,12 @@ export class LandingPage {
           if (this.profileArray.registered) {
             loadingPopup.dismiss();
             this.navCtrl.setRoot("LookingForPage");
-          } else if (this.profileArray.introCompleted) {
-            loadingPopup.dismiss();
-            this.navCtrl.setRoot("CreateProfilePage");
           } else {
             loadingPopup.dismiss();
-            this.navCtrl.setRoot("IntroPage", {email: this.profileArray.email, uid: userAuth.uid});
+            this.navCtrl.setRoot("CreateProfilePage",  {
+              email: this.profileArray.email,
+              uid: userAuth.uid
+            });
           }
         });
       } else {

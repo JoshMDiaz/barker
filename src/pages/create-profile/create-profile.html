@@ -3,9 +3,11 @@
   <ion-card>
     <ion-card-content>
       <form [formGroup]="userForm">
+        <img class="user-avatar round" [src]="imgUrl" alt="Profile picture" />
+        <button ion-button block class="primary-outline" (click)="selectPhotoOption()">Choose Photo</button>
         <ion-item>
           <ion-label floating>Name</ion-label>
-          <ion-input formControlName="name" name="name" ></ion-input>
+          <ion-input formControlName="name" name="name"></ion-input>
         </ion-item>
         <ion-item>
           <ion-label floating>City</ion-label>
@@ -21,11 +23,8 @@
           <ion-label floating>Description
             <small>(Not Required)</small>
           </ion-label>
-          <ion-textarea  formControlName="description"></ion-textarea>
+          <ion-textarea formControlName="description"></ion-textarea>
         </ion-item>
-        <br/>
-        <button ion-button block class="primary-outline" (click)="selectPhotoOption()">Choose Photo</button>
-        <img [src]="imageUrl" *ngIf="imageFileName" alt="Profile picture" width="300" />
       </form>
     </ion-card-content>
   </ion-card>

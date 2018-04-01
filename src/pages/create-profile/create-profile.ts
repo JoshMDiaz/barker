@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, NgZone } from "@angular/core";
 import { IonicPage, NavController, NavParams, ActionSheetController } from "ionic-angular";
 import { AuthData } from "../../providers/auth-data";
 import { Http, Response } from "@angular/http";
@@ -8,6 +8,7 @@ import "rxjs/add/operator/map";
 import { Camera, CameraOptions } from "@ionic-native/camera";
 import { FileTransfer } from "@ionic-native/file-transfer";
 import firebase from 'firebase';
+import { ImagehandlerProvider } from '../../providers/imagehandler/imagehandler';
 
 @IonicPage()
 @Component({
@@ -26,7 +27,7 @@ export class CreateProfilePage {
   disabled: boolean = true;
   profileImg: any;
   imgRef: any;
-  imageUrl: any;
+  imgUrl: string = '../../assets/default_profile.jpg';
 
   constructor(
     public navCtrl: NavController,
@@ -35,7 +36,9 @@ export class CreateProfilePage {
     private authData: AuthData,
     private camera: Camera,
     private transfer: FileTransfer,
-    public actionsheetCtrl: ActionSheetController
+    public actionsheetCtrl: ActionSheetController,
+    public imgservice: ImagehandlerProvider,
+    public zone: NgZone
   ) {
     this.email = this.navParams.data.email;
     this.uid = this.navParams.data.uid;
@@ -116,7 +119,7 @@ export class CreateProfilePage {
   uploadImage() {
     this.imgRef.child(this.uid).child('profile-image.jpg').putString(this.profileImg, 'base64', { contentType: 'image/jpg' })
       .then(savedPic => {
-        this.imageUrl = savedPic.downloadUrl;
+        this.imgUrl = savedPic.downloadUrl;
       })
   }
 
