@@ -83,7 +83,11 @@ export const firebaseConfig = {
     FileTransfer,
     FileTransferObject,
     File,
-    Camera
+    Crop,
+    FilePath,
+    FileChooser,
+    Camera,
+    ImagehandlerProvider
   ]
 })
 export class AppModule { }
