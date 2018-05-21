@@ -9,18 +9,19 @@ import { LoadingController } from "ionic-angular/components/loading/loading-cont
   templateUrl: "dog-search.html"
 })
 export class DogSearchPage {
-  constructor(
-    public navCtrl: NavController,
-    public navParams: NavParams,
-    public afDb: AngularFireDatabase,
-    public loadingCtrl: LoadingController
-  ) {}
 
   uid: string;
   dogs: Array<any> = [];
   filter: any = {};
   noDogsFound: boolean = false;
   searchType: string;
+  
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public afDb: AngularFireDatabase,
+    public loadingCtrl: LoadingController
+  ) {}
 
   findGender(dog) {
     let gender = "male";

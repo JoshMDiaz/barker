@@ -1186,7 +1186,8 @@
       "numOfDogs" : 1,
       "photo" : "",
       "registered" : true,
-      "state" : "ID"
+      "state" : "ID",
+      "favorites" : ["L5WivjK_zt3Zwjantmr"]
     },
     "CzEe3rEBlSSgooQR62ti6AJQUjm1" : {
       "city" : "Oakley",
