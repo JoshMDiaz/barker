@@ -1,6 +1,6 @@
 <header-bar [title]="'Results'" [dog-search]="true" [dogs]="dogs" [search-type]="searchType"></header-bar>
 <ion-content no-padding>
-  <dog-card *ngFor="let dog of dogs" [uid]="uid" [dog]="dog"></dog-card>
+  <dog-card *ngFor="let dog of dogs" [uid]="uid" [dog]="dog" [favorites]="profileArray.favorites"></dog-card>
   <ion-card *ngIf="noDogsFound" class="no-data-card" padding>
     <ion-card-content text-center>
       <ion-icon name="alert"></ion-icon>

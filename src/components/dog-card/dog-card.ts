@@ -9,7 +9,10 @@ import { AngularFireAuth } from "angularfire2/auth";
 export class DogCardComponent {
   @Input() uid: string;
   @Input() dog: any;
+  @Input() favorites?: Array<string>;
   @Input("show-message") showMessage?: boolean = true;
+
+  colorSet: boolean = false;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public afAuth: AngularFireAuth) {}
 
@@ -24,8 +27,10 @@ export class DogCardComponent {
     console.log(`message to ${dog.name} owner`);
   }
 
-  favorite(dog) {
-    console.log(`${dog.name} is a favorite`);
+  toggleFavorite(dog) {
+    dog.liked = !dog.liked;
+    // TODO: make a call to update the dog
+    console.log(`${dog.name} is ${dog.liked} a favorite`);
   }
 
   ionViewDidLoad() {}

@@ -1,6 +1,10 @@
 import { Component } from "@angular/core";
 import { IonicPage, NavController, NavParams } from "ionic-angular";
-import { AngularFireDatabase } from "angularfire2/database-deprecated";
+import {
+  AngularFireDatabase,
+  FirebaseObjectObservable,
+  FirebaseListObservable
+} from "angularfire2/database-deprecated";
 import { LoadingController } from "ionic-angular/components/loading/loading-controller";
 
 @IonicPage()
@@ -15,7 +19,9 @@ export class DogSearchPage {
   filter: any = {};
   noDogsFound: boolean = false;
   searchType: string;
-  
+  profileArray: any = [];
+  profile: FirebaseObjectObservable<any[]>;
+
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -50,6 +56,10 @@ export class DogSearchPage {
       content: ''
     });
     loadingPopup.present();
+    this.profile = this.afDb.object("/userProfiles/" + this.uid);
+    this.profile.subscribe(profile => {
+      this.profileArray = profile;
+    });
     this.afDb
       .list("/dogProfiles/", {
         query: {
@@ -59,9 +69,14 @@ export class DogSearchPage {
       })
       .subscribe(dogs => {
         dogs.forEach(dog => {
-          if (dog.ownerId !== this.navParams.data.uid) {
-            this.dogs.push(dog);
-          }
+          this.profileArray.favorites.map((f) => {
+            if (dog.$key.includes(f)) {
+              dog.liked = true;
+            }
+            if (dog.ownerId !== this.navParams.data.uid) {
+              this.dogs.push(dog);
+            }
+          });
         });
         if (this.searchType === "breeding") {
          this.keepDogsCouldBreed(this.dogs);
