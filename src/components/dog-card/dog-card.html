@@ -1,9 +1,9 @@
 <ion-card>
-  <ion-slides pager (click)="seeProfile(dog)">
+  <ion-slides pager (click)="seeMore()">
     <ion-slide *ngFor="let photo of dog.photos" [ngStyle]="{'background' : 'url(' + photo.url + ')'}">
     </ion-slide>
   </ion-slides>
-  <ion-card-content (click)="seeProfile(dog)">
+  <ion-card-content (click)="seeMore()">
     <ion-card-title>
       {{dog.name}}
     </ion-card-title>
@@ -21,5 +21,45 @@
     <button ion-button icon-left clear *ngIf="showMessage === true" class="primary-clear" (click)="message(dog)">
       <div>MESSAGE</div>
     </button>
+  </ion-row>
+  <ion-row>
+    <ion-list no-lines padding>
+      <ion-item>
+        <ion-icon name="person" item-left></ion-icon>
+        <h4>Owner</h4>
+        <p>{{owner.name || 'test'}}</p>
+        <button ion-button class="primary-outline" outline (click)="seeOwnerProfile()">see profile</button>
+      </ion-item>
+      <ion-item>
+        <ion-icon [name]="dog.gender === 'male' ? 'male' : 'female'" item-left></ion-icon>
+        <h4>Gender</h4>
+        <p>{{dog.gender | capitalize}}</p>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="eye" item-left></ion-icon>
+        <h4>Eye Color</h4>
+        <p>{{dog.eyes | capitalize}}</p>
+      </ion-item>
+      <ion-item>
+        <ion-icon [name]="dog.fixed=== false ? 'happy' : 'sad'" item-left></ion-icon>
+        <h4>Neutered / Spayed</h4>
+        <p>{{dog.fixed ? 'Yes' : 'No'}}</p>
+      </ion-item>
+      <ion-item *ngIf="!dog.fixed">
+        <ion-icon name="flame" item-left></ion-icon>
+        <h4>Willing to Breed</h4>
+        <p>{{dog.couldBreed ? 'Yes' : 'No'}}</p>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="paper" item-left></ion-icon>
+        <h4>Papered</h4>
+        <p>{{dog.papered ? 'Yes' : 'No'}}</p>
+      </ion-item>
+      <ion-item *ngIf="dog.papered">
+        <ion-icon name="clipboard" item-left></ion-icon>
+        <h4>AKC Registered</h4>
+        <p>{{dog.registered ? 'Yes' : 'No'}}</p>
+      </ion-item>
+    </ion-list>
   </ion-row>
 </ion-card>

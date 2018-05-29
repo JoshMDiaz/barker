@@ -1,22 +1,6 @@
 <header-bar [title]="dogProfile.name" [dog-profile]="true" [gender]="dogProfile.gender"></header-bar>
-<ion-content padding>
-  <div id="profile-info" padding>
-    <img id="profile-image" class="pop-in" src="{{'http://placehold.it/200x200'}}" />
-    <h3>{{dogProfile.breed | commaSpace}}</h3>
-    <p>{{dogProfile.birthdate | age}}</p>
-    <button ion-button block class="primary" (click)="message()">Message</button>
-  </div>
-
-
-  <!-- About -->
-  <ion-list no-lines text-wrap padding>
-    <ion-list-header>
-      <h2>About</h2>
-    </ion-list-header>
-    <ion-item>
-      <p>{{dogProfile.description}}</p>
-    </ion-item>
-  </ion-list>
+<ion-content>
+  <dog-card [uid]="uid" [dog]="dogProfile" [favorites]="profileArray.favorites"></dog-card>
 
   <!--***********  Segement tabs ***********-->
   <ion-segment mode="md" [(ngModel)]="segmentView" color="blue2">

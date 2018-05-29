@@ -73,10 +73,10 @@ export class DogSearchPage {
             if (dog.$key.includes(f)) {
               dog.liked = true;
             }
-            if (dog.ownerId !== this.navParams.data.uid) {
-              this.dogs.push(dog);
-            }
           });
+          if (dog.ownerId !== this.navParams.data.uid) {
+            this.dogs.push(dog);
+          }
         });
         if (this.searchType === "breeding") {
          this.keepDogsCouldBreed(this.dogs);

@@ -26,9 +26,11 @@ export class DogProfilePage {
   // friends:  FirebaseListObservable<any[]>;
   // imgGalleryArray : any=[];
 
+  uid: string;
   segmentView: string = "one";
   messageSent: boolean = false;
   owner: any = [];
+  profileArray: any = [];
   profile: FirebaseObjectObservable<any[]>;
   dogProfile: {
     name: string;
@@ -62,10 +64,6 @@ export class DogProfilePage {
     this.dogProfile = this.navParams.data.dogProfile;
   }
 
-  toggleFavorite() {
-    console.log("favorited");
-  }
-
   seeProfile() {
     this.navCtrl.push("ProfilePage", {
       userId: this.navParams.data.dogProfile.ownerId
@@ -81,10 +79,6 @@ export class DogProfilePage {
     modal.present();
   }
 
-  message() {
-    console.log(`Message ${this.owner.name}`);
-  }
-
   presentToast(position: string, message: string) {
     let toast = this.toastCtrl.create({
       message: message,
@@ -95,11 +89,16 @@ export class DogProfilePage {
   }
 
   ionViewDidLoad() {
+    this.uid = this.navParams.data.uid;
     let loadingPopup = this.loadingCtrl.create({
       spinner: "crescent",
       content: ""
     });
     loadingPopup.present();
+    this.profile = this.afDb.object("/userProfiles/" + this.uid);
+    this.profile.subscribe(profile => {
+      this.profileArray = profile;
+    });
     this.afDb
       .object(`/userProfiles/${this.navParams.data.dogProfile.ownerId}`)
       .subscribe(owner => {
