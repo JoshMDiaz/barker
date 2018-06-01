@@ -1,9 +1,9 @@
 <ion-card>
-  <ion-slides pager (click)="seeMore()">
+  <ion-slides pager>
     <ion-slide *ngFor="let photo of dog.photos" [ngStyle]="{'background' : 'url(' + photo.url + ')'}">
     </ion-slide>
   </ion-slides>
-  <ion-card-content (click)="seeMore()">
+  <ion-card-content>
     <ion-card-title>
       {{dog.name}}
     </ion-card-title>
@@ -15,14 +15,17 @@
     <p *ngIf="!dog.description">No description available</p>
   </ion-card-content>
   <ion-row justify-content-between *ngIf="uid !== dog.ownerId">
-    <button ion-button icon-only clear [color]="!dog.liked ? 'gray' : 'red'" (click)="toggleFavorite(dog)">
+    <button ion-button icon-only clear [color]="!dog.liked ? 'gray' : 'pink'" (click)="toggleFavorite(dog)">
       <ion-icon name="heart"></ion-icon>
     </button>
     <button ion-button icon-left clear *ngIf="showMessage === true" class="primary-clear" (click)="message(dog)">
       <div>MESSAGE</div>
     </button>
+    <button ion-button icon-only clear color="pink" (click)="seeMore()">
+      <ion-icon [name]="showExtraInfo ? 'arrow-up' : 'arrow-down'"></ion-icon>
+    </button>
   </ion-row>
-  <ion-row>
+  <ion-row *ngIf="showExtraInfo">
     <ion-list no-lines padding>
       <ion-item>
         <ion-icon name="person" item-left></ion-icon>
