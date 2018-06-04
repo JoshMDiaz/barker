@@ -70,7 +70,8 @@ export class AuthData {
     state,
     description,
     numOfDogs,
-    registered
+    registered,
+    favorites
   ) {
     firebase
       .database()
@@ -92,7 +93,8 @@ export class AuthData {
               state: state,
               description: description,
               numOfDogs: numOfDogs,
-              registered: registered
+              registered: registered,
+              favorites: favorites
             });
         } else {
           console.log("user " + uid + " does not exist!");

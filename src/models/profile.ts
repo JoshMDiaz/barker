@@ -7,4 +7,5 @@ export interface ProfileModel {
   numOfDogs: number;
   introComplete: boolean;
   registered: boolean;
+  favorites: Array<string>;
 }

@@ -79,7 +79,8 @@ export class CreateDogsProfilePage {
       this.profile.state,
       this.profile.description || "",
       dogs.length,
-      true
+      true,
+      []
     );
     this.navCtrl.setRoot('LookingForPage');
   }

@@ -31,15 +31,17 @@ export class DogSearchModalPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private viewCtrl: ViewController, private http: Http) {
     this.filter = {};
+    console.log(this.navParams);
+
   }
 
-  close() {
-    // let data = { 'foo': 'bar' };
-    this.viewCtrl.dismiss(/*data*/);
+  close(filter) {
+    this.viewCtrl.dismiss(filter);
   }
 
   filterDogs(filter) {
     console.log(filter);
+    this.close(filter);
   }
 
   populateAges() {

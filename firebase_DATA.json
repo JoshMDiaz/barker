@@ -1198,7 +1198,8 @@
       "numOfDogs" : 3,
       "photo" : "",
       "registered" : true,
-      "state" : "CA"
+      "state" : "CA",
+      "favorites" : ["-L5WivjP5AJeumDQo0AZ"]
     },
     "s0XPHC517ONbDCaVqIu7DehI0Xb2" : {
       "city" : "Lehi",
@@ -1209,7 +1210,8 @@
       "numOfDogs" : 2,
       "photo" : "",
       "registered" : true,
-      "state" : "UT"
+      "state" : "UT",
+      "favorites" : ["-L5k4xA5LZgGrGd0pk4W"]
     }
   }
 }
